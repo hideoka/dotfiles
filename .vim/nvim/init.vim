@@ -1,6 +1,7 @@
 let g:python_host_prog  = $HOME . '/.pyenv/versions/py2neovim/bin/python'
 let g:python3_host_prog = $HOME . '/.pyenv/versions/py3neovim/bin/python'
 
+let mapleader = "\<Space>"
 "プラグインが実際にインストールされるディレクトリ
 let s:dein_dir = expand('~/.cache/dein')
 " dein.vim 本体
@@ -60,6 +61,8 @@ set ambiwidth=double
 set wildmenu
 "クリップボードを使用する
 set clipboard=unnamed
+"ファイルを保存する
+nnoremap <Leader>w :w<CR>
 
 "----------------------------------------
 " ESC・移動 
@@ -68,12 +71,14 @@ set clipboard=unnamed
 inoremap <silent> jj <ESC>
 inoremap <silent> <C-f> <Right>
 inoremap <silent> <C-b> <Left>
-nnoremap <silent> <Space>h <C-w>h
-nnoremap <silent> <Space>j <C-w>j
-nnoremap <silent> <Space>k <C-w>k
-nnoremap <silent> <Space>l <C-w>l
+nnoremap <silent> <Leader>h <C-w>h
+nnoremap <silent> <Leader>j <C-w>j
+nnoremap <silent> <Leader>k <C-w>k
+nnoremap <silent> <Leader>l <C-w>l
 nnoremap j gj
 nnoremap k gk
+nnoremap H ^
+nnoremap L $
 
 "----------------------------------------
 " quickfix 
