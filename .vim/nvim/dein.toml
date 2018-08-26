@@ -1,0 +1,73 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+hook_add = '''
+  let NERDTreeShowHidden=1
+  nnoremap <silent> <Space>e :<C-u>NERDTreeToggle<CR>
+'''
+
+[[plugins]]
+repo = 'majutsushi/tagbar'
+hook_add = '''
+  nnoremap <silent> <Space>w :<C-u>TagbarToggle<CR>
+'''
+
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+
+[[plugins]]
+repo = 'tomtom/tcomment_vim'
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'tpope/vim-rails'
+
+[[plugins]]
+repo = 'machakann/vim-sandwich'
+
+[[plugins]]
+repo = 'jacoborus/tender.vim'
+hook_add = '''
+  if (has("termguicolors"))
+     set termguicolors
+  endif
+  syntax enable
+  colorscheme tender
+'''
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+hook_add = '''
+  let g:lightline={
+    \ 'colorscheme': 'tender',
+    \ 'active': {
+    \   'left': [ ['mode', 'paste'],
+    \             ['gitbranch', 'readonly', 'filename', 'modified'] ]
+    \ },
+    \ 'component_function': {
+    \   'gitbranch': 'fugitive#head'
+    \ },
+    \ }
+'''
+
+[[plugins]]
+repo = 'autozimu/LanguageClient-neovim'
+rev = 'next'
+build = 'bash install.sh'
+hook_add = '''
+  set hidden
+  let g:LanguageClient_serverCommands = {
+      \ 'ruby': ['solargraph', 'stdio'],
+      \ }
+
+  nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+  nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+  nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+'''
