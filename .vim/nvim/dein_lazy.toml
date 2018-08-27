@@ -39,3 +39,12 @@ on_i = 1
 [[plugins]]
 repo = 'cohama/lexima.vim'
 on_i = 1
+
+[[plugins]]
+repo = 'w0rp/ale'
+on_ft = ['ruby']
+hook_add = '''
+  let b:ale_fixers = {
+    \ 'ruby': ['rubocop']
+    \ }
+'''
