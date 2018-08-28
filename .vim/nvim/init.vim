@@ -117,7 +117,8 @@ set showcmd
 " 省略されずに表示
 set display=lastline
 " 行末のスペースを可視化
-set listchars=tab:^\ ,trail:~
+set list
+set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%
 " 入力モードでTabキー押下時に半角スペースを挿入
 set expandtab
 " インデント幅
