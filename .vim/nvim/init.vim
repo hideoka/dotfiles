@@ -1,7 +1,12 @@
 let g:python_host_prog  = $HOME . '/.pyenv/versions/py2neovim/bin/python'
 let g:python3_host_prog = $HOME . '/.pyenv/versions/py3neovim/bin/python'
 
+" Leader設定
 let mapleader = "\<Space>"
+
+" init.vimファイル再読込
+nnoremap <leader>r :source $MYVIMRC<CR>
+
 "プラグインが実際にインストールされるディレクトリ
 let s:dein_dir = expand('~/.cache/dein')
 " dein.vim 本体
@@ -62,7 +67,9 @@ set wildmenu
 "クリップボードを使用する
 set clipboard=unnamed
 "ファイルを保存する
-nnoremap <Leader>w :w<CR>
+nnoremap <S-s> :w<CR>
+" カーソル位置から行末までヤンク
+nnoremap Y y$
 
 "----------------------------------------
 " ESC・移動 
@@ -71,10 +78,10 @@ nnoremap <Leader>w :w<CR>
 inoremap <silent> jj <ESC>
 inoremap <silent> <C-f> <Right>
 inoremap <silent> <C-b> <Left>
-nnoremap <silent> <Leader>h <C-w>h
-nnoremap <silent> <Leader>j <C-w>j
-nnoremap <silent> <Leader>k <C-w>k
-nnoremap <silent> <Leader>l <C-w>l
+" nnoremap <silent> <leader>h <C-w>h
+" nnoremap <silent> <leader>j <C-w>j
+" nnoremap <silent> <leader>k <C-w>k
+" nnoremap <silent> <ljader>l <C-w>l
 nnoremap j gj
 nnoremap k gk
 nnoremap H ^
@@ -101,11 +108,21 @@ set wrapscan
 set incsearch
 " 検索結果をハイライト表示
 set hlsearch
+" 検索結果をセンターに表示する
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
 
 "----------------------------------------
 " 表示設定
 "----------------------------------------
 
+" ウインドウのサイズをリサイズ
+nnoremap <silent> <C-w>< 10<C-w><
+nnoremap <silent> <C-w>> 10<C-w>>
+nnoremap <silent> <C-w>+ 10<C-w>+
+nnoremap <silent> <C-w>- 10<C-w>-
 " 対応する括弧やブレースを表示
 set showmatch matchtime=1
 " メッセージ表示欄を2行確保
