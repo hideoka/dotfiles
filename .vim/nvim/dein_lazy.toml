@@ -12,10 +12,10 @@ on_cmd = [
   'Rg!',
 ]
 hook_add = '''
-  nnoremap <silent> <Leader>b :<C-u>Buffers<CR>
-  nnoremap <silent> <Leader>f :<C-u>Files<CR>
-  nnoremap <silent> <Leader>t :<C-u>Tags<CR>
-  nnoremap <silent> <Leader>g :<C-u>Rg!<CR>
+  nnoremap <silent> <leader>; :<C-u>Buffers<CR>
+  nnoremap <silent> <leader>f :<C-u>Files<CR>
+  nnoremap <silent> <leader>t :<C-u>Tags<CR>
+  nnoremap <silent> <leader>g :<C-u>Rg!<CR>
   command! -bang -nargs=* Rg
    \ call fzf#vim#grep(
    \   'rg --column --line-number --no-heading --color=auto --smart-case '.shellescape(<q-args>), 1,
@@ -29,7 +29,7 @@ repo = 'scrooloose/nerdtree'
 on_cmd = ['NERDTreeToggle']
 hook_add = '''
   let NERDTreeShowHidden=1
-  nnoremap <silent> <Leader>e :<C-u>NERDTreeToggle<CR>
+  nnoremap <silent> <leader>e :<C-u>NERDTreeToggle<CR>
 '''
 
 [[plugins]]
