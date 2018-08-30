@@ -78,10 +78,10 @@ nnoremap Y y$
 inoremap <silent> jj <ESC>
 inoremap <silent> <C-f> <Right>
 inoremap <silent> <C-b> <Left>
-" nnoremap <silent> <leader>h <C-w>h
-" nnoremap <silent> <leader>j <C-w>j
-" nnoremap <silent> <leader>k <C-w>k
-" nnoremap <silent> <ljader>l <C-w>l
+nnoremap <silent> <C-h> <C-w>h
+nnoremap <silent> <C-j> <C-w>j
+nnoremap <silent> <C-k> <C-w>k
+nnoremap <silent> <C-l> <C-w>l
 nnoremap j gj
 nnoremap k gk
 nnoremap H ^
@@ -154,8 +154,10 @@ set noswapfile
 set nofoldenable
 " タイトルを表示
 set title
-" 行番号を相対表示
-set relativenumber
+" 行番号を表示
+set number
+" 行番号を相対表示切り替え
+nnoremap <silent> <leader>n :set relativenumber!<CR>
 " Escの2回押しでハイライト消去
 nnoremap <Esc><Esc> :nohlsearch<CR><ESC>
 " 行をまたいで移動
