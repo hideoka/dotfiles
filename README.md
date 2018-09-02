@@ -9,6 +9,7 @@
 - ctags
 - fish
 - fisherman
+- rubocop
 
 ## install python
 ```
@@ -37,6 +38,7 @@ ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
 ln -s ~/dotfiles/.ctags.d ~/.ctags.d
 In -s ~/dotfiles/.fish/config.fish ~/.config/fish/config.fish
 In -s ~/dotfiles/.fish/fishfile ~/.config/fish/fishfile
+In -s ~/dotfiles/.rubocop.yml ~/.rubocop.yml
 ```
 
 ## Add setting for config file
