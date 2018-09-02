@@ -1,4 +1,4 @@
---append=yes
 --exclude=tags
 --exclude=node_modules
 --exclude=.git
+--exclude=vendor
