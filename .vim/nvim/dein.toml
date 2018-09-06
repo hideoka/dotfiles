@@ -42,12 +42,20 @@ hook_add = '''
     \ 'colorscheme': 'tender',
     \ 'active': {
     \   'left': [ ['mode', 'paste'],
-    \             ['gitbranch', 'readonly', 'filename', 'modified'] ]
+    \             ['readonly', 'filepath', 'modified'] ]
     \ },
     \ 'component_function': {
-    \   'gitbranch': 'fugitive#head'
+    \   'filepath': 'FilePath',
     \ },
     \ }
+
+  function! FilePath()
+    if winwidth(0) > 90
+      return expand('%')
+    else
+      return expand('%:t')
+    end
+  endfunction
 '''
 
 [[plugins]]
