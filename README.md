@@ -14,21 +14,15 @@
 ## install python
 ```
 # Install python version
-pyenv install 2.7.15 # latest version
 pyenv install 3.7.0 # latest version
 
-# Create pyenv-vertualevn for neovim reference
-pyenv virtualenv 2.7.15 neovim2
-pyenv virtualenv 3.7.0 neovim3
-
+# Create a virtualenv for neovim folder
+# In ~/dotfiles/lib/neovim
 # Install neovim client and requirement middle 
-pyenv activate neovim2
-pyenv which python  # Note the path
-pyenv deactivate
+pipenv install
 
-pyenv activate neovim3
-pyenv which python  # Note the path
-pyenv deactivate
+# Show python path and write $pipenv_path for init.vim
+pipenv --venv  #Note the path
 ```
 
 ## Synbolic link
