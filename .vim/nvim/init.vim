@@ -1,5 +1,7 @@
-let g:python_host_prog  = $HOME . '/.pyenv/versions/py2neovim/bin/python'
-let g:python3_host_prog = $HOME . '/.pyenv/versions/py3neovim/bin/python'
+" pipenv --venv で表示されたpathをセッティングする
+let g:pipenv_path = '/.local/share/virtualenvs/neovim-nLjt4aID'
+let g:python_host_prog  = ''
+let g:python3_host_prog = $HOME . g:pipenv_path . '/bin/python'
 
 " Leader設定
 let mapleader = "\<Space>"
