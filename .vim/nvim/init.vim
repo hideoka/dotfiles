@@ -166,3 +166,5 @@ nnoremap <silent> <leader>n :set relativenumber!<CR>
 nnoremap <Esc><Esc> :nohlsearch<CR><ESC>
 " 行をまたいで移動
 set whichwrap=b,s,h,l,<,>,[,],~
+" 画面をリロード
+nnoremap <silent> <leader>o <C-l>
