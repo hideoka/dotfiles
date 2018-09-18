@@ -30,9 +30,9 @@ pipenv --venv  #Note the path
 ln -s ~/dotfiles/.vim/nvim ~/.config/nvim
 ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
 ln -s ~/dotfiles/.ctags.d ~/.ctags.d
-In -s ~/dotfiles/.fish/config.fish ~/.config/fish/config.fish
-In -s ~/dotfiles/.fish/fishfile ~/.config/fish/fishfile
-In -s ~/dotfiles/.rubocop.yml ~/.rubocop.yml
+ln -s ~/dotfiles/.fish/config.fish ~/.config/fish/config.fish
+ln -s ~/dotfiles/.fish/fishfile ~/.config/fish/fishfile
+ln -s ~/dotfiles/.rubocop.yml ~/.rubocop.yml
 ```
 
 ## Add setting for config file
