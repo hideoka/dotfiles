@@ -16,6 +16,7 @@ hook_add = '''
   nnoremap <silent> <leader>f :<C-u>Files<CR>
   nnoremap <silent> <leader>t :<C-u>Tags<CR>
   nnoremap <silent> <leader>g :<C-u>Rg!<CR>
+  nnoremap <silent> <C-]> :call fzf#vim#tags(expand('<cword>'))<CR>
   command! -bang -nargs=* Rg
    \ call fzf#vim#grep(
    \   'rg --column --line-number --no-heading --color=auto --smart-case '.shellescape(<q-args>), 1,
