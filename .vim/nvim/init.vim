@@ -168,3 +168,8 @@ nnoremap <Esc><Esc> :nohlsearch<CR><ESC>
 set whichwrap=b,s,h,l,<,>,[,],~
 " 画面をリロード
 nnoremap <silent> <leader>o <C-l>
+
+augroup goIndent
+  autocmd!
+  autocmd bufNewFile,BufRead *.go setlocal tabstop=4 shiftwidth=4 softtabstop=4
+augroup END
