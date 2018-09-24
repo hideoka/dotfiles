@@ -1,6 +1,7 @@
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
-on_i = 1
+on_event = 'InsertCharPre'
+build = ':UpdateRemotePlugins'
 depends = ['neosnippet.vim']
 hook_source = '''
   let g:deoplete#enable_at_startup = 1
@@ -33,7 +34,7 @@ hook_source = '''
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
 
-# [[plugins]]
-# repo = 'fatih/vim-go'
-# on_ft = ['go']
-# build = ':GoUpdateBinaries'
+[[plugins]]
+repo = 'fatih/vim-go'
+on_ft = ['go']
+build = ':GoUpdateBinaries'
