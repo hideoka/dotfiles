@@ -69,3 +69,11 @@ hook_add = '''
   let g:ale_python_black_executable = g:python3_host_prog
   let g:ale_python_black_options = '-m black'
 '''
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = ['toml']
+
+[[plugins]]
+repo = 'ekalinin/Dockerfile.vim'
+on_ft = ['dockerfile']
