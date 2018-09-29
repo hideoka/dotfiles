@@ -10,8 +10,22 @@ Style/Documentation:
 Style/ClassAndModuleChildren:
   Enabled: false
 
+Style/PercentLiteralDelimiters:
+  Enabled: false
+
 Metrics/LineLength:
   Max: 120
 
 AsciiComments:
   Enabled: false
+
+classAndModuleChildren:
+  Enabled: false
+
+Documentation:
+  Enabled: false
+
+AllCops:
+  Exclude:
+    - db/schema.rb
+    - tmp/**/*
