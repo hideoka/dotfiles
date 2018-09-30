@@ -3,7 +3,7 @@
 ## install requirement
 - neovim
 - pyenv
-- pyenv-vertualenv
+- pipenv
 - tmux
 - ripgrep
 - ctags
