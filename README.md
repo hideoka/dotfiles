@@ -35,9 +35,9 @@ ln -s ~/dotfiles/.fish/fishfile ~/.config/fish/fishfile
 ln -s ~/dotfiles/.rubocop.yml ~/.rubocop.yml
 ```
 
-## Add setting for config file
-For $XDG_CONFIG_HOME/fish/conf.d/fzf.fish
+## Add setting for fish_user_key_bindings
+For $XDG_CONFIG_HOME/fish/functions/fish_user_key_bindings.fish
 ```
-set -x FZF_DEFAULT_COMMAND 'rg --files --glob "!.git/*"'
-set -x FZF_FIND_FILE_COMMAND $FZF_DEFAULT_COMMAND
+bind \cc 'fco'
+bind \cv 'fzf-cdhist-widget'
 ```
