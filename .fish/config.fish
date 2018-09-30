@@ -1,17 +1,24 @@
+set -x LC_ALL en_US.UTF-8
+set -x LANG en_US.UTF-8
+
 status --is-interactive; and source (pyenv init -|psub)
 status --is-interactive; and source (rbenv init -|psub)
 
+# neovim config path
 set -x XDG_CONFIG_HOME ~/.config/
-set -x LC_ALL en_US.UTF-8
-set -x LANG en_US.UTF-8
+
+# golang config
 set -x GOPATH $HOME/go
 set PATH $GOPATH/bin $PATH
 
+# fzf config
+set -x FZF_DEFAULT_COMMAND 'rg --files --glob "!.git/*"'
+set -x FZF_FIND_FILE_COMMAND $FZF_DEFAULT_COMMAND
 
-function fco -d "Fuzzy-find and checkout a branch"
+
+function fco -d 'Fuzzy-find and checkout a branch'
   git branch --all | grep -v HEAD | string trim | fzf | read -l result; and git checkout "$result"
 end
-bind \cc 'fco'
 
 
 function fzf-cdhist-widget -d 'cd to one of the previously visited locations'
@@ -28,4 +35,9 @@ function fzf-cdhist-widget -d 'cd to one of the previously visited locations'
   [ "$result" ]; and cd $result
   commandline -f repaint
 end
-bind \cv 'fzf-cdhist-widget'
+
+
+function fish_user_key_bindings
+  bind \cc fco
+  bind \cv fzf-cdhist-widget
+end
