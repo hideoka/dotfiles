@@ -43,13 +43,14 @@ on_event = 'InsertEnter'
 
 [[plugins]]
 repo = 'w0rp/ale'
-on_ft = ['ruby', 'python']
+on_ft = ['ruby', 'python', 'javascript']
 hook_add = '''
   nnoremap <silent> <leader>l :<C-u>ALEToggle<CR>
   nnoremap <silent> <leader>a :<C-u>ALEFix<CR>
   let g:ale_linters = {
     \ 'ruby': ['rubocop'],
     \ 'python': ['flake8'],
+    \ 'javascript': ['eslint'],
     \ }
   let g:ale_fixers = {
     \ 'ruby': ['rubocop'],
