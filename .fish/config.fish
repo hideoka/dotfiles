@@ -35,9 +35,3 @@ function fzf-cdhist-widget -d 'cd to one of the previously visited locations'
   [ "$result" ]; and cd $result
   commandline -f repaint
 end
-
-
-function fish_user_key_bindings
-  bind \cc fco
-  bind \cv fzf-cdhist-widget
-end
