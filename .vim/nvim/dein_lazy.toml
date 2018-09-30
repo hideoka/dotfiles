@@ -40,6 +40,9 @@ on_ft = ['html', 'eruby']
 [[plugins]]
 repo = 'cohama/lexima.vim'
 on_event = 'InsertEnter'
+hook_post_source = '''
+  call lexima#add_rule({'char': '<C-m>', 'input': '<%', 'input_after': '%>', 'filetype': 'eruby'})
+'''
 
 [[plugins]]
 repo = 'w0rp/ale'
