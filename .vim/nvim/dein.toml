@@ -37,6 +37,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
+depends = ['tender.vim']
 hook_add = '''
   let g:lightline={
     \ 'colorscheme': 'tender',
