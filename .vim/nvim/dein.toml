@@ -24,6 +24,10 @@ repo = 'tpope/vim-rails'
 
 [[plugins]]
 repo = 'machakann/vim-sandwich'
+hook_add = '''
+  nmap s <Nop>
+  xmap s <Nop>
+'''
 
 [[plugins]]
 repo = 'jacoborus/tender.vim'
