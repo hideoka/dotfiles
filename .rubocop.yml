@@ -27,5 +27,6 @@ Documentation:
 
 AllCops:
   Exclude:
-    - db/schema.rb
-    - tmp/**/*
+    - 'db/schema.rb'
+    - 'tmp/**/*'
+    - 'node_modules/**/*'
