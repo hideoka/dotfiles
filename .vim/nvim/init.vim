@@ -73,8 +73,8 @@ nnoremap <S-s> :w<CR>
 " カーソル位置から行末までヤンク
 nnoremap Y y$
 " ヤンクした内容をペースト
-nnoremap <silent> <S-p> "0p
-vnoremap <silent> <S-p> "0p
+nnoremap <silent> <leader>p "0p
+vnoremap <silent> <leader>p "0p
 
 "----------------------------------------
 " ESC・移動
