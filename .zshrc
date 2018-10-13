@@ -1,6 +1,7 @@
 source ~/.zplug/init.zsh
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "zsh-users/zsh-completions"
 
 if ! zplug check --verbose; then
   printf "Install? [y/N]: "
@@ -10,6 +11,9 @@ if ! zplug check --verbose; then
 fi
 
 zplug load --verbose
+
+source ~/dotfiles/.zsh/fzf.zsh
+source ~/dotfiles/.zsh/alias.zsh
 
 PROMPT='%m:%c %n$ '
 autoload -U compinit; compinit

@@ -29,22 +29,71 @@ hook_add = '''
   xmap s <Nop>
 '''
 
+# [[plugins]]
+# repo = 'jacoborus/tender.vim'
+# hook_add = '''
+#   if (has("termguicolors"))
+#      set termguicolors
+#   endif
+#   syntax enable
+#   colorscheme tender
+# '''
+# 
+# [[plugins]]
+# repo = 'itchyny/lightline.vim'
+# depends = ['tender.vim']
+# hook_add = '''
+#   let g:lightline={
+#     \ 'colorscheme': 'tender',
+#     \ 'active': {
+#     \   'left': [ ['mode', 'paste'],
+#     \             ['readonly', 'filepath', 'modified'] ]
+#     \ },
+#     \ 'component_function': {
+#     \   'filepath': 'FilePath',
+#     \ },
+#     \ }
+# 
+#   function! FilePath()
+#     if winwidth(0) > 90
+#       return expand('%')
+#     else
+#       return expand('%:t')
+#     end
+#   endfunction
+# '''
+
+# [[plugins]]
+# repo = 'autozimu/LanguageClient-neovim'
+# rev = 'next'
+# build = 'bash install.sh'
+# hook_add = '''
+#   set hidden
+#   let g:LanguageClient_serverCommands = {
+#       \ 'ruby': ['solargraph', 'stdio'],
+#       \ }
+# 
+#   nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+#   nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+#   nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+# '''
+
 [[plugins]]
-repo = 'jacoborus/tender.vim'
+repo = 'cocopon/iceberg.vim'
 hook_add = '''
   if (has("termguicolors"))
      set termguicolors
   endif
   syntax enable
-  colorscheme tender
+  colorscheme iceberg
 '''
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
-depends = ['tender.vim']
+depends = ['iceberg.vim']
 hook_add = '''
   let g:lightline={
-    \ 'colorscheme': 'tender',
+    \ 'colorscheme': 'iceberg',
     \ 'active': {
     \   'left': [ ['mode', 'paste'],
     \             ['readonly', 'filepath', 'modified'] ]
@@ -62,18 +111,3 @@ hook_add = '''
     end
   endfunction
 '''
-
-# [[plugins]]
-# repo = 'autozimu/LanguageClient-neovim'
-# rev = 'next'
-# build = 'bash install.sh'
-# hook_add = '''
-#   set hidden
-#   let g:LanguageClient_serverCommands = {
-#       \ 'ruby': ['solargraph', 'stdio'],
-#       \ }
-# 
-#   nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-#   nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-#   nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-# '''

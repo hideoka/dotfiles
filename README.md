@@ -10,6 +10,8 @@
 - fish
 - fisherman
 - rubocop
+- zsh
+- zplug
 
 ## install python
 ```
@@ -33,6 +35,7 @@ ln -s ~/dotfiles/.ctags.d ~/.ctags.d
 ln -s ~/dotfiles/.fish/config.fish ~/.config/fish/config.fish
 ln -s ~/dotfiles/.fish/fishfile ~/.config/fish/fishfile
 ln -s ~/dotfiles/.rubocop.yml ~/.rubocop.yml
+ln -s ~/dotfiles/.zshrc ~/.zshrc
 ```
 
 ## Add setting for fish_user_key_bindings
