@@ -2,6 +2,8 @@ source ~/.zplug/init.zsh
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-completions"
+zplug "mafredri/zsh-async", from:github
+zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
 
 if ! zplug check --verbose; then
   printf "Install? [y/N]: "
@@ -15,8 +17,10 @@ zplug load --verbose
 source ~/dotfiles/.zsh/fzf.zsh
 source ~/dotfiles/.zsh/alias.zsh
 
-PROMPT='%m:%c %n$ '
 autoload -U compinit; compinit
+autoload -U promptinit; promptinit
+prompt pure
+
 setopt correct
 setopt auto_cd
 setopt auto_pushd
