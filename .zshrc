@@ -1,23 +1,7 @@
-source ~/.zplug/init.zsh
-zplug "zsh-users/zsh-history-substring-search"
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-autosuggestions"
-zplug "mafredri/zsh-async", from:github
-zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
-zplug "b4b4r07/enhancd", use:init.sh
-
-if ! zplug check --verbose; then
-  printf "Install? [y/N]: "
-  if read -q; then
-    echo; zplug install
-  fi
-fi
-
-zplug load --verbose
-
-source ~/dotfiles/.zsh/fzf.zsh
-source ~/dotfiles/.zsh/alias.zsh
+source $HOME/dotfiles/.zsh/alias.zsh
+source $HOME/dotfiles/.zsh/setopt.zsh
+source $HOME/dotfiles/.zsh/fzf.zsh
+source $HOME/dotfiles/.zsh/zplug.zsh
 
 autoload -U compinit; compinit
 autoload -U promptinit; promptinit
