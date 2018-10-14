@@ -12,6 +12,7 @@
 - rubocop
 - zsh
 - zplug
+- gui-sed
 
 ## install python
 ```
