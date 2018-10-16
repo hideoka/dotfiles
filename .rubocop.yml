@@ -13,8 +13,19 @@ Style/ClassAndModuleChildren:
 Style/PercentLiteralDelimiters:
   Enabled: false
 
+Style/BlockDelimiters:
+  Exclude:
+    - 'spec/**/*'
+
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+
 Metrics/LineLength:
   Max: 120
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
 
 AsciiComments:
   Enabled: false

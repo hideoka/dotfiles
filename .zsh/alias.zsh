@@ -8,3 +8,5 @@ alias gc="git commit"
 
 alias dcu="docker-compose up"
 alias dcd="docker-compose down"
+
+alias vi="nvim"
