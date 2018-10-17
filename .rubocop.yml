@@ -14,8 +14,7 @@ Style/PercentLiteralDelimiters:
   Enabled: false
 
 Style/BlockDelimiters:
-  Exclude:
-    - 'spec/**/*'
+  Enabled: false
 
 Style/EmptyMethod:
   EnforcedStyle: expanded
