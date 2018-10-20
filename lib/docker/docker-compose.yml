@@ -1,0 +1,44 @@
+version: '3'
+services:
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: CentOS7!
+    volumes:
+      - ./docker-config/mysql-config:/etc/mysql/conf.d
+      - store:/var/lib/mysql
+  webpack:
+    build: .
+    environment:
+      - NODE_ENV=development
+      - RAILS_ENV=development
+      - WEBPACKER_DEV_SERVER_HOST=0.0.0.0
+    command: bin/webpack-dev-server
+    volumes:
+      - web-sync:/app
+    ports:
+      - "3035:3035"
+  web:
+    build: .
+    command: /bin/bash -c 'rm -rf tmp/pids/server.pid && bundle exec rails s -p 3000 -b 0.0.0.0' 
+    environment:
+      - TZ=Asia/Tokyo
+      - EDITOR=vim
+      - WEBPACKER_DEV_SERVER_HOST=webpack
+    volumes:
+      - ./docker-config/development/.pryrc:/root/.pryrc
+      - web-sync:/app
+    ports:
+      - "127.0.0.1:3000:3000"
+    tty: true
+    stdin_open: true
+    depends_on:
+      - db
+      - webpack
+
+volumes:
+  web-sync:
+    external: true
+  store:
+    driver: local
