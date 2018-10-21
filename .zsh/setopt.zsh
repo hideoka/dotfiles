@@ -6,3 +6,12 @@ setopt hist_ignore_dups
 setopt share_history
 setopt hist_no_store
 setopt hist_save_no_dups
+
+mkdir_and_cd() {
+  if [[ -d $1 ]]; then
+    echo "$1 already exists!"
+    cd $1
+  else
+    mkdir -p $1 && cd $1
+  fi
+}
