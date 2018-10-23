@@ -7,10 +7,6 @@ autoload -U compinit; compinit
 autoload -U promptinit; promptinit
 prompt pure
 
-setopt correct
-setopt auto_cd
-setopt auto_pushd
-
 eval "$(rbenv init -)"
 
 if command -v pyenv 1>/dev/null 2>&1; then
