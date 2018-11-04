@@ -116,8 +116,8 @@ set hlsearch
 " 検索結果をセンターに表示する
 nnoremap n nzz
 nnoremap N Nzz
-nnoremap * *zz
-nnoremap # #zz
+nnoremap * *Nzz
+nnoremap # #Nzz
 
 "----------------------------------------
 " 表示設定
