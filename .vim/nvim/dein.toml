@@ -15,14 +15,14 @@ repo = 'tomtom/tcomment_vim'
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
 hook_add = '''
   nnoremap <silent> <Leader>gs :<C-u>Gstatus<CR>
   nnoremap <silent> <Leader>gd :<C-u>Gdiff<CR>
   nnoremap <silent> <Leader>gb :<C-u>Gblame<CR>
 '''
-
-[[plugins]]
-repo = 'tpope/vim-fugitive'
 
 [[plugins]]
 repo = 'tpope/vim-rails'
