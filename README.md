@@ -6,6 +6,7 @@
 - pipenv
 - tmux
 - ripgrep
+- alacritty
 - ctags
 - fish
 - fisherman
@@ -38,6 +39,7 @@ ln -s ~/dotfiles/.fish/fishfile ~/.config/fish/fishfile
 ln -s ~/dotfiles/.rubocop.yml ~/.rubocop.yml
 ln -s ~/dotfiles/.zshrc ~/.zshrc
 ln -s ~/dotfiles/.gitignore_global ~/.gitignore_global
+ln -s ~/dotfiles/.alacritty ~/.config/alacritty
 ```
 
 ## Add setting for fish_user_key_bindings
