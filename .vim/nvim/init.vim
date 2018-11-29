@@ -161,10 +161,6 @@ set nofoldenable
 set title
 " 行番号を表示
 set number
-" 行番号を相対表示
-set relativenumber
-" 行番号の相対表示のToggle
-nnoremap <silent> <leader>n :set relativenumber!<CR>
 " Escの2回押しでハイライト消去
 nnoremap <Esc><Esc> :nohlsearch<CR><ESC>
 " 行をまたいで移動
