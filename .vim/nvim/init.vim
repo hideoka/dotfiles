@@ -9,6 +9,10 @@ let mapleader = "\<Space>"
 " init.vimファイル再読込
 nnoremap <leader>r :source $MYVIMRC<CR>
 
+" neovim + tmux時の日本語文字化けを修正する
+set ttimeout
+set ttimeoutlen=50
+
 "プラグインが実際にインストールされるディレクトリ
 let s:dein_dir = expand('~/.cache/dein')
 " dein.vim 本体
