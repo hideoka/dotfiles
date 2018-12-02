@@ -172,7 +172,15 @@ set whichwrap=b,s,h,l,<,>,[,],~
 " 画面をリロード
 nnoremap <silent> <leader>o <C-l>
 
+" goインデント設定
 augroup goIndent
   autocmd!
   autocmd bufNewFile,BufRead *.go setlocal tabstop=4 shiftwidth=4 softtabstop=4
+augroup END
+
+" Railsコマンド補完
+augroup RailsCommands
+  autocmd!
+  autocmd FileType eruby inoremap <silent><leader>, :<C-u><%=  %><Left><Left><Left>
+  autocmd FileType eruby inoremap <silent><leader>. :<C-u><%  %><Left><Left><Left>
 augroup END
