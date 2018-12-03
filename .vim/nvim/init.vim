@@ -181,6 +181,5 @@ augroup END
 " Railsコマンド補完
 augroup RailsCommands
   autocmd!
-  autocmd FileType eruby inoremap <silent><leader>, :<C-u><%=  %><Left><Left><Left>
-  autocmd FileType eruby inoremap <silent><leader>. :<C-u><%  %><Left><Left><Left>
+  autocmd FileType eruby inoremap <silent><C-s> :<C-u><%=  %><Left><Left><Left>
 augroup END
