@@ -95,6 +95,7 @@ nnoremap j gj
 nnoremap k gk
 nnoremap H ^
 nnoremap L $
+nnoremap <silent> <leader>s <C-^>
 
 "----------------------------------------
 " quickfix 
@@ -182,4 +183,9 @@ augroup END
 augroup RailsCommands
   autocmd!
   autocmd FileType eruby inoremap <silent><C-s> :<C-u><%=  %><Left><Left><Left>
+augroup END
+
+augroup GrepCmd
+  autocmd!
+  autocmd QuickFixCmdPost vim, grep make if len(getqflist() != 0 | cwindow | endif)
 augroup END
