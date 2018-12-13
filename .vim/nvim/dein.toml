@@ -4,7 +4,7 @@ repo = 'Shougo/dein.vim'
 [[plugins]]
 repo = 'majutsushi/tagbar'
 hook_add = '''
-  nnoremap <silent> <leader>w :<C-u>TagbarToggle<CR>
+  nnoremap <silent> <leader>y :<C-u>TagbarToggle<CR>
 '''
 
 [[plugins]]

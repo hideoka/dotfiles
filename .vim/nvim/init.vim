@@ -189,3 +189,8 @@ augroup GrepCmd
   autocmd!
   autocmd QuickFixCmdPost vim, grep make if len(getqflist() != 0 | cwindow | endif)
 augroup END
+
+augroup PrevimSettings
+  autocmd!
+  autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+augroup END
