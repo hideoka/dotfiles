@@ -77,3 +77,30 @@ on_ft = ['toml']
 [[plugins]]
 repo = 'ekalinin/Dockerfile.vim'
 on_ft = ['dockerfile']
+
+[[plugins]]
+repo = 'plasticboy/vim-markdown'
+on_ft = ['markdown']
+hook_add = '''
+  let g:vim_markdown_folding_level = 6
+  let g:vim_markdown_auto_insert_bullets = 0
+  let g:vim_markdown_new_list_item_indent = 0
+  let g:vim_markdown_new_folding_disabled = 1
+'''
+
+[[plugins]]
+repo = 'previm/previm'
+depends = ['openbrowser']
+on_cmd = ['PrevimOpen']
+hook_add = '''
+  nnoremap <silent> <leader>m :<C-u>PrevimOpen<CR>
+'''
+
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+on_map = ['<Plug>(openbrowser-smart-search)']
+hook_add = '''
+  let g:netrw_nogx=1
+  nmap <leader>w <Plug>(openbrowser-smart-search)
+	vmap <leader>w <Plug>(openbrowser-smart-search)
+'''

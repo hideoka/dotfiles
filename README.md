@@ -36,4 +36,3 @@ ln -s ~/dotfiles/.rubocop.yml ~/.rubocop.yml
 ln -s ~/dotfiles/.zshrc ~/.zshrc
 ln -s ~/dotfiles/.gitignore_global ~/.gitignore_global
 ln -s ~/dotfiles/.alacritty ~/.config/alacritty
-```
