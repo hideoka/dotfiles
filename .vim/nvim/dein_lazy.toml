@@ -90,7 +90,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'previm/previm'
-depends = ['openbrowser']
+depends = ['open-browser.vim']
 on_cmd = ['PrevimOpen']
 hook_add = '''
   nnoremap <silent> <leader>m :<C-u>PrevimOpen<CR>
