@@ -13,3 +13,5 @@ alias dcd="docker-compose down"
 
 alias vi="nvim"
 
+alias ta="tmux -u a"
+alias tn="tmux -u new -s"
