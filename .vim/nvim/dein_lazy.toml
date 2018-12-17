@@ -86,6 +86,7 @@ hook_add = '''
   let g:vim_markdown_auto_insert_bullets = 0
   let g:vim_markdown_new_list_item_indent = 0
   let g:vim_markdown_new_folding_disabled = 1
+  let g:vim_markdown_conceal = 0
 '''
 
 [[plugins]]
@@ -102,5 +103,5 @@ on_map = ['<Plug>(openbrowser-smart-search)']
 hook_add = '''
   let g:netrw_nogx=1
   nmap <leader>w <Plug>(openbrowser-smart-search)
-	vmap <leader>w <Plug>(openbrowser-smart-search)
+  vmap <leader>w <Plug>(openbrowser-smart-search)
 '''
