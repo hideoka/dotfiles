@@ -26,12 +26,8 @@ pipenv install
 # Show python path and write $pipenv_path for init.vim
 pipenv --venv  #Note the path
 ```
-## Synbolic link
+## make command
 ```
-ln -s ~/dotfiles/.vim/nvim ~/.config/nvim
-ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
-ln -s ~/dotfiles/.ctags.d ~/.ctags.d
-ln -s ~/dotfiles/.rubocop.yml ~/.rubocop.yml
-ln -s ~/dotfiles/.zshrc ~/.zshrc
-ln -s ~/dotfiles/.gitignore_global ~/.gitignore_global
-ln -s ~/dotfiles/.alacritty ~/.config/alacritty/alacritty.yml
+# Create symbolic link
+make deploy
+```
