@@ -1,3 +1,11 @@
+ROOT_PATH := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
+
 deploy:
-		git pull origin master
-		./etc/deploy.sh
+		@make update
+		@./etc/deploy.sh
+
+update:
+		@git pull origin master
+
+init:
+		@./etc/install.sh

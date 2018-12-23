@@ -12,6 +12,8 @@
 - zsh
 - zplug
 - gui-sed
+- make
+- git
 
 ## install python
 ```
