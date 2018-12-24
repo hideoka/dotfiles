@@ -13,3 +13,4 @@ else
 fi
 
 ./etc/python.sh
+./etc/ruby.sh
