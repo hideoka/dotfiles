@@ -1,10 +1,8 @@
 # dotfiles
 
 ## install requirement
-- pipenv
 - alacritty
-- rubocop
-- gui-sed
+- gui-sed # mac
 - make
 - git
 
