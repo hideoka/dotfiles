@@ -1,11 +1,11 @@
-ROOT_PATH := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
+DOTFILE_PATH := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 
 deploy:
 		@make update
-		@./etc/deploy.sh
+		bash $(DOTFILE_PATH)/etc/deploy.sh
 
 update:
 		@git pull origin master
 
 init:
-		@./etc/install.sh
+		bash $(DOTFILE_PATH)/etc/install.sh
