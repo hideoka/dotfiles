@@ -11,3 +11,5 @@ elif [[ $(uname) == 'Linux' ]]; then
 else
   echo 'no_install'
 fi
+
+./etc/python.sh
