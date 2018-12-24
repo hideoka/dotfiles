@@ -1,5 +1,5 @@
 " pipenv --venv で表示されたpathをセッティングする
-let g:pipenv_path = '/.local/share/virtualenvs/python-hJ2QNjOF'
+let g:pipenv_path = '/.local/share/virtualenvs/python-fZSHTmm1'
 let g:python3_host_prog = $HOME . g:pipenv_path . '/bin/python'
 let g:python2_host_prog = ''
 

@@ -7,6 +7,9 @@ autoload -U compinit; compinit
 autoload -U promptinit; promptinit
 prompt pure
 
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export PATH="$HOME/.local/bin:$PATH"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
