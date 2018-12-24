@@ -179,6 +179,12 @@ augroup goIndent
   autocmd bufNewFile,BufRead *.go setlocal tabstop=4 shiftwidth=4 softtabstop=4
 augroup END
 
+" Makefileインデント設定
+augroup MakefileIndent
+  autocmd!
+  autocmd bufNewFile,BufRead Makefile setlocal tabstop=4 shiftwidth=4 softtabstop=4
+augroup END
+
 " Railsコマンド補完
 augroup RailsCommands
   autocmd!
