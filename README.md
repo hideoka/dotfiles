@@ -1,16 +1,9 @@
 # dotfiles
 
 ## install requirement
-- neovim
-- pyenv
 - pipenv
-- tmux
-- ripgrep
 - alacritty
-- ctags
 - rubocop
-- zsh
-- zplug
 - gui-sed
 - make
 - git
@@ -32,4 +25,7 @@ pipenv --venv  #Note the path
 ```
 # Create symbolic link
 make deploy
+
+# Initialize to install
+make init
 ```
