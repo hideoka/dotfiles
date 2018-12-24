@@ -6,6 +6,7 @@ export LANG=C
 
 sudo apt -y install software-properties-common
 sudo add-apt-repository ppa:hnakamur/universal-ctags -y
+sudo add-apt-repository ppa:neovim-ppa/stable -y
 sudo apt -y update
 sudo apt -y install build-essential\
                     libssl-dev\
@@ -22,15 +23,21 @@ sudo apt -y install build-essential\
                     tk-dev\
                     libffi-dev\
                     liblzma-dev\
+                    neovim\
+                    python-dev\
+                    python3-dev\
+                    python-pip\
+                    python3-pip\
                     python-openssl\
+                    language-pack-en\
                     curl\
                     zsh\
                     gawk\
-                    neovim\
                     tmux\
                     autoconf\
                     pkg-config\
-                    universal-ctags
+                    universal-ctags\
+
 
 curl -LO https://github.com/BurntSushi/ripgrep/releases/download/0.10.0/ripgrep_0.10.0_amd64.deb
 sudo dpkg -i ripgrep_0.10.0_amd64.deb
