@@ -7,10 +7,10 @@ export LANG=C
 if [[ $(uname) == 'Darwin' ]]; then
   echo 'no_install'
 elif [[ $(uname) == 'Linux' ]]; then
-  ./etc/apt.sh
+  bash ./etc/apt.sh
 else
   echo 'no_install'
 fi
 
-./etc/python.sh
-./etc/ruby.sh
+bash ./etc/python.sh
+bash ./etc/ruby.sh
