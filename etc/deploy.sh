@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 set -Ceuo pipefail
 
-export LC_ALL=C
-export LANG=C
-
 [[ ! -d "$HOME/.config" || ! -d "$HOME/.config/alacritty" ]] && mkdir -p $HOME/.config/alacritty
 
 for f in .??*

@@ -1,10 +1,5 @@
-#!/usr/bin/env bash
-set -Ceuo pipefail
-
-export LC_ALL=C
-export LANG=C
-
-cd ./lib/ruby
+DOTFILE_PATH=$1
+cd $DOTFILE_PATH/lib/ruby
 
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
