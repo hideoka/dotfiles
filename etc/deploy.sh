@@ -10,10 +10,10 @@ do
   [[ $f == ".zsh" ]] && continue
 
   if [[ $f == ".vim" ]]; then
-    ln -snf $HOME/dotfiles/$f/nvim ~/.config/nvim
+    ln -snf $DOTFILE_PATH/$f/nvim ~/.config/nvim
   elif [[ $f == ".alacritty.yml" ]]; then
-    ln -snf $HOME/dotfiles/$f ~/.config/alacritty/alacritty.yml
+    ln -snf $DOTFILE_PATH/dotfiles/$f ~/.config/alacritty/alacritty.yml
   else
-    ln -snf $HOME/dotfiles/$f ~/$f
+    ln -snf $DOTFILE_PATH/dotfiles/$f ~/$f
   fi
 done
