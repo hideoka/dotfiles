@@ -1,9 +1,3 @@
-#!/usr/bin/env bash
-set -Ceuo pipefail
-
-export LC_ALL=C
-export LANG=C
-
 sudo apt -y install software-properties-common
 sudo add-apt-repository ppa:hnakamur/universal-ctags -y
 sudo add-apt-repository ppa:neovim-ppa/stable -y

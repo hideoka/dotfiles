@@ -8,4 +8,4 @@ update:
 	@git pull origin master
 
 init:
-	@bash $(DOTFILE_PATH)/etc/install.sh
+	@DOTFILE_PATH=$(DOTFILE_PATH) bash $(DOTFILE_PATH)/etc/install.sh

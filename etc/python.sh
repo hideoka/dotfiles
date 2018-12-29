@@ -1,10 +1,5 @@
-#!/usr/bin/env bash
-set -Ceuo pipefail
-
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-
-cd ./lib/python
+DOTFILE_PATH=$1
+cd $DOTFILE_PATH/lib/python
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
