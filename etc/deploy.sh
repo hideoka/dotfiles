@@ -12,8 +12,8 @@ do
   if [[ $f == ".vim" ]]; then
     ln -snf $DOTFILE_PATH/$f/nvim ~/.config/nvim
   elif [[ $f == ".alacritty.yml" ]]; then
-    ln -snf $DOTFILE_PATH/dotfiles/$f ~/.config/alacritty/alacritty.yml
+    ln -snf $DOTFILE_PATH/$f ~/.config/alacritty/alacritty.yml
   else
-    ln -snf $DOTFILE_PATH/dotfiles/$f ~/$f
+    ln -snf $DOTFILE_PATH/$f ~/$f
   fi
 done
