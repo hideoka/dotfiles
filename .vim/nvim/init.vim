@@ -102,7 +102,6 @@ nnoremap <silent> <leader>o <C-^>
 "----------------------------------------
 nnoremap <silent> <C-n> :cn<CR>
 nnoremap <silent> <C-p> :cp<CR>
-nnoremap <silent> <C-q> <C-w><C-w><C-w>q
 
 "----------------------------------------
 " 検索
