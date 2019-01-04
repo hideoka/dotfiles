@@ -7,7 +7,7 @@ let g:python2_host_prog = ''
 let mapleader = "\<Space>"
 
 " init.vimファイル再読込
-nnoremap <leader>r :source $MYVIMRC<CR>
+nnoremap <silent> <leader>R :source $MYVIMRC<CR>
 
 " neovim + tmux時の日本語文字化けを修正する
 set ttimeout
@@ -95,7 +95,7 @@ nnoremap j gj
 nnoremap k gk
 nnoremap H ^
 nnoremap L $
-nnoremap <silent> <leader>s <C-^>
+nnoremap <silent> <leader>o <C-^>
 
 "----------------------------------------
 " quickfix 
@@ -171,7 +171,7 @@ nnoremap <Esc><Esc> :nohlsearch<CR><ESC>
 " 行をまたいで移動
 set whichwrap=b,s,h,l,<,>,[,],~
 " 画面をリロード
-nnoremap <silent> <leader>o <C-l>
+nnoremap <silent> <leader>r <C-l>
 
 " goインデント設定
 augroup goIndent
