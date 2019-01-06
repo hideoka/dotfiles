@@ -10,6 +10,7 @@ init: sync_check
 	@docker-compose run web rails new . \
 		-f -d mysql -T --skip-sprockets --skip-turbolinks --skip-coffee --webpack
 	@docker-compose build
+	@sleep 60s
 	@ROOT_PATH=$(ROOT_PATH) APP_NAME=$(APP_NAME) bash $(ROOT_PATH)/etc/setup.sh db_config
 	@docker-compose run --rm web rails db:create
 	@docker-compose run --rm web rails db:migrate
