@@ -20,7 +20,9 @@ function change_database_config_file() {
 }
 
 if [[ $COMMAND == 'sync_check' ]]; then
-  check_sync
+  if $DOCKER_SYNC; then
+    check_sync
+  fi
 elif [[ $COMMAND == 'generator' ]]; then
   source $ROOT_PATH/etc/generator.sh
 elif [[ $COMMAND == 'db_config' ]]; then

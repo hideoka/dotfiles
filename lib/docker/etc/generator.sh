@@ -26,7 +26,7 @@ EOL
   echo 'Generated Dockerfile'
 }
 
-function generate_docker-compose() {
+function generate_docker-compose_to_sync() {
   cat <<- EOL > $ROOT_PATH/docker-compose.yml
 version: '3.7'
 services:
@@ -80,6 +80,57 @@ EOL
   echo 'Generated docker-compose.yml'
 }
 
+function generate_docker-compose() {
+  cat <<- EOL > $ROOT_PATH/docker-compose.yml
+version: '3.7'
+services:
+  db:
+    image: mysql:latest
+    container_name: ${APP_NAME}_db
+    env_file:
+      - .env.docker
+    volumes:
+      - ./etc/default_authentication.cnf:/etc/mysql/conf.d/default_authentication.cnf
+      - store:/var/lib/mysql
+    ports:
+      - '3300:3306'
+  web:
+    build: .
+    container_name: ${APP_NAME}_web
+    command: /bin/bash -c 'rm -rf tmp/pids/server.pid && bundle exec rails s -p 3000 -b 0.0.0.0'
+    env_file:
+      - .env.docker
+    environment:
+      - WEBPACKER_DEV_SERVER_HOST=webpack
+    volumes:
+      - .:/${APP_NAME}
+    ports:
+      - "127.0.0.1:3000:3000"
+    tty: true
+    stdin_open: true
+    depends_on:
+      - db
+  webpack:
+    build: .
+    container_name: ${APP_NAME}_webpack
+    env_file:
+      - .env.docker
+    environment:
+      - NODE_ENV=development
+      - RAILS_ENV=development
+      - WEBPACKER_DEV_SERVER_HOST=0.0.0.0
+    command: bin/webpack-dev-server
+    volumes:
+      - .:/${APP_NAME}
+    ports:
+      - "3035:3035"
+
+volumes:
+  store:
+    driver: local
+EOL
+  echo 'Generated docker-compose.yml'
+}
 function generate_mysql_conf() {
   cat <<- EOL > $ROOT_PATH/etc/default_authentication.cnf
 [mysqld]
@@ -118,14 +169,29 @@ EOL
   echo 'Generated .env.docker'
 
 }
-function generator_main() {
-  if (( $(ls $ROOT_PATH | wc -l) == 2 )); then
+
+function select_generate_file() {
+  if $DOCKER_SYNC && gem list 2> /dev/null | grep docker-sync > /dev/null 2>&1; then
     generate_dockerfile
-    generate_docker-compose
+    generate_docker-compose_to_sync
     generate_mysql_conf
     generate_gemfile
     generate_docker-sync
     generate_docker_env
+  elif ! $DOCKER_SYNC; then
+    generate_dockerfile
+    generate_docker-compose
+    generate_mysql_conf
+    generate_gemfile
+    generate_docker_env
+  else
+    echo 'Not install docker-sync gem. please install docker-sync'
+  fi
+}
+
+function generator_main() {
+  if (( $(ls $ROOT_PATH | wc -l) == 2 )); then
+    select_generate_file
   else
     echo 'error!! please file initial position'
   fi
