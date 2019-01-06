@@ -1,8 +1,10 @@
-APP_NAME := ********
+APP_NAME := ******
 ROOT_PATH := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
+DOCKER_SYNC := false
 
 generator:
-	@ROOT_PATH=$(ROOT_PATH) APP_NAME=$(APP_NAME) bash $(ROOT_PATH)/etc/setup.sh generator
+	@ROOT_PATH=$(ROOT_PATH) APP_NAME=$(APP_NAME) DOCKER_SYNC=$(DOCKER_SYNC)\
+		bash $(ROOT_PATH)/etc/setup.sh generator
 
 init: sync_check
 	@docker-compose run web rails new . \
@@ -35,4 +37,4 @@ c:
 	@docker-compose exec web rails c
 
 sync_check:
-	@APP_NAME=$(APP_NAME) bash $(ROOT_PATH)/etc/setup.sh sync_check
+	@APP_NAME=$(APP_NAME) DOCKER_SYNC=$(DOCKER_SYNC) bash $(ROOT_PATH)/etc/setup.sh sync_check
