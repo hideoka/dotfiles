@@ -6,8 +6,9 @@ if [[ $(uname) == 'Darwin' ]]; then
 elif [[ $(uname) == 'Linux' ]]; then
   source $DOTFILE_PATH/etc/apt.sh
 else
-  echo 'no_install'
+  source $DDTFILE_PATH/etc/mac.sh
 fi
 
+source $DOTFILE_PATH/etc/brew.sh
 source $DOTFILE_PATH/etc/python.sh $DOTFILE_PATH
 source $DOTFILE_PATH/etc/ruby.sh $DOTFILE_PATH
