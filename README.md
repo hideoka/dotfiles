@@ -5,6 +5,7 @@
 - git
 - alacritty
 - gui-sed # mac
+- curl
 
 ## make command
 ```

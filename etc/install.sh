@@ -10,5 +10,6 @@ else
 fi
 
 source $DOTFILE_PATH/etc/brew.sh
+git clone https://github.com/zplug/zplug $HOME/.zplug
 source $DOTFILE_PATH/etc/python.sh $DOTFILE_PATH
 source $DOTFILE_PATH/etc/ruby.sh $DOTFILE_PATH
