@@ -4,6 +4,7 @@ sudo apt -y install build-essential\
                     file\
                     zlib1g-dev\
                     libffi-dev\
+                    libreadline-dev
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
 echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
