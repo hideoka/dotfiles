@@ -1,46 +1,9 @@
-sudo apt -y install software-properties-common
-sudo add-apt-repository ppa:hnakamur/universal-ctags -y
-sudo add-apt-repository ppa:neovim-ppa/stable -y
 sudo apt -y update
 sudo apt -y install build-essential\
-                    libssl-dev\
-                    zlib1g-dev\
-                    libbz2-dev \
-                    libreadline-dev\
-                    libsqlite3-dev\
-                    gcc\
-                    wget\
-                    llvm\
-                    libncurses5-dev\
-                    libncursesw5-dev \
-                    xz-utils\
-                    tk-dev\
-                    libffi-dev\
-                    liblzma-dev\
-                    neovim\
-                    python-dev\
-                    python3-dev\
-                    python-pip\
-                    python3-pip\
-                    python-openssl\
-                    language-pack-en\
                     curl\
-                    zsh\
-                    gawk\
-                    tmux\
-                    autoconf\
-                    pkg-config\
-                    universal-ctags\
+                    file\
+                    zlib1g-dev\
+                    libffi-dev\
 
-
-curl -LO https://github.com/BurntSushi/ripgrep/releases/download/0.10.0/ripgrep_0.10.0_amd64.deb
-sudo dpkg -i ripgrep_0.10.0_amd64.deb
-
-git clone https://github.com/zplug/zplug $HOME/.zplug
-
-git clone https://github.com/pyenv/pyenv.git $HOME/.pyenv
-git clone https://github.com/rbenv/rbenv.git $HOME/.rbenv
-mkdir -p $HOME/.rbenv/plugins
-git clone https://github.com/rbenv/ruby-build.git $HOME/.rbenv/plugins/ruby-build
-
-rm -rf ~/dotfiles/ripgrep_0.10.0_amd64.deb
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
