@@ -2,11 +2,10 @@
 set -Ceuo pipefail
 
 if [[ $(uname) == 'Darwin' ]]; then
-  echo 'no_install'
+  source $DDTFILE_PATH/etc/osx.sh
 elif [[ $(uname) == 'Linux' ]]; then
   source $DOTFILE_PATH/etc/apt.sh
 else
-  source $DDTFILE_PATH/etc/mac.sh
 fi
 
 source $DOTFILE_PATH/etc/brew.sh
