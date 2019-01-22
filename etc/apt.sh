@@ -5,8 +5,11 @@ sudo apt -y install build-essential\
                     zlib1g-dev\
                     libffi-dev\
                     libreadline-dev\
-                    zsh
+                    zsh\
+                    locales
 
+sudo locale-gen "en_US.UTF-8"
+sudo update-locale
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
 MANPATH=''
 INFOPATH=''
