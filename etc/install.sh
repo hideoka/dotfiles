@@ -5,7 +5,6 @@ if [[ $(uname) == 'Darwin' ]]; then
   source $DDTFILE_PATH/etc/osx.sh
 elif [[ $(uname) == 'Linux' ]]; then
   source $DOTFILE_PATH/etc/apt.sh
-else
 fi
 
 source $DOTFILE_PATH/etc/brew.sh
