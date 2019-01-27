@@ -4,7 +4,7 @@ let g:python3_host_prog = $HOME . g:pipenv_path . '/bin/python'
 let g:python2_host_prog = ''
 
 " Leader設定
-let mapleader = "\<Space>"
+let g:mapleader = "\<Space>"
 
 " init.vimファイル再読込
 nnoremap <silent> <leader>R :source $MYVIMRC<CR>
