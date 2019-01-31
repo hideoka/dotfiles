@@ -5,11 +5,11 @@ DOCKER_SYNC := true
 generator:
 	@ROOT_PATH=$(ROOT_PATH) APP_NAME=$(APP_NAME) bash $(ROOT_PATH)/etc/setup.sh generator
 
-init:
+new_app:
 	@ROOT_PATH=$(ROOT_PATH) DOCKER_SYNC_CHECK=false bash $(ROOT_PATH)/etc/setup.sh init
 	@make down
 
-app_init: sync_check
+init: sync_check
 	@ROOT_PATH=$(ROOT_PATH) DOCKER_SYNC_CHECK=$(DOCKER_SYNC) bash $(ROOT_PATH)/etc/setup.sh app_init
 	@make down
 

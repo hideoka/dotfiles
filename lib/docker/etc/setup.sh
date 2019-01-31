@@ -50,13 +50,13 @@ if [[ $COMMAND == 'sync_check' ]]; then
   check_sync
 elif [[ $COMMAND == 'generator' ]]; then
   source $ROOT_PATH/etc/generator.sh
-elif [[ $COMMAND == 'init' ]]; then
+elif [[ $COMMAND == 'new_app' ]]; then
   docker_compose_command
   docker_compose_rails_new
   docker_compose_build
   change_database_config_file
   docker_compose_db_init
-elif [[ $COMMAND == 'app_init' ]]; then
+elif [[ $COMMAND == 'init' ]]; then
   docker_compose_command
   docker_compose_build
   sleep 60
