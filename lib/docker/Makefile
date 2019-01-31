@@ -1,34 +1,24 @@
 APP_NAME := ******
 ROOT_PATH := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
-DOCKER_SYNC := false
+DOCKER_SYNC := true
 
 generator:
-	@ROOT_PATH=$(ROOT_PATH) APP_NAME=$(APP_NAME) DOCKER_SYNC=$(DOCKER_SYNC)\
-		bash $(ROOT_PATH)/etc/setup.sh generator
+	@ROOT_PATH=$(ROOT_PATH) APP_NAME=$(APP_NAME) bash $(ROOT_PATH)/etc/setup.sh generator
 
-init: sync_check
-	@docker-compose run web rails new . \
-		-f -d mysql -T --skip-sprockets --skip-turbolinks --skip-coffee --webpack
-	@docker-compose build
-	@sleep 60s
-	@ROOT_PATH=$(ROOT_PATH) APP_NAME=$(APP_NAME) bash $(ROOT_PATH)/etc/setup.sh db_config
-	@docker-compose run --rm web rails db:create
-	@docker-compose run --rm web rails db:migrate
-	@docker-compose down
+init:
+	@ROOT_PATH=$(ROOT_PATH) DOCKER_SYNC_CHECK=false bash $(ROOT_PATH)/etc/setup.sh init
+	@make down
 
-deploy: sync_check
-	@docker-compose up -d --build
-	@sleep 60s
-	@docker-compose exec web rails db:create
-	@docker-compose exec web rails db:migrate
-	@docker-compose down
+app_init: sync_check
+	@ROOT_PATH=$(ROOT_PATH) DOCKER_SYNC_CHECK=$(DOCKER_SYNC) bash $(ROOT_PATH)/etc/setup.sh app_init
+	@make down
 
 build:
-	@docker-compose up -d --build
+	@DOCKER_SYNC_CHECK=$(DOCKER_SYNC) bash $(ROOT_PATH)/etc/setup.sh build
 	@docker attach "${APP_NAME}_web"
 
 up: sync_check
-	@docker-compose up -d
+	@DOCKER_SYNC_CHECK=$(DOCKER_SYNC) bash $(ROOT_PATH)/etc/setup.sh up
 	@docker attach "${APP_NAME}_web"
 
 down:
@@ -38,4 +28,5 @@ c:
 	@docker-compose exec web rails c
 
 sync_check:
-	@APP_NAME=$(APP_NAME) DOCKER_SYNC=$(DOCKER_SYNC) bash $(ROOT_PATH)/etc/setup.sh sync_check
+	@APP_NAME=$(APP_NAME) DOCKER_SYNC_CHECK=$(DOCKER_SYNC)\
+		bash $(ROOT_PATH)/etc/setup.sh sync_check
