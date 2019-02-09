@@ -1,89 +1,222 @@
-" pipenv --venv で表示されたpathをセッティングする
 let g:pipenv_path = '/.local/share/virtualenvs/python-fZSHTmm1'
 let g:python3_host_prog = $HOME . g:pipenv_path . '/bin/python'
 let g:python2_host_prog = ''
 
-" Leader設定
 let g:mapleader = "\<Space>"
-
-" init.vimファイル再読込
 nnoremap <silent> <leader>R :source $MYVIMRC<CR>
+nnoremap <silent> <leader>r <C-l>
 
-" neovim + tmux時の日本語文字化けを修正する
 set ttimeout
 set ttimeoutlen=50
 
-"プラグインが実際にインストールされるディレクトリ
-let s:dein_dir = expand('~/.cache/dein')
-" dein.vim 本体
-let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+"-------------------------------------------------------------------------
+" PLUGIN SETTINGS
+"-------------------------------------------------------------------------
 
-" dein.vim がなければ github から落としてくる
-if &runtimepath !~# '/dein.vim'
-  if !isdirectory(s:dein_repo_dir)
-    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
-  endif
-  execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source '~/.config/nvim/init.vim'
 endif
 
-" 設定開始
-if dein#load_state(s:dein_dir)
-  call dein#begin(s:dein_dir)
+call plug#begin('~/.local/share/nvim/plugged')
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim', { 'on': ['Files', 'Tags', 'Buffers', 'Rg!', 'BLines'] }
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'tomtom/tcomment_vim'
+Plug 'Yggdroot/indentLine'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-rails'
+Plug 'machakann/vim-sandwich'
+Plug 'cocopon/iceberg.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'majutsushi/tagbar'
+Plug 'mileszs/ack.vim', { 'on': 'Ack!' }
+Plug 'mattn/emmet-vim', { 'for': ['html', 'eruby'] }
+Plug 'w0rp/ale', { 'for': ['ruby', 'python', 'javascript'] }
+Plug 'cespare/vim-toml', { 'for': 'toml' }
+Plug 'ekalinin/Dockerfile.vim', { 'for': 'dockerfile' }
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+Plug 'previm/previm', { 'on': 'PrevimOpen' }
+Plug 'tyru/open-browser.vim', { 'on': '<Plug>(openbrowser-smart-search)' }
+Plug 'fatih/vim-go', { 'for': 'go', 'do': 'GoUpdateBinaries' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'cohama/lexima.vim'
+call plug#end()
 
-  " プラグインリストを収めた TOML ファイル
-  " 予め TOML ファイル（後述）を用意しておく
-  let g:rc_dir          = expand('~/.config/nvim')
-  let s:toml            = g:rc_dir . '/dein.toml'
-  let s:lazy_toml       = g:rc_dir . '/dein_lazy.toml'
-  let s:completion_toml = g:rc_dir . '/completion.toml'
+" nerdtree
+let NERDTreeShowHidden=1
+nnoremap <silent> <leader>e :<C-u>NERDTreeToggle<CR>
 
-  " TOML を読み込み、キャッシュしておく
-  call dein#load_toml(s:toml,            {'lazy': 0})
-  call dein#load_toml(s:lazy_toml,       {'lazy': 1})
-  call dein#load_toml(s:completion_toml, {'lazy': 1})
+" fzf
+nnoremap <silent> <leader>; :<C-u>Buffers<CR>
+nnoremap <silent> <leader>f :<C-u>Files<CR>
+nnoremap <silent> <leader>t :<C-u>Tags<CR>
+nnoremap <silent> <leader>b :<C-u>BLines<CR>
+nnoremap <silent> <leader>D :<C-u>Rg!<CR>
+nnoremap <silent> <C-]> :call fzf#vim#tags(expand('<cword>'))<CR>
+command! -bang -nargs=* Rg
+ \ call fzf#vim#grep(
+ \   'rg --column --line-number --no-heading --color=auto --smart-case '.shellescape(<q-args>), 1,
+ \   <bang>0 ? fzf#vim#with_preview('right:50%')
+ \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+ \   <bang>0)
+let g:fzf_tags_command = 'ctags -R'
 
-  " 設定終了
-  call dein#end()
-  call dein#save_state()
+" vim-fugitive
+nnoremap <silent> <Leader>gs :<C-u>Gstatus<CR>
+nnoremap <silent> <Leader>gd :<C-u>Gdiff<CR>
+nnoremap <silent> <Leader>gb :<C-u>Gblame<CR>
+
+" vim-sandwich
+nmap s <Nop>
+xmap s <Nop>
+
+" tagbar
+nnoremap <silent> <leader>y :<C-u>TagbarToggle<CR>
+
+" ack.vim
+nnoremap <leader>d :<C-u>Ack!<Space>
+if executable('rg')
+  let g:ackprg = 'rg --vimgrep --no-heading'
 endif
 
-" もし、未インストールものものがあったらインストール
-if dein#check_install()
-  call dein#install()
+" ale
+nnoremap <silent> <leader>l :<C-u>ALEToggle<CR>
+nnoremap <silent> <leader>a :<C-u>ALEFix<CR>
+let g:ale_linters = {
+  \ 'ruby': ['rubocop'],
+  \ 'python': ['flake8'],
+  \ 'javascript': ['eslint'],
+  \ }
+let g:ale_fixers = {
+  \ 'ruby': ['rubocop'],
+  \ 'python': ['autopep8', 'black'],
+  \ }
+let g:ale_sign_column_always = 1
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_enter = 1
+let g:ale_python_flake8_executable = g:python3_host_prog
+let g:ale_python_flake8_options = '-m flake8'
+let g:ale_python_autopep8_executable = g:python3_host_prog
+let g:ale_python_autopep8_options = '-m autopep8'
+let g:ale_python_black_executable = g:python3_host_prog
+let g:ale_python_black_options = '-m black'
+
+let g:vim_markdown_folding_level = 6
+let g:vim_markdown_auto_insert_bullets = 0
+let g:vim_markdown_new_list_item_indent = 0
+let g:vim_markdown_new_folding_disabled = 1
+let g:vim_markdown_conceal = 0
+
+" previm
+nnoremap <silent> <leader>m :<C-u>PrevimOpen<CR>
+
+" open-browser.vim
+let g:netrw_nogx=1
+nmap <leader>w <Plug>(openbrowser-smart-search)
+vmap <leader>w <Plug>(openbrowser-smart-search)
+
+" deoplete.vim
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 1
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function() abort
+  return deoplete#close_popup() . "\<CR>"
+endfunction
+
+" neosnippet.vim
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
 endif
 
-filetype plugin indent on
+" lexima.vim
+let g:lexima_no_default_rules = 1
+call lexima#set_default_rules()
+call lexima#insmode#map_hook('before', '<CR>', '')
+
+"-------------------------------------------------------------------------
+" COLOR SCHEME
+"-------------------------------------------------------------------------
+
+" iceberg.vim
+if (has("termguicolors"))
+   set termguicolors
+   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
+syntax enable
+colorscheme iceberg
+
+" lightline.vim
+let g:lightline={
+  \ 'colorscheme': 'iceberg',
+  \ 'active': {
+  \   'left': [ ['mode', 'paste'],
+  \             ['readonly', 'filepath', 'modified'] ]
+  \ },
+  \ 'component_function': {
+  \   'filepath': 'FilePath',
+  \ },
+  \ }
+function! FilePath()
+  if winwidth(0) > 90
+    return expand('%')
+  else
+    return expand('%:t')
+  end
+endfunction
 
 "----------------------------------------
-" 設定 
+"  OPTIONS
 "----------------------------------------
 
-" ファイルを上書きする前にバックアップを作ることを無効化
 set nowritebackup
-" ファイルを上書きする前にバックアップを作ることを無効化
 set nobackup
-" vim の矩形選択で文字が無くても右へ進める
 set virtualedit=block
-" 挿入モードでバックスペースで削除できるようにする
 set backspace=indent,eol,start
-" 全角文字専用の設定
 set ambiwidth=double
-" wildmenuオプションを有効(vimバーからファイルを選択できる)
 set wildmenu
-"クリップボードを使用する
 set clipboard+=unnamedplus
-"ファイルを保存する
-nnoremap <S-s> :w<CR>
-" カーソル位置から行末までヤンク
-nnoremap Y y$
-" ヤンクした内容をペースト
+set ignorecase
+set smartcase
+set wrapscan
+set incsearch
+set hlsearch
+set showmatch matchtime=1
+set cmdheight=2
+set laststatus=2
+set showcmd
+set display=lastline
+set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%
+set expandtab
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
+set showmatch
+set smartindent
+set noswapfile
+set title
+set number
+set whichwrap=b,s,h,l,<,>,[,],~
+
+"----------------------------------------
+" KEYMAP
+"----------------------------------------
+
 nnoremap <silent> <leader>p "0p
 vnoremap <silent> <leader>p "0p
-
-"----------------------------------------
-" ESC・移動
-"----------------------------------------
-
+nnoremap Y y$
 inoremap <silent> jj <ESC>
 inoremap <silent> <C-f> <Right>
 inoremap <silent> <C-b> <Left>
@@ -96,103 +229,32 @@ nnoremap k gk
 nnoremap H ^
 nnoremap L $
 nnoremap <silent> <leader>o <C-^>
-
-"----------------------------------------
-" quickfix 
-"----------------------------------------
 nnoremap <silent> <C-n> :cn<CR>
 nnoremap <silent> <C-p> :cp<CR>
-
-"----------------------------------------
-" 検索
-"----------------------------------------
-
-" 検索するときに大文字小文字を区別しない
-set ignorecase
-" 小文字で検索すると大文字と小文字を無視して検索
-set smartcase
-" 検索がファイル末尾まで進んだら、ファイル先頭から再び検索
-set wrapscan
-" インクリメンタル検索 (検索ワードの最初の文字を入力した時点で検索が開始)
-set incsearch
-" 検索結果をハイライト表示
-set hlsearch
-" 検索結果をセンターに表示する
 nnoremap n nzz
 nnoremap N Nzz
 nnoremap * *Nzz
 nnoremap # #Nzz
-
-"----------------------------------------
-" 表示設定
-"----------------------------------------
-
-" ウインドウのサイズをリサイズ
 nnoremap <silent> <C-w>< 10<C-w><
 nnoremap <silent> <C-w>> 10<C-w>>
 nnoremap <silent> <C-w>+ 10<C-w>+
 nnoremap <silent> <C-w>- 10<C-w>-
-" 対応する括弧やブレースを表示
-set showmatch matchtime=1
-" メッセージ表示欄を2行確保
-set cmdheight=2
-" ステータス行を常に表示
-set laststatus=2
-" ウィンドウの右下にまだ実行していない入力中のコマンドを表示
-set showcmd
-" 省略されずに表示
-set display=lastline
-" 行末のスペースを可視化
-set list
-set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%
-" 入力モードでTabキー押下時に半角スペースを挿入
-set expandtab
-" インデント幅
-set shiftwidth=2
-" タブキー押下時に挿入される文字幅を指定
-set softtabstop=2
-" ファイル内にあるタブ文字の表示幅
-set tabstop=2
-" 対応する括弧を強調表示
-set showmatch
-" 改行時に入力された行の末尾に合わせて次の行のインデントを増減する
-set smartindent
-" スワップファイルを作成しない
-set noswapfile
-" 検索にマッチした行以外を折りたたむ(フォールドする)機能
-set nofoldenable
-" タイトルを表示
-set title
-" 行番号を表示
-set number
-" Escの2回押しでハイライト消去
 nnoremap <Esc><Esc> :nohlsearch<CR><ESC>
-" 行をまたいで移動
-set whichwrap=b,s,h,l,<,>,[,],~
-" 画面をリロード
-nnoremap <silent> <leader>r <C-l>
 
-" goインデント設定
+"----------------------------------------
+" FILE TYPE TRIGGERS
+"----------------------------------------
+
+" go indent
 augroup goIndent
   autocmd!
   autocmd bufNewFile,BufRead *.go setlocal tabstop=4 shiftwidth=4 softtabstop=4
 augroup END
 
-" Makefileインデント設定
+" Makefile indent
 augroup MakefileIndent
   autocmd!
   autocmd bufNewFile,BufRead Makefile setlocal tabstop=4 shiftwidth=4 softtabstop=4
-augroup END
-
-" Railsコマンド補完
-augroup RailsCommands
-  autocmd!
-  autocmd FileType eruby inoremap <silent><C-s> :<C-u><%=  %><Left><Left><Left>
-augroup END
-
-augroup GrepCmd
-  autocmd!
-  autocmd QuickFixCmdPost vim, grep make if len(getqflist() != 0 | cwindow | endif)
 augroup END
 
 augroup PrevimSettings
@@ -200,6 +262,8 @@ augroup PrevimSettings
   autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
 augroup END
 
-if executable('rg')
-  let g:ackprg = 'rg --vimgrep --no-heading'
-endif
+" Rails Command complete
+augroup RailsCommands
+  autocmd!
+  autocmd FileType eruby inoremap <silent><C-s> :<C-u><%=  %><Left><Left><Left>
+augroup END
