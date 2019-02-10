@@ -214,9 +214,10 @@ set whichwrap=b,s,h,l,<,>,[,],~
 " KEYMAP
 "----------------------------------------
 
+nnoremap <silent> <S-s> :w<CR>
 nnoremap <silent> <leader>p "0p
 vnoremap <silent> <leader>p "0p
-nnoremap Y y$
+nnoremap <silent> Y y$
 inoremap <silent> jj <ESC>
 inoremap <silent> <C-f> <Right>
 inoremap <silent> <C-b> <Left>
@@ -224,17 +225,17 @@ nnoremap <silent> <C-h> <C-w>h
 nnoremap <silent> <C-j> <C-w>j
 nnoremap <silent> <C-k> <C-w>k
 nnoremap <silent> <C-l> <C-w>l
-nnoremap j gj
-nnoremap k gk
-nnoremap H ^
-nnoremap L $
+nnoremap <silent> j gj
+nnoremap <silent> k gk
+nnoremap <silent> H ^
+nnoremap <silent> L $
 nnoremap <silent> <leader>o <C-^>
 nnoremap <silent> <C-n> :cn<CR>
 nnoremap <silent> <C-p> :cp<CR>
-nnoremap n nzz
-nnoremap N Nzz
-nnoremap * *Nzz
-nnoremap # #Nzz
+nnoremap <silent> n nzz
+nnoremap <silent> N Nzz
+nnoremap <silent> * *Nzz
+nnoremap <silent> # #Nzz
 nnoremap <silent> <C-w>< 10<C-w><
 nnoremap <silent> <C-w>> 10<C-w>>
 nnoremap <silent> <C-w>+ 10<C-w>+
