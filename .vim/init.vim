@@ -41,6 +41,7 @@ Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'previm/previm', { 'on': 'PrevimOpen' }
 Plug 'tyru/open-browser.vim', { 'on': '<Plug>(openbrowser-smart-search)' }
 Plug 'fatih/vim-go', { 'for': 'go', 'do': 'GoUpdateBinaries' }
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
@@ -123,6 +124,15 @@ nnoremap <silent> <leader>m :<C-u>PrevimOpen<CR>
 let g:netrw_nogx=1
 nmap <leader>w <Plug>(openbrowser-smart-search)
 vmap <leader>w <Plug>(openbrowser-smart-search)
+
+" LanguageClient-neovim
+set hidden
+let g:LanguageClient_serverCommands = {
+  \ 'ruby': ['solargraph', 'stdio'],
+  \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+  \ }
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 
 " deoplete.vim
 let g:deoplete#enable_at_startup = 1
