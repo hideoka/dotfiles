@@ -4,8 +4,11 @@
 - make
 - git
 - alacritty
-- gui-sed # mac
 - curl
+- yarn
+- nodejs
+- gawk
+- gui-sed  #mac
 
 ## make command
 ```
@@ -18,4 +21,3 @@ make init
 
 # Create symbolic link
 make deploy
-```
