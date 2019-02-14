@@ -55,15 +55,19 @@ elif [[ $COMMAND == 'new_app' ]]; then
   docker_compose_rails_new
   docker_compose_build
   change_database_config_file
-  docker_compose_db_init
+  echo 'completed new_app'
 elif [[ $COMMAND == 'init' ]]; then
   docker_compose_command
   docker_compose_build
-  sleep 60
+  echo 'completed init'
+elif [[ $COMMAND == 'db_init' ]]; then
+  docker_compose_command
   docker_compose_db_init
+  echo 'completed db_init'
 elif [[ $COMMAND == 'build' ]]; then
   docker_compose_command
   docker_compose_build
+  echo 'completed build'
 elif [[ $COMMAND == 'up' ]]; then
   docker_compose_command
   docker_compose_up

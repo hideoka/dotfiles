@@ -6,14 +6,18 @@ generator:
 	@ROOT_PATH=$(ROOT_PATH) APP_NAME=$(APP_NAME) bash $(ROOT_PATH)/etc/setup.sh generator
 
 new_app:
-	@ROOT_PATH=$(ROOT_PATH) DOCKER_SYNC_CHECK=false bash $(ROOT_PATH)/etc/setup.sh init
+	@ROOT_PATH=$(ROOT_PATH) DOCKER_SYNC_CHECK=false bash $(ROOT_PATH)/etc/setup.sh new_app
 	@make down
 
 init: sync_check
-	@ROOT_PATH=$(ROOT_PATH) DOCKER_SYNC_CHECK=$(DOCKER_SYNC) bash $(ROOT_PATH)/etc/setup.sh app_init
+	@ROOT_PATH=$(ROOT_PATH) DOCKER_SYNC_CHECK=$(DOCKER_SYNC) bash $(ROOT_PATH)/etc/setup.sh init
 	@make down
 
-build:
+db_init: sync_check
+	@ROOT_PATH=$(ROOT_PATH) DOCKER_SYNC_CHECK=$(DOCKER_SYNC) bash $(ROOT_PATH)/etc/setup.sh db_init
+	@make down
+
+build: sync_check
 	@DOCKER_SYNC_CHECK=$(DOCKER_SYNC) bash $(ROOT_PATH)/etc/setup.sh build
 	@docker attach "${APP_NAME}_web"
 
