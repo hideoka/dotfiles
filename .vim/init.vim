@@ -38,8 +38,7 @@ Plug 'w0rp/ale', { 'for': ['ruby', 'python', 'javascript'] }
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'dockerfile' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-Plug 'previm/previm', { 'on': 'PrevimOpen' }
-Plug 'tyru/open-browser.vim', { 'on': '<Plug>(openbrowser-smart-search)' }
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 Plug 'fatih/vim-go', { 'for': 'go', 'do': 'GoUpdateBinaries' }
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -111,19 +110,16 @@ let g:ale_python_autopep8_options = '-m autopep8'
 let g:ale_python_black_executable = g:python3_host_prog
 let g:ale_python_black_options = '-m black'
 
+" vim-markdown
 let g:vim_markdown_folding_level = 6
 let g:vim_markdown_auto_insert_bullets = 0
 let g:vim_markdown_new_list_item_indent = 0
+let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_new_folding_disabled = 1
 let g:vim_markdown_conceal = 0
 
-" previm
-nnoremap <silent> <leader>m :<C-u>PrevimOpen<CR>
-
-" open-browser.vim
-let g:netrw_nogx=1
-nmap <leader>w <Plug>(openbrowser-smart-search)
-vmap <leader>w <Plug>(openbrowser-smart-search)
+" markdown-preview.nvim
+nnoremap <silent> <leader>m :<C-u>MarkdownPreview<CR>
 
 " LanguageClient-neovim
 set hidden
