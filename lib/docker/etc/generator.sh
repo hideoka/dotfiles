@@ -129,7 +129,7 @@ function generate_docker_env() {
 TZ=Asia/Tokyo
 EDITOR=vim
 MYSQL_USER=root
-MYSQL_ROOT_PASSWORD=CentOS7!
+MYSQL_ROOT_PASSWORD=Mysql8!
 EOL
   echo 'Generated .env.docker'
 
