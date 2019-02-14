@@ -204,11 +204,10 @@ set cmdheight=2
 set laststatus=2
 set showcmd
 set display=lastline
-set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%
+set list
+set listchars=tab:»-,trail:-,eol:$,extends:»,precedes:«,nbsp:%
 set expandtab
 set shiftwidth=2
-set softtabstop=2
-set tabstop=2
 set showmatch
 set smartindent
 set noswapfile
@@ -253,7 +252,7 @@ nnoremap <Esc><Esc> :nohlsearch<CR><ESC>
 "----------------------------------------
 
 " go indent
-augroup goIndent
+augroup GoIndent
   autocmd!
   autocmd bufNewFile,BufRead *.go setlocal tabstop=4 shiftwidth=4 softtabstop=4
 augroup END
@@ -273,4 +272,10 @@ augroup END
 augroup RailsCommands
   autocmd!
   autocmd FileType eruby inoremap <silent><C-s> :<C-u><%=  %><Left><Left><Left>
+augroup END
+
+augroup SaveFormatter
+  autocmd!
+  autocmd BufWritePre * :%s/^ *$//e
+  autocmd BufWritePre * :%s/ *$//e
 augroup END
