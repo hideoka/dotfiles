@@ -5,9 +5,6 @@
 - git
 - alacritty
 - curl
-- yarn
-- nodejs
-- gawk
 - gui-sed  #mac
 
 ## make command
