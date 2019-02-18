@@ -19,10 +19,11 @@ db_init: sync_check
 
 build: sync_check
 	@DOCKER_SYNC_CHECK=$(DOCKER_SYNC) bash $(ROOT_PATH)/etc/setup.sh build
-	@docker attach "${APP_NAME}_web"
 
 up: sync_check
-	@DOCKER_SYNC_CHECK=$(DOCKER_SYNC) bash $(ROOT_PATH)/etc/setup.sh up
+	@DOCKER_SYNC_CHECK=$(DOCKER_SYNC) bash $(ROOT_PATH)/etc/setup.sh up -d
+
+attach:
 	@docker attach "${APP_NAME}_web"
 
 down:
