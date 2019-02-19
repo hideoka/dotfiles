@@ -14,7 +14,10 @@
 # Install neovim client and requirement middle
 # ruby version 2.5.3 for rbenv
 # global install for rubocop, docker-sync, solargraph
-make init
+
+$ make init
 
 # Create symbolic link
-make deploy
+
+$ make deploy
+```
