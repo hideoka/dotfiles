@@ -18,3 +18,5 @@ brew tap sanemat/font
 brew install ricty
 cp -f /usr/local/opt/ricty/share/fonts/Ricty*.ttf ~/Library/Fonts/
 fc-cache -vf
+brew install unison
+brew install eugenmayer/dockersync/unox
