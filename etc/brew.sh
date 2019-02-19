@@ -20,3 +20,5 @@ cp -f /usr/local/opt/ricty/share/fonts/Ricty*.ttf ~/Library/Fonts/
 fc-cache -vf
 brew install unison
 brew install eugenmayer/dockersync/unox
+brew install postgresql
+brew install pgcli
