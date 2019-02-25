@@ -25,11 +25,11 @@ $ make deploy
 create pipenv path
 ```
 $ cd lib/Python && pipenv shell
-# make a note of the hash
+# make a note of the pipenv hash
 ```
 
-create .vimlocal file that wrote memo hash
+create .vimlocal file that wrote pipenv hash
 ```
-# write to {memo hash}
-$ echo "let g:pipenv_path_hash = '{memo hash}'" > ~/.vimlocal
+# write to {pipenv hash}
+$ echo "let g:pipenv_path_hash = '{pipenv hash}'" > ~/.vimlocal
 ```
