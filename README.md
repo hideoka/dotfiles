@@ -8,16 +8,28 @@
 - gui-sed  #mac
 
 ## make command
+Initialize to install python version 3.7.0 for pyenv and pipenv
+Install neovim client and linter tool
+Install ruby version 2.5.3 for rbenv global install for rubocop, docker-sync, solargraph
 ```
-# Initialize to install
-# python version 3.7.0 for pyenv and pipenv
-# Install neovim client and requirement middle
-# ruby version 2.5.3 for rbenv
-# global install for rubocop, docker-sync, solargraph
-
 $ make init
+```
 
-# Create symbolic link
-
+## create symbolic link
+create symbolic link to dotfiles
+```
 $ make deploy
+```
+
+## set up
+create pipenv path
+```
+$ cd lib/Python && pipenv shell
+# make a note of the hash
+```
+
+create .vimlocal file that wrote memo hash
+```
+# write to {memo hash}
+$ echo "let g:pipenv_path_hash = '{memo hash}'" > ~/.vimlocal
 ```
