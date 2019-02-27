@@ -87,7 +87,7 @@ nnoremap <silent> <leader>y :<C-u>TagbarToggle<CR>
 " ack.vim
 nnoremap <leader>d :<C-u>Ack!<Space>
 if executable('rg')
-  let g:ackprg = 'rg --vimgrep --no-heading'
+  let g:ackprg = 'rg --vimgrep --fixed-strings --no-heading'
 endif
 
 " ale
