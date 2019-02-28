@@ -144,6 +144,9 @@ inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function() abort
   return deoplete#close_popup() . "\<CR>"
 endfunction
+call deoplete#custom#option('_', {
+  \ 'max_list': '30',
+  \ })
 
 " neosnippet.vim
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
