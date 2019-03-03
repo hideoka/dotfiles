@@ -39,7 +39,7 @@ Plug 'cocopon/iceberg.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'majutsushi/tagbar'
 Plug 'mileszs/ack.vim', { 'on': 'Ack!' }
-Plug 'mattn/emmet-vim', { 'for': ['html', 'eruby'] }
+Plug 'mattn/emmet-vim', { 'for': ['html', 'eruby', 'vue'] }
 Plug 'w0rp/ale', { 'for': ['ruby', 'python', 'javascript'] }
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'dockerfile' }
@@ -51,6 +51,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'cohama/lexima.vim'
+Plug 'posva/vim-vue'
 call plug#end()
 
 " nerdtree
@@ -133,6 +134,7 @@ set hidden
 let g:LanguageClient_serverCommands = {
   \ 'ruby': ['solargraph', 'stdio'],
   \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+  \ 'vue': ['vls'],
   \ }
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
