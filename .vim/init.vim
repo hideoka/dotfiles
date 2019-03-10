@@ -139,7 +139,11 @@ let g:LanguageClient_serverCommands = {
   \ 'ruby': ['solargraph', 'stdio'],
   \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
   \ 'vue': ['vls'],
+  \ 'go': ['bingo'],
   \ }
+let g:LanguageClient_rootMarkers = {
+      \ 'go': ['.git', 'go.mod'],
+      \ }
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 
@@ -168,9 +172,13 @@ call lexima#set_default_rules()
 call lexima#insmode#map_hook('before', '<CR>', '')
 
 " vim-go
-autocmd FileType go nmap <silent> <leader>gb :<C-u> call <SID>build_go_file()<CR>
-autocmd FileType go nmap <silent> <leader>gt <Plug>(go-test)
-autocmd FileType go nmap <silent> <leader>gr <Plug>(go-run)
+augroup GoCommand
+  autocmd!
+  autocmd FileType go nmap <silent> <leader>gb :<C-u> call <SID>build_go_file()<CR>
+  autocmd FileType go nmap <silent> <leader>gt <Plug>(go-test)
+  autocmd FileType go nmap <silent> <leader>gr <Plug>(go-run)
+augroup END
+
 let g:go_list_type = "quickfix"
 function! s:build_go_file()
   let l:file = expand('%')
