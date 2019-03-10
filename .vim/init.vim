@@ -128,6 +128,10 @@ let g:vim_markdown_conceal_code_blocks = 0
 
 " markdown-preview.nvim
 nnoremap <silent> <leader>m :<C-u>MarkdownPreview<CR>
+augroup PrevimSettings
+  autocmd!
+  autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+augroup END
 
 " LanguageClient-neovim
 set hidden
@@ -289,11 +293,6 @@ augroup END
 augroup MakefileIndent
   autocmd!
   autocmd bufNewFile,BufRead Makefile setlocal tabstop=4 shiftwidth=4 softtabstop=4
-augroup END
-
-augroup PrevimSettings
-  autocmd!
-  autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
 augroup END
 
 " Rails Command complete
