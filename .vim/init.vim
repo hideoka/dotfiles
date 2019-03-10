@@ -249,6 +249,8 @@ nnoremap <silent> L $
 nnoremap <silent> <leader>o <C-^>
 nnoremap <silent> <C-n> :cn<CR>
 nnoremap <silent> <C-p> :cp<CR>
+nnoremap <silent> <leader>co :<C-u>botright cwindow<CR>
+nnoremap <silent> <leader>cc :<C-u>cclose<CR>
 nnoremap <silent> n nzz
 nnoremap <silent> N Nzz
 nnoremap <silent> * *Nzz
