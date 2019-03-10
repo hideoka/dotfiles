@@ -76,7 +76,7 @@ let g:fzf_tags_command = 'ctags -R'
 " vim-fugitive
 nnoremap <silent> <Leader>gs :<C-u>Gstatus<CR>
 nnoremap <silent> <Leader>gd :<C-u>Gdiff<CR>
-nnoremap <silent> <Leader>gb :<C-u>Gblame<CR>
+nnoremap <silent> <Leader>gl :<C-u>Gblame<CR>
 
 " vim-sandwich
 nmap s <Nop>
@@ -162,6 +162,20 @@ endif
 let g:lexima_no_default_rules = 1
 call lexima#set_default_rules()
 call lexima#insmode#map_hook('before', '<CR>', '')
+
+" vim-go
+autocmd FileType go nmap <silent> <leader>gb :<C-u> call <SID>build_go_file()<CR>
+autocmd FileType go nmap <silent> <leader>gt <Plug>(go-test)
+autocmd FileType go nmap <silent> <leader>gr <Plug>(go-run)
+let g:go_list_type = "quickfix"
+function! s:build_go_file()
+  let l:file = expand('%')
+  if l:file =~# '\f\+_test\.go$'
+    call go#test#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
 
 "-------------------------------------------------------------------------
 " COLOR SCHEME
