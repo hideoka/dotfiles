@@ -287,9 +287,3 @@ augroup RailsCommands
   autocmd!
   autocmd FileType eruby inoremap <silent><C-s> :<C-u><%=  %><Left><Left><Left>
 augroup END
-
-" augroup SaveFormatter
-"   autocmd!
-"   autocmd BufWritePre * :%s/^ *$//e
-"   autocmd BufWritePre * :%s/ *$//e
-" augroup END
