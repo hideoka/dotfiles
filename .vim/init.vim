@@ -96,12 +96,9 @@ nnoremap <silent> <leader>l :<C-u>ALEToggle<CR>
 nnoremap <silent> <leader>a :<C-u>ALEFix<CR>
 let g:ale_linters = {
   \ 'ruby': ['rubocop'],
-  \ 'python': ['flake8'],
-  \ 'javascript': ['eslint'],
   \ }
 let g:ale_fixers = {
   \ 'ruby': ['rubocop'],
-  \ 'python': ['autopep8', 'black'],
   \ }
 let g:ale_sign_column_always = 1
 let g:ale_echo_msg_error_str = 'E'
@@ -110,12 +107,6 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_enter = 1
-let g:ale_python_flake8_executable = g:python3_host_prog
-let g:ale_python_flake8_options = '-m flake8'
-let g:ale_python_autopep8_executable = g:python3_host_prog
-let g:ale_python_autopep8_options = '-m autopep8'
-let g:ale_python_black_executable = g:python3_host_prog
-let g:ale_python_black_options = '-m black'
 
 " vim-markdown
 let g:vim_markdown_folding_level = 6
