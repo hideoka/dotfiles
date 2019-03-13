@@ -52,6 +52,7 @@ Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'cohama/lexima.vim'
 Plug 'posva/vim-vue'
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 call plug#end()
 
 " nerdtree
@@ -129,12 +130,7 @@ set hidden
 let g:LanguageClient_serverCommands = {
   \ 'ruby': ['solargraph', 'stdio'],
   \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-  \ 'vue': ['vls'],
-  \ 'go': ['bingo'],
   \ }
-let g:LanguageClient_rootMarkers = {
-      \ 'go': ['.git', 'go.mod'],
-      \ }
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 
@@ -179,6 +175,9 @@ function! s:build_go_file()
     call go#cmd#Build(0)
   endif
 endfunction
+
+" rust.vim
+let g:rustfmt_autosave = 1
 
 "-------------------------------------------------------------------------
 " COLOR SCHEME
