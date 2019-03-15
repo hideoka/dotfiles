@@ -5,7 +5,7 @@ brew install pyenv
 brew install rbenv
 brew install tmux
 brew install ripgrep
-brew tap universal-ctags/universal-etags
+brew tap universal-ctags/universal-ctags
 brew install --HEAD universal-ctags
 brew install tig
 brew install yarn
