@@ -1,6 +1,8 @@
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
+DOTFILE_PATH="$(dirname $(readlink $HOME/.zshrc))"
+
 if [[ $(uname) == 'Linux' ]]; then
   export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
   export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar"
@@ -17,10 +19,10 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 export GOPATH="$HOME/src/go"
 export PATH="$GOPATH/bin:$PATH"
 
-source $HOME/dotfiles/.zsh/setopt.zsh
-source $HOME/dotfiles/.zsh/fzf.zsh
-source $HOME/dotfiles/.zsh/alias.zsh
-source $HOME/dotfiles/.zsh/zplug.zsh
+source $DOTFILE_PATH/.zsh/setopt.zsh
+source $DOTFILE_PATH/.zsh/fzf.zsh
+source $DOTFILE_PATH/.zsh/alias.zsh
+source $DOTFILE_PATH/.zsh/zplug.zsh
 
 autoload -U compinit; compinit
 autoload -U promptinit; promptinit
