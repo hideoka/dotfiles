@@ -24,7 +24,9 @@ $ make deploy
 ## set up
 create pipenv path
 ```
-$ cd lib/Python && pipenv shell
+$ cd lib/Python
+$ pipenv install
+$ pipenv shell
 # make a note of the pipenv hash
 ```
 
