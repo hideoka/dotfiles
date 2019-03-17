@@ -27,7 +27,7 @@ endif
 
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim', { 'on': ['Files', 'Tags', 'Buffers', 'Rg!', 'BLines'] }
+Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tomtom/tcomment_vim'
 Plug 'Yggdroot/indentLine'
@@ -64,13 +64,13 @@ nnoremap <silent> <leader>; :<C-u>Buffers<CR>
 nnoremap <silent> <leader>f :<C-u>Files<CR>
 nnoremap <silent> <leader>t :<C-u>Tags<CR>
 nnoremap <silent> <leader>b :<C-u>BLines<CR>
-nnoremap <silent> <leader>d :<C-u>Rg!<Space>
+nnoremap <leader>d :<C-u>Rg!<Space>
 nnoremap <silent> <C-]> :call fzf#vim#tags(expand('<cword>'))<CR>
 command! -bang -nargs=* Rg
  \ call fzf#vim#grep(
  \   'rg --column --line-number --no-heading --color=auto --smart-case '.shellescape(<q-args>), 1,
- \   <bang>0 ? fzf#vim#with_preview('right:50%')
- \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+ \   <bang>0 ? fzf#vim#with_preview('right:60%')
+ \           : fzf#vim#with_preview('right:60%'),
  \   <bang>0)
 let g:fzf_tags_command = 'ctags -R'
 
