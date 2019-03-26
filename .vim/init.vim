@@ -249,7 +249,6 @@ set whichwrap=b,s,h,l,<,>,[,],~
 nnoremap <silent> <S-s> :w<CR>
 nnoremap <silent> <leader>p "0p
 vnoremap <silent> <leader>p "0p
-nnoremap <silent> p pv`]
 nnoremap <silent> Y y$
 inoremap <silent> jj <ESC>
 inoremap <silent> <C-f> <Right>
