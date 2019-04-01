@@ -45,7 +45,6 @@ Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'dockerfile' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
-Plug 'fatih/vim-go', { 'for': 'go', 'do': 'GoUpdateBinaries' }
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neosnippet.vim'
@@ -156,14 +155,6 @@ endif
 let g:lexima_no_default_rules = 1
 call lexima#set_default_rules()
 call lexima#insmode#map_hook('before', '<CR>', '')
-
-" vim-go
-augroup GoCommand
-  autocmd!
-  autocmd FileType go nmap <silent> <leader>gb :<C-u> call <SID>build_go_file()<CR>
-  autocmd FileType go nmap <silent> <leader>gt <Plug>(go-test)
-  autocmd FileType go nmap <silent> <leader>gr <Plug>(go-run)
-augroup END
 
 let g:go_list_type = "quickfix"
 function! s:build_go_file()
@@ -279,12 +270,6 @@ nnoremap <Esc><Esc> :nohlsearch<CR><ESC>
 "----------------------------------------
 " FILE TYPE TRIGGERS
 "----------------------------------------
-
-" go indent
-augroup GoIndent
-  autocmd!
-  autocmd bufNewFile,BufRead *.go setlocal tabstop=4 shiftwidth=4 softtabstop=4
-augroup END
 
 " Makefile indent
 augroup MakefileIndent
