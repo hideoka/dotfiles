@@ -18,6 +18,7 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
 export GOPATH="$HOME/src/go"
 export PATH="$GOPATH/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 
 source $DOTFILE_PATH/.zsh/setopt.zsh
 source $DOTFILE_PATH/.zsh/fzf.zsh
