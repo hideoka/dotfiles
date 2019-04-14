@@ -13,6 +13,8 @@ do
     ln -snf $DOTFILE_PATH/$f ~/.config/nvim
   elif [[ $f == ".alacritty.yml" ]]; then
     ln -snf $DOTFILE_PATH/$f ~/.config/alacritty/alacritty.yml
+  elif [[ $f == ".pgclirc" ]]; then
+    ln -snf $DOTFILE_PATH/$f ~/.config/pgcli/config
   else
     ln -snf $DOTFILE_PATH/$f ~/$f
   fi
