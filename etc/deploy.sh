@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 set -Ceuo pipefail
 
-[[ ! -d "$HOME/.config" || ! -d "$HOME/.config/alacritty" ]] && mkdir -p $HOME/.config/alacritty
+mkdir -p $HOME/.config/alacritty
+mkdir -p $HOME/.config/pgcli
 
 for f in .??*
 do
