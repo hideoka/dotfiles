@@ -22,3 +22,4 @@ brew install unison
 brew install eugenmayer/dockersync/unox
 brew install postgresql
 brew install pgcli
+brew install reattach-to-user-namespace
