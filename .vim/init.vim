@@ -77,7 +77,7 @@ let g:fzf_tags_command = 'ctags -R'
 " vim-fugitive
 nnoremap <silent> <Leader>gs :<C-u>Gstatus<CR>
 nnoremap <silent> <Leader>gd :<C-u>Gdiff<CR>
-nnoremap <silent> <Leader>gl :<C-u>Gblame<CR>
+nnoremap <silent> <Leader>gb :<C-u>Gblame<CR>
 
 " vim-sandwich
 nmap s <Nop>
