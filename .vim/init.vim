@@ -40,7 +40,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'majutsushi/tagbar'
 Plug 'mileszs/ack.vim', { 'on': 'Ack!' }
 Plug 'mattn/emmet-vim', { 'for': ['html', 'eruby', 'vue'] }
-Plug 'w0rp/ale', { 'for': ['ruby', 'python', 'javascript'] }
+" Plug 'w0rp/ale', { 'for': ['ruby', 'python', 'javascript'] }
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'dockerfile' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
@@ -93,21 +93,21 @@ if executable('rg')
 endif
 
 " ale
-nnoremap <silent> <leader>l :<C-u>ALEToggle<CR>
-nnoremap <silent> <leader>a :<C-u>ALEFix<CR>
-let g:ale_linters = {
-  \ 'ruby': ['rubocop'],
-  \ }
-let g:ale_fixers = {
-  \ 'ruby': ['rubocop'],
-  \ }
-let g:ale_sign_column_always = 1
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_save = 1
-let g:ale_lint_on_enter = 1
+" nnoremap <silent> <leader>l :<C-u>ALEToggle<CR>
+" nnoremap <silent> <leader>a :<C-u>ALEFix<CR>
+" let g:ale_linters = {
+"   \ 'ruby': ['rubocop'],
+"   \ }
+" let g:ale_fixers = {
+"   \ 'ruby': ['rubocop'],
+"   \ }
+" let g:ale_sign_column_always = 1
+" let g:ale_echo_msg_error_str = 'E'
+" let g:ale_echo_msg_warning_str = 'W'
+" let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+" let g:ale_lint_on_text_changed = 'never'
+" let g:ale_lint_on_save = 1
+" let g:ale_lint_on_enter = 1
 
 " vim-markdown
 let g:vim_markdown_folding_level = 6
