@@ -53,6 +53,7 @@ Plug 'cohama/lexima.vim'
 Plug 'posva/vim-vue'
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'racer-rust/vim-racer', { 'for': 'rust' }
+Plug 'posva/vim-vue'
 call plug#end()
 
 " nerdtree
