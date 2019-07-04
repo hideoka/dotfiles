@@ -65,6 +65,7 @@ nnoremap <silent> <leader>; :<C-u>Buffers<CR>
 nnoremap <silent> <leader>f :<C-u>Files<CR>
 nnoremap <silent> <leader>t :<C-u>Tags<CR>
 nnoremap <silent> <leader>b :<C-u>BLines<CR>
+nnoremap          <leader>D :<C-u>Rg!<Space>
 nnoremap          <leader>d :<C-u>Rg!<Space><C-R><C-W><CR>
 xnoremap          <leader>d y:Rg!<Space><C-R>"<CR>
 nnoremap <silent> <C-]> :call fzf#vim#tags(expand('<cword>'))<CR>
@@ -89,10 +90,10 @@ xmap s <Nop>
 nnoremap <silent> <leader>y :<C-u>TagbarToggle<CR>
 
 " ack.vim
-nnoremap <leader>D :<C-u>Ack!<Space>
-if executable('rg')
-  let g:ackprg = 'rg --vimgrep --fixed-strings --no-heading'
-endif
+" nnoremap <leader>D :<C-u>Ack!<Space>
+" if executable('rg')
+"   let g:ackprg = 'rg --vimgrep --fixed-strings --no-heading'
+" endif
 
 " ale
 " nnoremap <silent> <leader>l :<C-u>ALEToggle<CR>
