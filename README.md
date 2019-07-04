@@ -27,11 +27,12 @@ create pipenv path
 $ cd lib/Python
 $ pipenv install
 $ pipenv shell
+$ pipenv --venv
 # make a note of the pipenv hash
 ```
 
 create .vimlocal file that wrote pipenv hash
 ```
-# write to {pipenv hash}
-$ echo "let g:pipenv_path_hash = '{pipenv hash}'" > ~/.vimlocal
+# write to <pipenv hash>
+$ echo "let g:pipenv_path_hash = '<pipenv hash>'" > ~/.vimlocal
 ```
