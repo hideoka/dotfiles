@@ -52,7 +52,6 @@ Plug 'Shougo/neosnippet-snippets'
 Plug 'cohama/lexima.vim'
 Plug 'posva/vim-vue'
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
-Plug 'posva/vim-vue'
 " Plug 'racer-rust/vim-racer', { 'for': 'rust' }
 call plug#end()
 
