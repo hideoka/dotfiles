@@ -52,8 +52,8 @@ Plug 'Shougo/neosnippet-snippets'
 Plug 'cohama/lexima.vim'
 Plug 'posva/vim-vue'
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
-Plug 'racer-rust/vim-racer', { 'for': 'rust' }
 Plug 'posva/vim-vue'
+" Plug 'racer-rust/vim-racer', { 'for': 'rust' }
 call plug#end()
 
 " nerdtree
@@ -132,6 +132,7 @@ augroup END
 set hidden
 let g:LanguageClient_serverCommands = {
   \ 'ruby': ['solargraph', 'stdio'],
+  \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
   \ }
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
@@ -184,8 +185,8 @@ endfunction
 let g:rustfmt_autosave = 1
 
 " vim-racer
-let g:racer_cmd = $HOME . '/.cargo/bin/racer'
-let g:racer_experimental_completer = 1
+" let g:racer_cmd = $HOME . '/.cargo/bin/racer'
+" let g:racer_experimental_completer = 1
 
 "-------------------------------------------------------------------------
 " COLOR SCHEME
@@ -250,6 +251,7 @@ set noswapfile
 set title
 set number
 set whichwrap=b,s,h,l,<,>,[,],~
+set completeopt-=preview
 
 "----------------------------------------
 " KEYMAP
