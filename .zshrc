@@ -19,6 +19,7 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 export GOPATH="$HOME/src/go"
 export PATH="$GOPATH/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/projects/dci/target/release:$PATH"
 
 source $DOTFILE_PATH/.zsh/setopt.zsh
 source $DOTFILE_PATH/.zsh/fzf.zsh
