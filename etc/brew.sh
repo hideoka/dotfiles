@@ -17,6 +17,7 @@ brew install pgcli
 
 if [[ $(uname) == 'Darwin' ]]; then
   brew install gawk
+  brew install gnu-sed
   brew tap sanemat/font
   brew install ricty
   cp -f /usr/local/opt/ricty/share/fonts/Ricty*.ttf ~/Library/Fonts/
