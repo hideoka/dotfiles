@@ -12,5 +12,10 @@ alias grh="git reset head"
 
 alias vi="nvim"
 
-alias ta="tmux -u a"
-alias tn="tmux -u new -s"
+alias ta="tmux a"
+alias tn="tmux new -s"
+
+if [[ $(uname) == 'Darwin' ]]; then
+  alias sed="gsed"
+  alias awk="gawk"
+fi
