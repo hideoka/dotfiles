@@ -39,7 +39,7 @@ Plug 'cocopon/iceberg.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'majutsushi/tagbar'
 Plug 'mileszs/ack.vim', { 'on': 'Ack!' }
-Plug 'mattn/emmet-vim', { 'for': ['html', 'eruby', 'vue'] }
+Plug 'mattn/emmet-vim', { 'for': ['html', 'eruby', 'vue', 'javascript'] }
 " Plug 'w0rp/ale', { 'for': ['ruby', 'python', 'javascript'] }
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'dockerfile' }
@@ -52,6 +52,8 @@ Plug 'Shougo/neosnippet-snippets'
 Plug 'cohama/lexima.vim'
 Plug 'posva/vim-vue'
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+Plug 'pangloss/vim-javascript'
+Plug 'maxmellon/vim-jsx-pretty'
 " Plug 'racer-rust/vim-racer', { 'for': 'rust' }
 call plug#end()
 
