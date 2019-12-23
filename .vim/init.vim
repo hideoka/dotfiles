@@ -54,7 +54,6 @@ Plug 'posva/vim-vue'
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
-" Plug 'racer-rust/vim-racer', { 'for': 'rust' }
 call plug#end()
 
 " nerdtree
@@ -180,10 +179,6 @@ call lexima#insmode#map_hook('before', '<CR>', '')
 
 " rust.vim
 let g:rustfmt_autosave = 1
-
-" vim-racer
-" let g:racer_cmd = $HOME . '/.cargo/bin/racer'
-" let g:racer_experimental_completer = 1
 
 "-------------------------------------------------------------------------
 " COLOR SCHEME
