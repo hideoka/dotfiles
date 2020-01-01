@@ -179,6 +179,7 @@ call lexima#insmode#map_hook('before', '<CR>', '')
 
 " rust.vim
 let g:rustfmt_autosave = 1
+let g:rustfmt_options = '--edition 2018'
 
 "-------------------------------------------------------------------------
 " COLOR SCHEME
