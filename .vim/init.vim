@@ -47,7 +47,7 @@ Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet.vim', { 'commit': '3d33626' }
 Plug 'Shougo/neosnippet-snippets'
 Plug 'cohama/lexima.vim'
 Plug 'posva/vim-vue'
@@ -144,7 +144,6 @@ nnoremap <silent><leader>lc :call LanguageClient#textDocument_completion()<CR>
 nnoremap <silent><leader>lh :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent><leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
 nnoremap <silent><leader>lm :call LanguageClient_contextMenu()<CR>
-let g:LanguageClient_hasSnippetSupport = 0
 
 " deoplete.vim
 let g:deoplete#enable_at_startup = 1
