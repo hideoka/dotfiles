@@ -89,12 +89,6 @@ xmap s <Nop>
 " tagbar
 nnoremap <silent> <leader>y :<C-u>TagbarToggle<CR>
 
-" ack.vim
-" nnoremap <leader>D :<C-u>Ack!<Space>
-" if executable('rg')
-"   let g:ackprg = 'rg --vimgrep --fixed-strings --no-heading'
-" endif
-
 " ale
 nnoremap <silent> <leader>ll :<C-u>ALEToggle<CR>
 nnoremap <silent> <leader>a :<C-u>ALEFix<CR>
