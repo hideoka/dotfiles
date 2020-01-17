@@ -9,7 +9,6 @@ brew install --HEAD universal-ctags --without-doc
 brew install tig
 brew install yarn
 brew install pipenv
-brew install gnu-sed
 brew install bat
 brew install httpie
 brew install postgresql
