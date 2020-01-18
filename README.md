@@ -8,9 +8,9 @@
 - gui-sed  #mac
 
 ## make command
-Initialize to install python version 3.7.0 for pyenv and pipenv
+Initialize to install python for pyenv
 Install neovim client and linter tool
-Install ruby version 2.5.3 for rbenv global install for rubocop, docker-sync, solargraph
+Install ruby for rbenv global install for rubocop, docker-sync, solargraph
 ```
 $ make init
 ```
@@ -22,17 +22,12 @@ $ make deploy
 ```
 
 ## set up
-create pipenv path
+create python path
 ```
 $ cd lib/Python
-$ pipenv install
-$ pipenv shell
-$ pipenv --venv
-# make a note of the pipenv hash
-```
-
-create .vimlocal file that wrote pipenv hash
-```
-# write to <pipenv hash>
-$ echo "let g:pipenv_path_hash = '<pipenv hash>'" > ~/.vimlocal
+$ pyenv install 3.8.1 # specific version
+$ pyenv virtualenv 3.8.1 py3nvim
+$ pyenv activate py3nvim
+$ pip install pynvim
+$ pyenv deactivate
 ```

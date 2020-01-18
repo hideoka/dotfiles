@@ -1,10 +1,5 @@
 let g:pipenv_path = '/.pyenv/versions/py3nvim/bin/python'
 
-if filereadable(expand("~/.vimlocal"))
-" write to pipenv path hash
-  source ~/.vimlocal
-endif
-
 let g:python3_host_prog = $HOME . g:pipenv_path
 let g:python2_host_prog = ''
 
