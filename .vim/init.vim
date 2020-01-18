@@ -1,11 +1,11 @@
-let g:pipenv_path = '/.local/share/virtualenvs/python-'
+let g:pipenv_path = '/.pyenv/versions/py3nvim/bin/python'
 
 if filereadable(expand("~/.vimlocal"))
 " write to pipenv path hash
   source ~/.vimlocal
 endif
 
-let g:python3_host_prog = $HOME . g:pipenv_path . g:pipenv_path_hash . '/bin/python'
+let g:python3_host_prog = $HOME . g:pipenv_path
 let g:python2_host_prog = ''
 
 let g:mapleader = "\<Space>"
