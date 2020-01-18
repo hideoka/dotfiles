@@ -8,7 +8,7 @@ brew tap universal-ctags/universal-ctags
 brew install --HEAD universal-ctags --without-doc
 brew install tig
 brew install yarn
-brew install pipenv
+brew install pyenv-virtualenv
 brew install bat
 brew install httpie
 brew install postgresql
