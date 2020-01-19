@@ -3,15 +3,13 @@
 ## install requirement
 - make
 - git
-- alacritty
 - curl
-- gui-sed  #mac
+- alacritty
 
 ## make command
-Initialize to install python for pyenv
-Install neovim client and linter tool
-Install ruby for rbenv global install for rubocop, docker-sync, solargraph
 ```
+$ git clone https://github.com/hideoka/dotfiles.git
+$ cd dotfiles
 $ make init
 ```
 

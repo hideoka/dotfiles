@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -Ceuo pipefail
+DOTFILE_PATH=$(cd $(dirname $0) && pwd)
 
 if [[ $(uname) == 'Darwin' ]]; then
   source $DOTFILE_PATH/etc/osx.sh
