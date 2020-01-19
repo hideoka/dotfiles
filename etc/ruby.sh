@@ -1,9 +1,10 @@
-DOTFILE_PATH=$1
+RUBY_VERSION=$1
+DOTFILE_PATH=$2
 cd $DOTFILE_PATH/lib/ruby
 
 eval "$(rbenv init -)"
 
-rbenv install 2.5.3
-rbenv global 2.5.3
-gem install bundler -v 1.17
+rbenv install RUBY_VERSION
+rbenv globall RUBY_VERSION
+gem install bundler
 bundle install
