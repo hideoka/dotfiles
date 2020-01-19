@@ -4,14 +4,11 @@ brew install pyenv
 brew install rbenv
 brew install tmux
 brew install ripgrep
-brew tap universal-ctags/universal-ctags
-brew install --HEAD universal-ctags --without-doc
 brew install tig
 brew install yarn
 brew install pyenv-virtualenv
 brew install bat
 brew install httpie
-brew install postgresql
 brew install pgcli
 
 if [[ $(uname) == 'Darwin' ]]; then
