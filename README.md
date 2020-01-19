@@ -3,7 +3,6 @@
 ## install requirement
 - make
 - git
-- curl
 - alacritty
 
 ## make command
