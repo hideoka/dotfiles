@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -Ceuo pipefail
+DOTFILE_PATH=$(cd $(dirname $0) && pwd)
 
 mkdir -p $HOME/.config/alacritty
 mkdir -p $HOME/.config/pgcli
