@@ -5,6 +5,7 @@ sudo apt -y install build-essential\
                     zlib1g-dev\
                     libffi-dev\
                     libreadline-dev\
+                    libssl-dev\
                     zsh\
                     locales
 

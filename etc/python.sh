@@ -2,6 +2,7 @@ PYTHON_VERSION=$1
 
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
+  eval "$(pyenv vertualenv-nit -)"
 fi
 
 pyenv install $PYTHON_VERSION
