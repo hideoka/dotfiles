@@ -14,3 +14,4 @@ source $DOTFILE_PATH/etc/brew.sh
 git clone https://github.com/zplug/zplug $HOME/.zplug
 source $DOTFILE_PATH/etc/python.sh $PYTHON_VERSION
 source $DOTFILE_PATH/etc/ruby.sh $RUBY_VERSION $DOTFILE_PATH
+source $DOTFILE_PATH/etc/rust.sh
