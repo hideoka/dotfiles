@@ -10,6 +10,7 @@ brew install pyenv-virtualenv
 brew install bat
 brew install httpie
 brew install pgcli
+brew install xclip
 
 if [[ $(uname) == 'Darwin' ]]; then
   brew install gawk
