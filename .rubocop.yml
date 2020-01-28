@@ -1,42 +1,30 @@
+require: rubocop-rails
+
 Rails:
   Enabled: true
 
-Style/FrozenStringLiteralComment:
-  Enabled: false
-
-Style/Documentation:
-  Enabled: false
-
-Style/ClassAndModuleChildren:
-  Enabled: false
-
-Style/PercentLiteralDelimiters:
-  Enabled: false
-
-Style/BlockDelimiters:
-  Enabled: false
-
-Style/EmptyMethod:
-  EnforcedStyle: expanded
-
-Metrics/LineLength:
-  Max: 120
-
 Metrics/BlockLength:
   Exclude:
-    - 'spec/**/*'
+    - spec/**/*.rb
+    - config/**/*.rb
+    - db/migrate/*.rb
+    - lib/tasks/**/*.rake
+    - Gemfile
 
-AsciiComments:
-  Enabled: false
+Metrics/LineLength:
+  AllowHeredoc: true
+  AllowURI: true
+  Max: 120
+  Exclude:
+    - spec/**/*
 
-classAndModuleChildren:
-  Enabled: false
-
-Documentation:
-  Enabled: false
+Metrics/ModuleLength:
+  Exclude:
+    - spec/**/*
 
 AllCops:
   Exclude:
-    - 'db/schema.rb'
-    - 'tmp/**/*'
-    - 'node_modules/**/*'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'bin/{rails,rake}'
