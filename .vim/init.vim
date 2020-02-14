@@ -268,6 +268,13 @@ nnoremap <silent> <C-w>> 10<C-w>>
 nnoremap <silent> <C-w>+ 10<C-w>+
 nnoremap <silent> <C-w>- 10<C-w>-
 nnoremap <Esc><Esc> :nohlsearch<CR><ESC>
+cnoremap <C-b> <Left>
+cnoremap <C-f> <Right>
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+cnoremap <C-d> <Delete>
 
 "----------------------------------------
 " FILE TYPE TRIGGERS
