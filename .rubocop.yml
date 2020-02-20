@@ -1,7 +1,6 @@
-require: rubocop-rails
-
-Rails:
-  Enabled: true
+require:
+  - rubocop-rails
+  - rubocop-rspec
 
 Metrics/BlockLength:
   Exclude:
