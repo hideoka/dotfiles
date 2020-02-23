@@ -58,8 +58,10 @@ nnoremap <silent> <leader>e :<C-u>NERDTreeToggle<CR>
 " fzf
 nnoremap <silent> <leader>; :<C-u>Buffers<CR>
 nnoremap <silent> <leader>f :<C-u>Files<CR>
+nnoremap <silent> <leader>gf :<C-u>GFiles?<CR>
 nnoremap <silent> <leader>t :<C-u>Tags<CR>
 nnoremap <silent> <leader>b :<C-u>BLines<CR>
+nnoremap <silent> <leader>m :<C-u>Marks<CR>
 nnoremap          <leader>d :<C-u>Rg!<Space>
 nnoremap          <leader>s :<C-u>Rg!<Space><C-R><C-W><CR>
 xnoremap          <leader>d y:Rg!<Space><C-R>"<CR>
@@ -111,7 +113,7 @@ let g:vim_markdown_conceal = 0
 let g:vim_markdown_conceal_code_blocks = 0
 
 " markdown-preview.nvim
-nnoremap <silent> <leader>m :<C-u>MarkdownPreview<CR>
+nnoremap <silent> <leader>M :<C-u>MarkdownPreview<CR>
 augroup PrevimSettings
   autocmd!
   autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
