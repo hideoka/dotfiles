@@ -1,0 +1,8 @@
+add_newline = true
+
+[line_break]
+disable = true
+
+[directory]
+truncate_to_repo = true
+truncation_length = 8

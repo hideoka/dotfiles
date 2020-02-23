@@ -11,6 +11,7 @@ brew install bat
 brew install httpie
 brew install pgcli
 brew install xclip
+brew install starship
 
 if [[ $(uname) == 'Darwin' ]]; then
   brew install gawk
