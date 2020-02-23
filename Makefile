@@ -5,7 +5,7 @@ init:
 	bash $(DOTFILE_PATH)/deploy.sh
 
 deploy:
-	@make update
+	# @make update
 	bash $(DOTFILE_PATH)/deploy.sh
 	@git config --global core.excludesfile ~/.gitignore_global
 

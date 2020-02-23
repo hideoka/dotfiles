@@ -17,6 +17,8 @@ do
     ln -snf $DOTFILE_PATH/$f ~/.config/alacritty/alacritty.yml
   elif [[ $f == ".pgclirc" ]]; then
     ln -snf $DOTFILE_PATH/$f ~/.config/pgcli/config
+  elif [[ $f == ".starship.toml" ]]; then
+    ln -snf $DOTFILE_PATH/$f ~/.config/starship.toml
   else
     ln -snf $DOTFILE_PATH/$f ~/$f
   fi

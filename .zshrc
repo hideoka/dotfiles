@@ -25,8 +25,10 @@ source $DOTFILE_PATH/.zsh/alias.zsh
 source $DOTFILE_PATH/.zsh/zplug.zsh
 
 autoload -U compinit; compinit
-autoload -U promptinit; promptinit
-prompt pure
+# autoload -U promptinit; promptinit
+# prompt pure
+
+eval "$(starship init zsh)"
 
 eval "$(rbenv init -)"
 
