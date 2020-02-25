@@ -6,3 +6,6 @@ disable = true
 [directory]
 truncate_to_repo = true
 truncation_length = 8
+
+[aws]
+disabled = true
