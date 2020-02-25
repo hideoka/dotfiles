@@ -49,6 +49,9 @@ Plug 'posva/vim-vue'
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
+" Plug 'ElmCast/elm-vim', { 'for': 'elm' }
+" Plug 'andys8/vim-elm-syntax', { 'for': 'elm' }
+Plug 'Zaptic/elm-vim', { 'for': 'elm' }
 call plug#end()
 
 " nerdtree
@@ -124,6 +127,10 @@ set hidden
 let g:LanguageClient_serverCommands = {
   \ 'ruby': ['solargraph', 'stdio'],
   \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+  \ 'elm': ['elm-language-server'],
+  \ }
+let g:LanguageClient_rootMarkers = {
+  \ 'elm': ['elm.json'],
   \ }
 nnoremap <silent><leader>ld :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent><leader>lr :call LanguageClient#textDocument_rename()<CR>
