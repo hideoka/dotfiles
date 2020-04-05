@@ -45,12 +45,10 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neosnippet.vim', { 'commit': '3d33626' }
 Plug 'Shougo/neosnippet-snippets'
 Plug 'cohama/lexima.vim'
-Plug 'posva/vim-vue'
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+Plug 'posva/vim-vue'
 Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
-" Plug 'ElmCast/elm-vim', { 'for': 'elm' }
-" Plug 'andys8/vim-elm-syntax', { 'for': 'elm' }
 Plug 'Zaptic/elm-vim', { 'for': 'elm' }
 call plug#end()
 
