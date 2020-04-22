@@ -124,7 +124,7 @@ augroup END
 set hidden
 let g:LanguageClient_serverCommands = {
   \ 'ruby': ['solargraph', 'stdio'],
-  \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+  \ 'rust': ['rust-analyzer'],
   \ 'elm': ['elm-language-server'],
   \ }
 let g:LanguageClient_rootMarkers = {
