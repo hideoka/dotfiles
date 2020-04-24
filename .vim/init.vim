@@ -124,7 +124,7 @@ augroup END
 set hidden
 let g:LanguageClient_serverCommands = {
   \ 'ruby': ['solargraph', 'stdio'],
-  \ 'rust': ['rust-analyzer'],
+  \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
   \ 'elm': ['elm-language-server'],
   \ }
 let g:LanguageClient_rootMarkers = {
@@ -175,7 +175,6 @@ call lexima#insmode#map_hook('before', '<CR>', '')
 
 " rust.vim
 let g:rustfmt_autosave = 1
-let g:rustfmt_options = '--edition 2018'
 
 "-------------------------------------------------------------------------
 " COLOR SCHEME
