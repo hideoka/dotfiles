@@ -50,6 +50,7 @@ Plug 'posva/vim-vue'
 Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'Zaptic/elm-vim', { 'for': 'elm' }
+Plug 'easymotion/vim-easymotion'
 call plug#end()
 
 " nerdtree
@@ -175,6 +176,10 @@ call lexima#insmode#map_hook('before', '<CR>', '')
 
 " rust.vim
 let g:rustfmt_autosave = 1
+
+" easymotion
+let g:EasyMotion_smartcase = 1
+nmap s <Plug>(easymotion-overwin-f2)
 
 "-------------------------------------------------------------------------
 " COLOR SCHEME
