@@ -126,10 +126,14 @@ set hidden
 let g:LanguageClient_serverCommands = {
   \ 'ruby': ['solargraph', 'stdio'],
   \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+  \ 'javascript': ['javascript-typescript-stdio'],
+  \ 'typescript': ['javascript-typescript-stdio'],
   \ 'elm': ['elm-language-server'],
   \ }
 let g:LanguageClient_rootMarkers = {
   \ 'elm': ['elm.json'],
+  \ 'javascript': ['jsconfig.json'],
+  \ 'typescript': ['tsconfig.json'],
   \ }
 nnoremap <silent><leader>ld :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent><leader>lr :call LanguageClient#textDocument_rename()<CR>
