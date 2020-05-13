@@ -47,6 +47,8 @@ Plug 'Shougo/neosnippet-snippets'
 Plug 'cohama/lexima.vim'
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'posva/vim-vue'
+Plug 'leafgarland/typescript-vim'
+Plug 'ianks/vim-tsx'
 Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'Zaptic/elm-vim', { 'for': 'elm' }
@@ -128,6 +130,8 @@ let g:LanguageClient_serverCommands = {
   \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
   \ 'javascript': ['javascript-typescript-stdio'],
   \ 'typescript': ['javascript-typescript-stdio'],
+  \ 'javascript.jxs': ['javascript-typescript-stdio'],
+  \ 'typescript.tsx': ['javascript-typescript-stdio'],
   \ 'elm': ['elm-language-server'],
   \ }
 let g:LanguageClient_rootMarkers = {
