@@ -265,6 +265,7 @@ nnoremap <silent> Y y$
 inoremap <silent> jj <ESC>
 inoremap <silent> <C-f> <Right>
 inoremap <silent> <C-b> <Left>
+inoremap <silent> <C-r>; <C-r>0
 nnoremap <silent> <C-h> <C-w>h
 nnoremap <silent> <C-j> <C-w>j
 nnoremap <silent> <C-k> <C-w>k
@@ -294,6 +295,7 @@ cnoremap <C-n> <Down>
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 cnoremap <C-d> <Delete>
+cnoremap <C-r>; <C-r>0
 
 "----------------------------------------
 " FILE TYPE TRIGGERS
