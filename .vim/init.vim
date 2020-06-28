@@ -35,7 +35,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'majutsushi/tagbar'
 Plug 'mileszs/ack.vim', { 'on': 'Ack!' }
 Plug 'mattn/emmet-vim', { 'for': ['html', 'eruby', 'vue', 'javascript'] }
-Plug 'w0rp/ale', { 'for': ['ruby'] }
+Plug 'w0rp/ale'
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'dockerfile' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
@@ -47,8 +47,8 @@ Plug 'Shougo/neosnippet-snippets'
 Plug 'cohama/lexima.vim'
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'posva/vim-vue'
-Plug 'leafgarland/typescript-vim'
 Plug 'ianks/vim-tsx'
+Plug 'leafgarland/typescript-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'Zaptic/elm-vim', { 'for': 'elm' }
@@ -95,9 +95,11 @@ nnoremap <silent> <leader>ll :<C-u>ALEToggle<CR>
 nnoremap <silent> <leader>a :<C-u>ALEFix<CR>
 let g:ale_linters = {
   \ 'ruby': ['rubocop'],
+  \ 'javascript': ['eslint']
   \ }
 let g:ale_fixers = {
-  \ 'ruby': ['rubocop'],
+  \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+  \ 'javascript': ['eslint']
   \ }
 let g:ale_sign_column_always = 1
 let g:ale_echo_msg_error_str = 'E'
