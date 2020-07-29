@@ -9,3 +9,6 @@ truncation_length = 8
 
 [aws]
 disabled = true
+
+[haskell]
+disabled = true
