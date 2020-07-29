@@ -24,6 +24,10 @@ source $DOTFILE_PATH/.zsh/fzf.zsh
 source $DOTFILE_PATH/.zsh/alias.zsh
 source $DOTFILE_PATH/.zsh/zplug.zsh
 
+if [[ -f $HOME/.local_zshrc.zsh ]];then
+  source $HOME/.local_zshrc.zsh
+fi
+
 autoload -U compinit; compinit
 # autoload -U promptinit; promptinit
 # prompt pure
