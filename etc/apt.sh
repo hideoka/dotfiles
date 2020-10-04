@@ -11,3 +11,6 @@ sudo apt -y install curl\
                     tmux\
                     tig\
                     vim
+
+# using gnome
+sudo apt -y install gnome-tweaks fcitx-mozc
