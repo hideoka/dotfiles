@@ -7,11 +7,9 @@ brew install neovim
 brew install pyenv
 brew install rbenv
 brew install tmux
-brew install ripgrep
 brew install tig
 brew install yarn
 brew install pyenv-virtualenv
-brew install bat
 brew install httpie
 brew install pgcli
 brew install xclip
