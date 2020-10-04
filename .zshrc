@@ -3,15 +3,6 @@ export LANG=en_US.UTF-8
 
 DOTFILE_PATH="$(dirname $(readlink $HOME/.zshrc))"
 
-if [[ $(uname) == 'Linux' ]]; then
-  export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
-  export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar"
-  export HOMEBREW_REPOSITORY="/home/linuxbrew/.linuxbrew/Homebrew"
-  export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
-  export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
-  export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
-fi
-
 export PATH="$HOME/.local/bin:$PATH"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
@@ -28,8 +19,6 @@ if [[ -f $HOME/.local_zshrc.zsh ]];then
 fi
 
 autoload -U compinit; compinit
-# autoload -U promptinit; promptinit
-# prompt pure
 
 eval "$(starship init zsh)"
 

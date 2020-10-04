@@ -7,7 +7,6 @@ init:
 deploy:
 	# @make update
 	bash $(DOTFILE_PATH)/deploy.sh
-	@git config --global core.excludesfile ~/.gitignore_global
 
 update:
 	@git pull origin master
