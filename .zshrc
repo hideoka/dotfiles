@@ -7,6 +7,7 @@ export PATH="$HOME/.local/bin:$PATH"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="$HOME/.nodenv/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
 source $DOTFILE_PATH/.zsh/setopt.zsh
@@ -23,6 +24,8 @@ autoload -U compinit; compinit
 eval "$(starship init zsh)"
 
 eval "$(rbenv init -)"
+
+eval "$(nodenv init -)"
 
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
