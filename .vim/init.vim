@@ -53,6 +53,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'Zaptic/elm-vim', { 'for': 'elm' }
 Plug 'easymotion/vim-easymotion'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 
 " nerdtree
