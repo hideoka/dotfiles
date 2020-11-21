@@ -54,6 +54,7 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'Zaptic/elm-vim', { 'for': 'elm' }
 Plug 'easymotion/vim-easymotion'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'liuchengxu/vista.vim'
 call plug#end()
 
 " nerdtree
@@ -79,8 +80,11 @@ nnoremap <silent> <Leader>gb :<C-u>Gblame<CR>
 nmap s <Nop>
 xmap s <Nop>
 
-" tagbar
-nnoremap <silent> <leader>y :<C-u>TagbarToggle<CR>
+" vista.vim
+let g:vista_default_executive = 'lcn'
+nnoremap <silent> <leader>vv :<C-u>Vista!!<CR>
+nnoremap <silent> <leader>vm :<C-u>Vista toc<CR>
+nnoremap <silent> <leader>vf :<C-u>Vista toc<CR>
 
 " ale
 nnoremap <silent> <leader>ll :<C-u>ALEToggle<CR>
