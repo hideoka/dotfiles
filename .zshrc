@@ -10,6 +10,7 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/.nodenv/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="/usr/local/go/bin:$PATH"
+export GOPATH=$HOME/projects/go
 
 source $DOTFILE_PATH/.zsh/setopt.zsh
 source $DOTFILE_PATH/.zsh/fzf.zsh
