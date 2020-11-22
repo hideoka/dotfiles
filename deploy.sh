@@ -2,10 +2,7 @@
 set -Ceuo pipefail
 DOTFILE_PATH=$(cd $(dirname $0) && pwd)
 
-if [[ $(uname) == 'Darwin' ]]; then
-  mkdir -p $HOME/.config/alacritty
-fi
-
+mkdir -p $HOME/.config/alacritty
 mkdir -p $HOME/.config/pgcli
 
 for f in .??*
@@ -16,9 +13,8 @@ do
 
   if [[ $f == ".vim" ]]; then
     ln -snf $DOTFILE_PATH/$f ~/.config/nvim
-  elif [[ $f == ".alacritty.yml" && $(uname) == 'Darwin' ]]; then
+  elif [[ $f == ".alacritty.yml" ]]; then
     ln -snf $DOTFILE_PATH/$f ~/.config/alacritty/alacritty.yml
-    echo "ok"
   elif [[ $f == ".pgclirc" ]]; then
     ln -snf $DOTFILE_PATH/$f ~/.config/pgcli/config
   elif [[ $f == ".starship.toml" ]]; then
