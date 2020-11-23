@@ -18,8 +18,8 @@ window:
   # Specified in number of columns/lines, not pixels.
   # If both are `0`, this setting is ignored.
   dimensions:
-    columns: 160
-    lines: 48
+    columns: 150
+    lines: 40
 
   # Window position (changes require restart)
   #
@@ -150,8 +150,8 @@ font:
   # the default being at the bottom. Increasing `x` moves the glyph to the right,
   # increasing `y` moves the glyph upward.
   glyph_offset:
-    x: 2
-    y: 0
+    x: 1
+    y: 1
 
   # Thin stroke font rendering (macOS only)
   #
