@@ -3,7 +3,7 @@
 ## install requirement
 - make
 - git
-- alacritty # only mac
+- alacritty
 
 ## make command
 ```
