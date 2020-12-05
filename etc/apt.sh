@@ -10,7 +10,8 @@ sudo apt -y install curl\
                     neovim\
                     tmux\
                     tig\
-                    vim
+                    vim\
+                    fonts-ricty-diminished
 
 # using gnome
 sudo apt -y install gnome-tweaks fcitx-mozc
