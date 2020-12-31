@@ -95,7 +95,8 @@ let g:ale_linters = {
   \ }
 let g:ale_fixers = {
   \ '*': ['remove_trailing_lines', 'trim_whitespace'],
-  \ 'javascript': ['eslint']
+  \ 'javascript': ['eslint'],
+  \ 'haskell': ['brittany']
   \ }
 let g:ale_sign_column_always = 1
 let g:ale_echo_msg_error_str = 'E'
@@ -167,12 +168,12 @@ call deoplete#custom#option('_', {
   \ })
 
 " neosnippet.vim
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-endif
+" imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+" smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+" xmap <C-k>     <Plug>(neosnippet_expand_target)
+" if has('conceal')
+"   set conceallevel=2 concealcursor=niv
+" endif
 
 " lexima.vim
 let g:lexima_no_default_rules = 1
