@@ -148,6 +148,13 @@ nnoremap <silent><leader>lc :call LanguageClient#textDocument_completion()<CR>
 nnoremap <silent><leader>lh :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent><leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
 nnoremap <silent><leader>lm :call LanguageClient_contextMenu()<CR>
+nnoremap <silent> <leader>ll :call LanguageClientRestart()<CR>
+
+function LanguageClientRestart()
+  LanguageClientStop
+  sleep 1
+  LanguageClientStart
+endfunction
 
 " deoplete.vim
 let g:deoplete#enable_at_startup = 1
