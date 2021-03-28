@@ -1,6 +1,5 @@
 PYTHON_VERSION=$1
 
-#---- Setup pyenv and virtualenv
 if [[ $(uname) == 'Linux' ]]; then
   git clone https://github.com/pyenv/pyenv.git ~/.pyenv
   echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc

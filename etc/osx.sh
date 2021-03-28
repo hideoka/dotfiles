@@ -7,6 +7,7 @@ brew install neovim
 brew install pyenv
 brew install rbenv
 brew install nodenv
+brew install tfenv
 brew install tmux
 brew install tig
 brew install yarn
