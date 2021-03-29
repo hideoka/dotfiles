@@ -12,7 +12,8 @@ sudo apt -y install curl\
                     tig\
                     vim\
                     redis\
-                    fonts-ricty-diminished
+                    fonts-ricty-diminished\
+                    shellcheck
 
 # using gnome
 sudo apt -y install gnome-tweaks fcitx-mozc

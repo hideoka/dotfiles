@@ -26,3 +26,4 @@ fc-cache -vf
 brew install reattach-to-user-namespace
 brew install unison
 brew install eugenmayer/dockersync/unox
+brew install shellcheck
