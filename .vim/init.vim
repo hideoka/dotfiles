@@ -87,8 +87,8 @@ nnoremap <silent> <leader>vm :<C-u>Vista toc<CR>
 nnoremap <silent> <leader>vf :<C-u>Vista toc<CR>
 
 " ale
-nnoremap <silent> <leader>ll :<C-u>ALEToggle<CR>
-nnoremap <silent> <leader>a :<C-u>ALEFix<CR>
+nnoremap <silent> <leader>al :<C-u>ALEToggle<CR>
+nnoremap <silent> <leader>af :<C-u>ALEFix<CR>
 let g:ale_linters = {
   \ 'ruby': ['rubocop'],
   \ 'javascript': ['eslint']
