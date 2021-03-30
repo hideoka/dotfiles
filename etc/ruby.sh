@@ -18,4 +18,5 @@ eval "$(rbenv init -)"
 rbenv install $RUBY_VERSION
 rbenv global $RUBY_VERSION
 gem install bundler
+touch $DOTFILE_PATH/lib/ruby/Gemfile.lock
 bundle install
