@@ -71,6 +71,11 @@ nnoremap          <leader>d :<C-u>Rg!<Space>
 nnoremap          <leader>s :<C-u>Rg!<Space><C-R><C-W><CR>
 xnoremap          <leader>d y:Rg!<Space><C-R>"<CR>
 
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case --hidden -- '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
+
 " vim-fugitive
 nnoremap <silent> <Leader>gs :<C-u>Gstatus<CR>
 nnoremap <silent> <Leader>gd :<C-u>Gdiff<CR>
