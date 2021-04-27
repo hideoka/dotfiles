@@ -239,7 +239,7 @@ set nowritebackup
 set nobackup
 set virtualedit=block
 set backspace=indent,eol,start
-set ambiwidth=double
+set ambiwidth=single
 set wildmenu
 set clipboard+=unnamedplus
 set ignorecase
