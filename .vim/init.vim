@@ -122,6 +122,7 @@ let g:vim_markdown_conceal_code_blocks = 0
 
 " markdown-preview.nvim
 nnoremap <silent> <leader>M :<C-u>MarkdownPreview<CR>
+let g:mkdp_auto_close = 0
 augroup PrevimSettings
   autocmd!
   autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
