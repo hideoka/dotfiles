@@ -132,7 +132,7 @@ let g:LanguageClient_serverCommands = {
   \ 'ruby': ['solargraph', 'stdio'],
   \ 'rust': ['rust-analyzer'],
   \ 'javascript': ['javascript-typescript-stdio'],
-  \ 'typescript': ['javascript-typescript-stdio'],
+  \ 'typescript': ['typescript-language-server', '--stdio'],
   \ 'javascript.jxs': ['javascript-typescript-stdio'],
   \ 'typescript.tsx': ['javascript-typescript-stdio'],
   \ 'elm': ['elm-language-server'],
