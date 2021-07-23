@@ -132,10 +132,10 @@ set hidden
 let g:LanguageClient_serverCommands = {
   \ 'ruby': ['solargraph', 'stdio'],
   \ 'rust': ['rust-analyzer'],
-  \ 'javascript': ['javascript-typescript-stdio'],
+  \ 'javascript': ['typescript-language-server', '--stdio'],
   \ 'typescript': ['typescript-language-server', '--stdio'],
-  \ 'javascript.jxs': ['javascript-typescript-stdio'],
-  \ 'typescript.tsx': ['javascript-typescript-stdio'],
+  \ 'javascript.jxs': ['typescript-language-server', '--stdio'],
+  \ 'typescript.tsx': ['typescript-language-server', '--stdio'],
   \ 'elm': ['elm-language-server'],
   \ }
 let g:LanguageClient_rootMarkers = {
