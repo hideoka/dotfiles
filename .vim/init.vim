@@ -92,11 +92,14 @@ nnoremap <silent> <leader>al :<C-u>ALEToggle<CR>
 nnoremap <silent> <leader>af :<C-u>ALEFix<CR>
 let g:ale_linters = {
   \ 'ruby': ['rubocop'],
-  \ 'javascript': ['eslint']
+  \ 'javascript': ['eslint'],
+  \ 'typescript': ['eslint'],
+  \ 'rust': [],
   \ }
 let g:ale_fixers = {
   \ '*': ['remove_trailing_lines', 'trim_whitespace'],
   \ 'javascript': ['eslint'],
+  \ 'typescript': ['eslint'],
   \ 'haskell': ['brittany']
   \ }
 let g:ale_sign_column_always = 1
