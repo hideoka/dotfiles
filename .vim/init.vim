@@ -32,8 +32,6 @@ Plug 'tpope/vim-rails'
 Plug 'machakann/vim-sandwich'
 Plug 'cocopon/iceberg.vim'
 Plug 'itchyny/lightline.vim'
-Plug 'majutsushi/tagbar'
-Plug 'mileszs/ack.vim', { 'on': 'Ack!' }
 Plug 'mattn/emmet-vim', { 'for': ['html', 'eruby', 'vue', 'javascript'] }
 Plug 'w0rp/ale'
 Plug 'cespare/vim-toml', { 'for': 'toml' }
