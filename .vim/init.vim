@@ -51,6 +51,7 @@ Plug 'Zaptic/elm-vim', { 'for': 'elm' }
 Plug 'easymotion/vim-easymotion'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'liuchengxu/vista.vim'
+Plug 'hashivim/vim-terraform'
 call plug#end()
 
 " nerdtree
