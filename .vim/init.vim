@@ -96,6 +96,7 @@ let g:ale_linters = {
   \ 'javascript': ['eslint'],
   \ 'typescript': ['eslint'],
   \ 'rust': [],
+  \ 'elm': [],
   \ }
 let g:ale_fixers = {
   \ '*': ['remove_trailing_lines', 'trim_whitespace'],
