@@ -32,7 +32,7 @@ Plug 'tpope/vim-rails'
 Plug 'machakann/vim-sandwich'
 Plug 'cocopon/iceberg.vim'
 Plug 'itchyny/lightline.vim'
-Plug 'mattn/emmet-vim', { 'for': ['html', 'eruby', 'vue', 'javascript'] }
+Plug 'mattn/emmet-vim', { 'for': ['html', 'eruby', 'vue', 'javascript', 'typescript.tsx'] }
 Plug 'w0rp/ale'
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'dockerfile' }
