@@ -5,6 +5,8 @@ zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "rupa/z", use:"*.sh"
 
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=242"
+
 if ! zplug check --verbose; then
   printf "Install? [y/N]: "
   if read -q; then

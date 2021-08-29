@@ -3,7 +3,6 @@ if ! which brew > /dev/null 2>&1; then
 fi
 
 brew install zsh
-brew install neovim
 brew install pyenv
 brew install rbenv
 brew install nodenv

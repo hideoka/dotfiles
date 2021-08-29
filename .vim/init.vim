@@ -52,7 +52,21 @@ Plug 'easymotion/vim-easymotion'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'liuchengxu/vista.vim'
 Plug 'hashivim/vim-terraform'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'bluz71/vim-nightfly-guicolors'
+
 call plug#end()
+
+
+" nvim-treesitter
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained",
+  highlight = {
+    enable = true,
+  },
+}
+EOF
 
 " nerdtree
 let NERDTreeShowHidden=1
@@ -205,18 +219,18 @@ nmap s <Plug>(easymotion-overwin-f2)
 " COLOR SCHEME
 "-------------------------------------------------------------------------
 
-" iceberg.vim
-if (has("termguicolors"))
-   set termguicolors
-   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+" vim-nightfly-guicolors
+if has('termguicolors')
+  set termguicolors
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
-syntax enable
-colorscheme iceberg
+
+colorscheme nightfly
 
 " lightline.vim
 let g:lightline={
-  \ 'colorscheme': 'iceberg',
+  \ 'colorscheme': 'nightfly',
   \ 'active': {
   \   'left': [ ['mode', 'paste'],
   \             ['readonly', 'filepath', 'modified'] ]

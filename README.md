@@ -4,6 +4,7 @@
 - make
 - git
 - alacritty
+- neovim (version >=0.5)
 
 ## make command
 ```

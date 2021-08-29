@@ -7,7 +7,6 @@ sudo apt -y install curl\
                     libclang-dev\
                     chang\
                     zsh\
-                    neovim\
                     tmux\
                     tig\
                     vim\
