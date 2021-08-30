@@ -89,8 +89,8 @@ command! -bang -nargs=* Rg
 
 " vim-fugitive
 nnoremap <silent> <Leader>gs :<C-u>Gstatus<CR>
-nnoremap <silent> <Leader>gd :<C-u>Gdiff<CR>
-nnoremap <silent> <Leader>gb :<C-u>Gblame<CR>
+nnoremap <silent> <Leader>gd :<C-u>Git diff<CR>
+nnoremap <silent> <Leader>gb :<C-u>Git blame<CR>
 
 " vim-sandwich
 nmap s <Nop>
