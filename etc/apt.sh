@@ -12,7 +12,18 @@ sudo apt -y install curl\
                     vim\
                     redis\
                     fonts-ricty-diminished\
-                    shellcheck
+                    shellcheck\
+                    ninja-build\
+                    gettext\
+                    libtool\
+                    libtool-bin\
+                    autoconf\
+                    automake\
+                    cmake\
+                    g++\
+                    pkg-config\
+                    unzip
+
 
 # using gnome
 sudo apt -y install gnome-tweaks fcitx-mozc
