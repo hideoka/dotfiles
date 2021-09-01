@@ -12,6 +12,13 @@ elif [[ $(uname) == 'Linux' ]]; then
   source $DOTFILE_PATH/etc/apt.sh
 fi
 
+# powerline font
+git clone git@github.com:powerline/fonts.git --depth=1 $HOME/fonts
+cd fonts
+./install.sh
+cd ..
+rn -rf fonts
+
 git clone https://github.com/zplug/zplug $HOME/.zplug
 source $DOTFILE_PATH/etc/python.sh $PYTHON_VERSION
 source $DOTFILE_PATH/etc/ruby.sh $RUBY_VERSION $DOTFILE_PATH
