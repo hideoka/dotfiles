@@ -16,4 +16,6 @@ eval "$(nodenv init -)"
 nodenv install $NODE_VERSION
 nodenv global $NODE_VERSION
 
-npm install -g yarn
+npm install -g typescript
+npm install -g ts-node
+npm install -g typescript-language-server
