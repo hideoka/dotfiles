@@ -9,3 +9,4 @@ cargo install exa
 cargo install rg
 cargo install tokei
 cargo install xsv
+cargo install diesel_cli
