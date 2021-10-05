@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -Ceuo pipefail
-DOTFILE_PATH=$(cd $(dirname $0) && pwd)
+DOTFILE_PATH=$(cd "$(dirname "$0")" && pwd)
 
-mkdir -p $HOME/.config/alacritty
-mkdir -p $HOME/.config/pgcli
+mkdir -p "$HOME"/.config/alacritty
+mkdir -p "$HOME"/.config/pgcli
 
 for f in .??*
 do
@@ -12,14 +12,14 @@ do
   [[ $f == ".zsh" ]] && continue
 
   if [[ $f == ".vim" ]]; then
-    ln -snf $DOTFILE_PATH/$f ~/.config/nvim
+    ln -snf "$DOTFILE_PATH/$f" ~/.config/nvim
   elif [[ $f == ".alacritty.yml" ]]; then
-    ln -snf $DOTFILE_PATH/$f ~/.config/alacritty/alacritty.yml
+    ln -snf "$DOTFILE_PATH/$f" ~/.config/alacritty/alacritty.yml
   elif [[ $f == ".pgclirc" ]]; then
-    ln -snf $DOTFILE_PATH/$f ~/.config/pgcli/config
+    ln -snf "$DOTFILE_PATH/$f" ~/.config/pgcli/config
   elif [[ $f == ".starship.toml" ]]; then
-    ln -snf $DOTFILE_PATH/$f ~/.config/starship.toml
+    ln -snf "$DOTFILE_PATH/$f" ~/.config/starship.toml
   else
-    ln -snf $DOTFILE_PATH/$f ~/$f
+    ln -snf "$DOTFILE_PATH/$f" ~/"$f"
   fi
 done

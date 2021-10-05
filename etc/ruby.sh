@@ -11,12 +11,11 @@ if [[ $(uname) == 'Linux' ]]; then
   git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-buildmkdir -p "$(rbenv root)"/plugins
 fi
 
-cd $DOTFILE_PATH/lib/ruby
-
+cd "$DOTFILE_PATH/lib/ruby" || return
 eval "$(rbenv init -)"
 
-rbenv install $RUBY_VERSION
-rbenv global $RUBY_VERSION
+rbenv install "$RUBY_VERSION"
+rbenv global "$RUBY_VERSION"
 gem install bundler
-touch $DOTFILE_PATH/lib/ruby/Gemfile.lock
+touch "$DOTFILE_PATH/lib/ruby/Gemfile.lock"
 bundle install

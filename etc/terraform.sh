@@ -6,4 +6,4 @@ if [[ $(uname) == 'Linux' ]]; then
   exec "$SHELL"
 fi
 
-tfenv install $TF_VERSION
+tfenv install "$TF_VERSION"

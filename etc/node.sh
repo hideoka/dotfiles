@@ -13,8 +13,8 @@ fi
 
 eval "$(nodenv init -)"
 
-nodenv install $NODE_VERSION
-nodenv global $NODE_VERSION
+nodenv install "$NODE_VERSION"
+nodenv global "$NODE_VERSION"
 
 npm install -g typescript
 npm install -g ts-node
