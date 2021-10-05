@@ -5,7 +5,6 @@ init:
 	bash $(DOTFILE_PATH)/deploy.sh
 
 deploy:
-	# @make update
 	bash $(DOTFILE_PATH)/deploy.sh
 
 update:
