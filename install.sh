@@ -30,4 +30,4 @@ source "$DOTFILE_PATH"/etc/python.sh "$PYTHON_VERSION"
 source "$DOTFILE_PATH"/etc/ruby.sh "$RUBY_VERSION" "$DOTFILE_PATH"
 source "$DOTFILE_PATH"/etc/node.sh "$NODE_VERSION"
 source "$DOTFILE_PATH"/etc/terraform.sh "$TF_VERSION"
-source "$DOTFILE_PATH"/etc/rust.sh
+source "$DOTFILE_PATH"/etc/rust.sh "$DOTFILE_PATH"
