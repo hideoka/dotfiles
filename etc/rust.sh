@@ -12,6 +12,7 @@ cargo install rg
 cargo install tokei
 cargo install xsv
 cargo install diesel_cli
+cargo install cargo-edit
 
 cd "$(dirname "$DOTFILE_PATH")"
 git clone https://github.com/rust-analyzer/rust-analyzer.git && cd rust-analyzer
