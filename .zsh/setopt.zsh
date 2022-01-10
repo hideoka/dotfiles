@@ -1,6 +1,6 @@
 HISTFILE=$HOME/.zsh_history
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=10000
+SAVEHIST=10000
 setopt hist_ignore_all_dups
 setopt hist_ignore_dups
 setopt share_history
