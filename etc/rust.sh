@@ -6,13 +6,12 @@ rustup component add rustfmt clippy
 
 cargo install ripgrep
 cargo install --locked bat
-cargo install delta
+cargo install git-delta
 cargo install exa
-cargo install rg
 cargo install tokei
 cargo install xsv
-cargo install diesel_cli
 cargo install cargo-edit
+cargo install starship --locked
 
 cd "$(dirname "$DOTFILE_PATH")"
 git clone https://github.com/rust-analyzer/rust-analyzer.git && cd rust-analyzer
