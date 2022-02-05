@@ -14,10 +14,10 @@ fi
 
 # powerline font
 git clone git@github.com:powerline/fonts.git --depth=1 "$HOME"/fonts
-cd fonts
+cd "$HOME"/fonts
 ./install.sh
 cd ..
-rn -rf fonts
+rm -rf fonts
 
 # neovim
 cd "$(dirname "$DOTFILE_PATH")"
