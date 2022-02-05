@@ -26,8 +26,11 @@ cd neovim && make CMAKE_BUILD_TYPE=Release
 sudo make install
 
 git clone https://github.com/zplug/zplug "$HOME"/.zplug
+
 source "$DOTFILE_PATH"/etc/python.sh "$PYTHON_VERSION"
 source "$DOTFILE_PATH"/etc/ruby.sh "$RUBY_VERSION" "$DOTFILE_PATH"
 source "$DOTFILE_PATH"/etc/node.sh "$NODE_VERSION"
 source "$DOTFILE_PATH"/etc/terraform.sh "$TF_VERSION"
 source "$DOTFILE_PATH"/etc/rust.sh "$DOTFILE_PATH"
+
+cd "$(dirname "$DOTFILE_PATH")"

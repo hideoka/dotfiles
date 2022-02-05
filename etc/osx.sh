@@ -14,7 +14,6 @@ brew install pyenv-virtualenv
 brew install httpie
 brew install pgcli
 brew install xclip
-brew install starship
 brew install gawk
 brew install gnu-sed
 brew install redis

@@ -2,12 +2,10 @@ NODE_VERSION=$1
 
 if [[ $(uname) == 'Linux' ]]; then
   git clone https://github.com/nodenv/nodenv.git ~/.nodenv
-  cd ~/.nodenv && src/configure && make -C src
   echo 'export PATH="$HOME/.nodenv/bin:$PATH"' >> ~/.bash_profile
   echo 'eval "$(nodenv init -)"' >> ~/.bash_profile
-  exec "$SHELL"
+  eval "$(nodenv init -)"
 
-  mkdir -p "$(nodenv root)"/plugins
   git clone https://github.com/nodenv/node-build.git "$(nodenv root)"/plugins/node-build
 fi
 
