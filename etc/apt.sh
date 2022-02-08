@@ -20,7 +20,8 @@ sudo apt -y install curl\
                     cmake\
                     g++\
                     pkg-config\
-                    unzip
+                    unzip\
+                    postgresql-client
 
 
 # using gnome
