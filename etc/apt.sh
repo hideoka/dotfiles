@@ -1,5 +1,6 @@
 sudo apt -y update
 sudo apt -y install curl\
+                    build-essential\
                     libmysqlclient-dev\
                     libsqlite3-dev\
                     llvm-dev\
@@ -21,7 +22,10 @@ sudo apt -y install curl\
                     g++\
                     pkg-config\
                     unzip\
-                    postgresql-client
+                    postgresql-client\
+                    libpq-dev\
+                    clang\
+                    lld
 
 
 # using gnome
