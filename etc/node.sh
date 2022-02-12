@@ -4,7 +4,7 @@ if [[ $(uname) == 'Linux' ]]; then
   git clone https://github.com/nodenv/nodenv.git ~/.nodenv
   echo 'export PATH="$HOME/.nodenv/bin:$PATH"' >> ~/.bash_profile
   echo 'eval "$(nodenv init -)"' >> ~/.bash_profile
-  eval "$(nodenv init -)"
+  export PATH="$HOME/.nodenv/bin:$PATH"
 
   git clone https://github.com/nodenv/node-build.git "$(nodenv root)"/plugins/node-build
 fi
