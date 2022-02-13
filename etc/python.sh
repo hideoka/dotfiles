@@ -22,10 +22,10 @@ fi
 pyenv install "$PYTHON_VERSION"
 pyenv global "$PYTHON_VERSION"
 
-pyenv virtualenv "$PYTHON_VERSION" py3nvim
-pyenv activate py3nvim
-pip install pynvim
-pyenv deactivate
+# pyenv virtualenv "$PYTHON_VERSION" py3nvim
+# pyenv activate py3nvim
+# pip install pynvim
+# pyenv deactivate
 
 if [[ $(uname) == 'Linux' ]]; then
   pip install pgcli
