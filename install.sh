@@ -3,7 +3,7 @@ set -Ceuo pipefail
 DOTFILE_PATH=$(cd "$(dirname "$0")" && pwd)
 PYTHON_VERSION=3.9.7
 RUBY_VERSION=2.7.4
-NODE_VERSION=14.17.6
+NODE_VERSION=16.14.0
 TF_VERSION=latest
 
 if [[ $(uname) == 'Darwin'   ]]; then
