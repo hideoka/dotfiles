@@ -25,7 +25,8 @@ sudo apt -y install curl\
                     postgresql-client\
                     libpq-dev\
                     clang\
-                    lld
+                    lld\
+                    xclip
 
 
 # using gnome
