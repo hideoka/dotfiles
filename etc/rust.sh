@@ -14,6 +14,7 @@ cargo install xsv
 cargo install cargo-edit
 cargo install starship --locked
 cargo install sqlx-cli
+catgo install cargo-watch
 
 cd "$(dirname "$DOTFILE_PATH")"
 git clone https://github.com/rust-analyzer/rust-analyzer.git && cd rust-analyzer
