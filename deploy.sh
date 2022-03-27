@@ -15,6 +15,8 @@ do
     ln -snf "$DOTFILE_PATH/$f" ~/.config/nvim
   elif [[ $f == ".alacritty.yml" ]]; then
     ln -snf "$DOTFILE_PATH/$f" ~/.config/alacritty/alacritty.yml
+  elif [[ $f == ".alacritty.default.yml" ]]; then
+    ln -snf "$DOTFILE_PATH/$f" ~/.config/alacritty/alacritty.default.yml
   elif [[ $f == ".pgclirc" ]]; then
     ln -snf "$DOTFILE_PATH/$f" ~/.config/pgcli/config
   elif [[ $f == ".starship.toml" ]]; then
