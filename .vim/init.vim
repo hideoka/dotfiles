@@ -273,6 +273,7 @@ set backspace=indent,eol,start
 set ambiwidth=single
 set wildmenu
 set clipboard+=unnamedplus
+set completeopt=menuone,noinsert,noselect
 set ignorecase
 set smartcase
 set wrapscan
@@ -293,7 +294,6 @@ set noswapfile
 set title
 set number
 set whichwrap=b,s,h,l,<,>,[,],~
-set completeopt-=preview
 
 "----------------------------------------
 " KEYMAP
