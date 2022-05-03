@@ -53,6 +53,11 @@ Plug 'liuchengxu/vista.vim'
 Plug 'hashivim/vim-terraform'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'bluz71/vim-nightfly-guicolors'
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
+" Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'L3MON4D3/LuaSnip'
 
 call plug#end()
 
@@ -142,65 +147,76 @@ augroup PrevimSettings
   autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
 augroup END
 
-" LanguageClient-neovim
-set hidden
-let g:LanguageClient_serverCommands = {
-  \ 'ruby': ['solargraph', 'stdio'],
-  \ 'rust': ['rust-analyzer'],
-  \ 'javascript': ['typescript-language-server', '--stdio'],
-  \ 'typescript': ['typescript-language-server', '--stdio'],
-  \ 'javascript.jxs': ['typescript-language-server', '--stdio'],
-  \ 'typescript.tsx': ['typescript-language-server', '--stdio'],
-  \ 'elm': ['elm-language-server'],
-  \ }
-let g:LanguageClient_rootMarkers = {
-  \ 'elm': ['elm.json'],
-  \ 'javascript': ['jsconfig.json'],
-  \ 'typescript': ['tsconfig.json'],
-  \ }
-nnoremap <silent><leader>ld :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent><leader>lr :call LanguageClient#textDocument_rename()<CR>
-nnoremap <silent><leader>lf :call LanguageClient#textDocument_formatting()<CR>
-nnoremap <silent><leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
-nnoremap <silent><leader>lx :call LanguageClient#textDocument_references()<CR>
-nnoremap <silent><leader>la :call LanguageClient_workspace_applyEdit()<CR>
-nnoremap <silent><leader>lc :call LanguageClient#textDocument_completion()<CR>
-nnoremap <silent><leader>lh :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent><leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
-nnoremap <silent><leader>lm :call LanguageClient_contextMenu()<CR>
-nnoremap <silent> <leader>ll :call LanguageClientRestart()<CR>
+" nvim-lspconfig, nvim-cmp, cmp-nvim-lsp, LuaSnip
+lua <<EOF
+local lspconfig = require('lspconfig')
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
-function LanguageClientRestart()
-  LanguageClientStop
-  sleep 1
-  LanguageClientStart
-endfunction
+local on_attach = function(_, bufnr)
+  local opts = { buffer = bufnr }
+  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+  vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+  vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+  vim.keymap.set('n', '<leader>ld', vim.lsp.buf.type_definition, opts)
+  vim.keymap.set('n', '<leader>ln', vim.lsp.buf.rename, opts)
+  vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action, opts)
+end
 
-" deoplete.vim
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_camel_case = 0
-let g:deoplete#enable_ignore_case = 0
+local servers = { 'solargraph', 'rust_analyzer', 'tsserver' }
+for _, lsp in ipairs(servers) do
+  lspconfig[lsp].setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+  }
+end
 
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function() abort
-  return deoplete#close_popup() . "\<CR>"
-endfunction
-call deoplete#custom#option('_', {
-  \ 'max_list': '30',
-  \ 'auto_complete_delay': 0,
-  \ 'auto_complete_start_length': 1,
-  \ 'enable_refresh_always': 0,
-  \ 'enable_buffer_path': 1,
-  \ 'enable_smart_case': 1,
-  \ })
+local luasnip = require 'luasnip'
 
-" neosnippet.vim
-" imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-" smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-" xmap <C-k>     <Plug>(neosnippet_expand_target)
-" if has('conceal')
-"   set conceallevel=2 concealcursor=niv
-" endif
+local cmp = require 'cmp'
+cmp.setup {
+  snippet = {
+    expand = function(args)
+      luasnip.lsp_expand(args.body)
+    end,
+  },
+  mapping = cmp.mapping.preset.insert({
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.close(),
+    ['<CR>'] = cmp.mapping.confirm {
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true,
+    },
+    ['<Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
+    ['<S-Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
+  }),
+  sources = {
+    { name = 'nvim_lsp' },
+    { name = 'luasnip' },
+  },
+}
+EOF
 
 " lexima.vim
 let g:lexima_no_default_rules = 1
