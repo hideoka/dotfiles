@@ -56,8 +56,9 @@ Plug 'bluz71/vim-nightfly-guicolors'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
-" Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'hrsh7th/cmp-buffer'
 Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
 
 call plug#end()
 
@@ -174,10 +175,10 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 
-local cmp = require 'cmp'
-cmp.setup {
+cmp.setup({
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
@@ -211,11 +212,13 @@ cmp.setup {
       end
     end, { 'i', 's' }),
   }),
-  sources = {
+  sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
-  },
-}
+  }, {
+    { name = 'buffer' },
+  })
+})
 EOF
 
 " lexima.vim
