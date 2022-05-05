@@ -116,8 +116,8 @@ let g:ale_linters = {
   \ }
 let g:ale_fixers = {
   \ '*': ['remove_trailing_lines', 'trim_whitespace'],
-  \ 'javascript': ['eslint'],
-  \ 'typescript': ['eslint'],
+  \ 'javascript': ['prettier'],
+  \ 'typescript': ['prettier'],
   \ }
 let g:ale_sign_column_always = 1
 let g:ale_echo_msg_error_str = 'E'
