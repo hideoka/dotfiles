@@ -30,7 +30,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-rails'
 Plug 'machakann/vim-sandwich'
-Plug 'cocopon/iceberg.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'mattn/emmet-vim', { 'for': ['html', 'eruby', 'vue', 'javascript', 'typescript.tsx'] }
 Plug 'w0rp/ale'
