@@ -62,12 +62,12 @@ call plug#end()
 
 " nvim-treesitter
 lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained",
+ require'nvim-treesitter.configs'.setup {
+  ensure_installed = "all",
   highlight = {
     enable = true,
   },
-}
+ }
 EOF
 
 " nerdtree
