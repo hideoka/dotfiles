@@ -1,8 +1,3 @@
-let g:pipenv_path = '/.pyenv/versions/py3nvim/bin/python'
-
-let g:python3_host_prog = $HOME . g:pipenv_path
-let g:python2_host_prog = ''
-
 let g:mapleader = "\<Space>"
 nnoremap <silent> <leader>R :source $MYVIMRC<CR>
 nnoremap <silent> <leader>r <C-l>
