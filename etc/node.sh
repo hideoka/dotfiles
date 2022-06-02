@@ -14,4 +14,4 @@ eval "$(nodenv init -)"
 nodenv install "$NODE_VERSION"
 nodenv global "$NODE_VERSION"
 
-npm install -g npm typescript ts-node typescript-language-server
+npm install -g typescript ts-node typescript-language-server
