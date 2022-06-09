@@ -36,3 +36,5 @@ fi
 eval "$(pyenv virtualenv-init -)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+[ -f "/home/hideaki/.ghcup/env" ] && source "/home/hideaki/.ghcup/env" # ghcup-env
