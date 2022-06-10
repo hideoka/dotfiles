@@ -107,11 +107,13 @@ let g:ale_linters = {
   \ 'javascript': ['eslint'],
   \ 'typescript': ['eslint'],
   \ 'rust': [],
+  \ 'haskell': [],
   \ }
 let g:ale_fixers = {
   \ '*': ['remove_trailing_lines', 'trim_whitespace'],
   \ 'javascript': ['prettier'],
   \ 'typescript': ['prettier'],
+  \ 'haskell': [],
   \ }
 let g:ale_sign_column_always = 1
 let g:ale_echo_msg_error_str = 'E'
@@ -159,7 +161,7 @@ local on_attach = function(_, bufnr)
   vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action, opts)
 end
 
-local servers = { 'solargraph', 'rust_analyzer', 'tsserver' }
+local servers = { 'solargraph', 'rust_analyzer', 'tsserver', 'hls' }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = on_attach,
