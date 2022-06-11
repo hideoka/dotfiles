@@ -159,6 +159,7 @@ local on_attach = function(_, bufnr)
   vim.keymap.set('n', '<leader>ld', vim.lsp.buf.type_definition, opts)
   vim.keymap.set('n', '<leader>ln', vim.lsp.buf.rename, opts)
   vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action, opts)
+  vim.keymap.set('n', '<leader>lf', vim.lsp.buf.formatting, opts)
 end
 
 local servers = { 'solargraph', 'rust_analyzer', 'tsserver', 'hls' }
