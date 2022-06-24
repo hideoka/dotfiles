@@ -162,13 +162,31 @@ local on_attach = function(_, bufnr)
   vim.keymap.set('n', '<leader>lf', vim.lsp.buf.formatting, opts)
 end
 
-local servers = { 'solargraph', 'rust_analyzer', 'tsserver', 'hls' }
+local servers = { 'solargraph', 'tsserver', 'hls' }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = on_attach,
     capabilities = capabilities,
   }
 end
+
+lspconfig['rust_analyzer'].setup {
+  on_attach = on_attach,
+  settings = {
+    ["rust-analyzer"] = {
+      assist = {
+          importGranularity = "module",
+          importPrefix = "self",
+      },
+      cargo = {
+          loadOutDirsFromCheck = true
+      },
+      procMacro = {
+          enable = true
+      },
+    }
+  }
+}
 
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
