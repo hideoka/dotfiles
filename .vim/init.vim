@@ -20,7 +20,6 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tomtom/tcomment_vim'
-Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-rails'
@@ -51,18 +50,24 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'lukas-reineke/indent-blankline.nvim'
 
 call plug#end()
 
 
 " nvim-treesitter
 lua <<EOF
- require'nvim-treesitter.configs'.setup {
-  ensure_installed = "all",
-  highlight = {
-    enable = true,
-  },
- }
+  require'nvim-treesitter.configs'.setup {
+    ensure_installed = "all",
+    highlight = {
+      enable = true,
+    },
+  }
+
+  require("indent_blankline").setup {
+    show_end_of_line = true,
+    space_char_blankline = " ",
+  }
 EOF
 
 " nerdtree
@@ -302,7 +307,7 @@ set laststatus=2
 set showcmd
 set display=lastline
 set list
-set listchars=tab:»-,trail:-,eol:$,extends:»,precedes:«,nbsp:%
+set listchars=tab:»-,trail:-,eol:$,extends:»,precedes:«,nbsp:%,space:⋅
 set expandtab
 set shiftwidth=2
 set showmatch
