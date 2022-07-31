@@ -167,13 +167,25 @@ local on_attach = function(_, bufnr)
   vim.keymap.set('n', '<leader>lf', vim.lsp.buf.formatting, opts)
 end
 
-local servers = { 'solargraph', 'tsserver', 'hls' }
+local servers = { 'solargraph', 'hls' }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = on_attach,
     capabilities = capabilities,
   }
 end
+
+lspconfig['tsserver'].setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  root_dir = lspconfig.util.root_pattern("tsconfig.json"),
+}
+
+lspconfig['denols'].setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  root_dir = lspconfig.util.root_pattern("deno.json"),
+}
 
 lspconfig['rust_analyzer'].setup {
   on_attach = on_attach,
