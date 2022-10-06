@@ -83,6 +83,7 @@ nnoremap <silent> <leader>m :<C-u>Marks<CR>
 nnoremap          <leader>d :<C-u>Rg!<Space>
 nnoremap          <leader>s :<C-u>Rg!<Space><C-R><C-W><CR>
 xnoremap          <leader>d y:Rg!<Space><C-R>"<CR>
+let g:fzf_preview_window = ['right:50%', 'ctrl-w']
 
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
