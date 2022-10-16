@@ -55,6 +55,9 @@ Plug 'hrsh7th/cmp-path'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 
 call plug#end()
 
@@ -93,6 +96,54 @@ command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always --smart-case --hidden -- '.shellescape(<q-args>), 1,
   \   fzf#vim#with_preview(), <bang>0)
+
+" terescope
+nnoremap <leader>tf :<C-u>Telescope find_files<CR>
+nnoremap <leader>ts :<C-u>Telescope grep_string<CR>
+nnoremap <leader>td :<C-u>Telescope grep_string<Space>search=
+nnoremap <leader>t; :<C-u>Telescope buffers<CR>
+nnoremap <leader>tb :<C-u>Telescope current_buffer_fuzzy_find<CR>
+nnoremap <leader>tq :<C-u>Telescope quickfix<CR>
+nnoremap <leader>tQ :<C-u>Telescope quickfixhistory<CR>
+
+lua << EOF
+local telescope = require("telescope")
+local actions = require("telescope.actions")
+telescope.setup{
+  defaults = {
+    mappings = {
+      i = {
+        ["<esc>"] = actions.close,
+        ["<C-s>"] = actions.to_fuzzy_refine
+      },
+    },
+    vimgrep_arguments = {
+      'rg',
+      '--no-heading',
+      '--with-filename',
+      '--line-number',
+      '--column',
+      '--smart-case',
+      '--hidden',
+      '--glob=!.git/'
+    }
+  },
+  pickers = {
+    find_files = {
+      find_command = {'rg', '--files', '--smart-case', '--hidden', '--glob=!.git/'},
+    }
+  },
+  extensions = {
+    fzf = {
+      fuzzy = true,
+      override_generic_sorter = true,
+      override_file_sorter = true,
+      case_mode = 'smart_case',
+    }
+  }
+}
+telescope.load_extension('fzf')
+EOF
 
 " vim-fugitive
 nnoremap <silent> <Leader>gs :<C-u>Gstatus<CR>
