@@ -82,14 +82,14 @@ let NERDTreeShowHidden=1
 nnoremap <silent> <leader>e :<C-u>NERDTreeToggle<CR>
 
 " fzf
-nnoremap <silent> <leader>; :<C-u>Buffers<CR>
-nnoremap <silent> <leader>f :<C-u>Files<CR>
-nnoremap <silent> <leader>gf :<C-u>GFiles?<CR>
-nnoremap <silent> <leader>b :<C-u>BLines<CR>
-nnoremap <silent> <leader>m :<C-u>Marks<CR>
-nnoremap          <leader>d :<C-u>Rg!<Space>
-nnoremap          <leader>s :<C-u>Rg!<Space><C-R><C-W><CR>
-xnoremap          <leader>d y:Rg!<Space><C-R>"<CR>
+nnoremap <silent> <leader>t; :<C-u>Buffers<CR>
+nnoremap <silent> <leader>tf :<C-u>Files<CR>
+nnoremap <silent> <leader>tgf :<C-u>GFiles?<CR>
+nnoremap <silent> <leader>tb :<C-u>BLines<CR>
+nnoremap <silent> <leader>tm :<C-u>Marks<CR>
+nnoremap          <leader>td :<C-u>Rg!<Space>
+nnoremap          <leader>ts :<C-u>Rg!<Space><C-R><C-W><CR>
+xnoremap          <leader>td y:Rg!<Space><C-R>"<CR>
 let g:fzf_preview_window = ['right:50%', 'ctrl-w']
 
 command! -bang -nargs=* Rg
@@ -98,13 +98,13 @@ command! -bang -nargs=* Rg
   \   fzf#vim#with_preview(), <bang>0)
 
 " terescope
-nnoremap <leader>tf :<C-u>Telescope find_files<CR>
-nnoremap <leader>ts :<C-u>Telescope grep_string<CR>
-nnoremap <leader>td :<C-u>Telescope grep_string<Space>search=
-nnoremap <leader>t; :<C-u>Telescope buffers<CR>
-nnoremap <leader>tb :<C-u>Telescope current_buffer_fuzzy_find<CR>
-nnoremap <leader>tq :<C-u>Telescope quickfix<CR>
-nnoremap <leader>tQ :<C-u>Telescope quickfixhistory<CR>
+nnoremap <leader>f :<C-u>Telescope find_files<CR>
+nnoremap <leader>s :<C-u>Telescope grep_string<CR>
+nnoremap <leader>d :<C-u>Telescope grep_string<Space>search=
+nnoremap <leader>; :<C-u>Telescope buffers<CR>
+nnoremap <leader>b :<C-u>Telescope current_buffer_fuzzy_find<CR>
+nnoremap <leader>q :<C-u>Telescope quickfix<CR>
+nnoremap <leader>Q :<C-u>Telescope quickfixhistory<CR>
 
 lua << EOF
 local telescope = require("telescope")
