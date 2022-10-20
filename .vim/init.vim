@@ -85,7 +85,7 @@ nnoremap <silent> <leader>e :<C-u>NERDTreeToggle<CR>
 nnoremap <silent> <leader>t; :<C-u>Buffers<CR>
 nnoremap <silent> <leader>tf :<C-u>Files<CR>
 nnoremap <silent> <leader>tgf :<C-u>GFiles?<CR>
-nnoremap <silent> <leader>tb :<C-u>BLines<CR>
+nnoremap <silent> <leader>b :<C-u>BLines<CR>
 nnoremap <silent> <leader>tm :<C-u>Marks<CR>
 nnoremap          <leader>td :<C-u>Rg!<Space>
 nnoremap          <leader>ts :<C-u>Rg!<Space><C-R><C-W><CR>
@@ -102,7 +102,7 @@ nnoremap <leader>f :<C-u>Telescope find_files<CR>
 nnoremap <leader>s :<C-u>Telescope grep_string<CR>
 nnoremap <leader>d :<C-u>Telescope grep_string<Space>search=
 nnoremap <leader>; :<C-u>Telescope buffers<CR>
-nnoremap <leader>b :<C-u>Telescope current_buffer_fuzzy_find<CR>
+nnoremap <leader>tb :<C-u>Telescope current_buffer_fuzzy_find<CR>
 nnoremap <leader>q :<C-u>Telescope quickfix<CR>
 nnoremap <leader>Q :<C-u>Telescope quickfixhistory<CR>
 
