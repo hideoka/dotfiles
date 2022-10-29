@@ -391,6 +391,7 @@ set noswapfile
 set title
 set number
 set whichwrap=b,s,h,l,<,>,[,],~
+set mouse=
 
 "----------------------------------------
 " KEYMAP
