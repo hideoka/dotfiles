@@ -114,8 +114,12 @@ telescope.setup{
     mappings = {
       i = {
         ["<esc>"] = actions.close,
-        ["<C-s>"] = actions.to_fuzzy_refine
+        ["<C-s>"] = actions.to_fuzzy_refine,
+        ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist
       },
+      n = {
+        ["<C-q>"] = actions.send_to_qflist + actions.open_qflist
+      }
     },
     vimgrep_arguments = {
       'rg',
