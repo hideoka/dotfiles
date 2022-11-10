@@ -100,7 +100,7 @@ command! -bang -nargs=* Rg
 " terescope
 nnoremap <leader>f :<C-u>Telescope find_files<CR>
 nnoremap <leader>s :<C-u>Telescope grep_string<CR>
-nnoremap <leader>d :<C-u>Telescope grep_string<Space>search=
+nnoremap <leader>d :<C-u>Telescope grep_string<Space>search=<CR>
 nnoremap <leader>; :<C-u>Telescope buffers<CR>
 nnoremap <leader>tb :<C-u>Telescope current_buffer_fuzzy_find<CR>
 nnoremap <leader>q :<C-u>Telescope quickfix<CR>
