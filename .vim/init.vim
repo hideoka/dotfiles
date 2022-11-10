@@ -109,6 +109,7 @@ nnoremap <leader>Q :<C-u>Telescope quickfixhistory<CR>
 lua << EOF
 local telescope = require("telescope")
 local actions = require("telescope.actions")
+local action_layout = require("telescope.actions.layout")
 telescope.setup{
   defaults = {
     layout_config = {
@@ -122,10 +123,12 @@ telescope.setup{
       i = {
         ["<esc>"] = actions.close,
         ["<C-s>"] = actions.to_fuzzy_refine,
-        ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist
+        ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+        ["<C-t>"] = action_layout.toggle_preview
       },
       n = {
-        ["<C-q>"] = actions.send_to_qflist + actions.open_qflist
+        ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
+        ["<C-t>"] = action_layout.toggle_preview
       }
     },
     vimgrep_arguments = {
