@@ -95,7 +95,7 @@ let g:fzf_preview_window = ['right:50%', 'ctrl-w']
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always --smart-case --hidden -- '.shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview(), <bang>0)
+  \   fzf#vim#with_preview({'options': ['--layout=default']}), <bang>0)
 
 " terescope
 nnoremap <leader>f :<C-u>Telescope find_files<CR>
