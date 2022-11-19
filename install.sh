@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -Ceuo pipefail
 DOTFILE_PATH=$(cd "$(dirname "$0")" && pwd)
-PYTHON_VERSION=3.10.4
+PYTHON_VERSION=3.11.0
 RUBY_VERSION=3.1.2
-NODE_VERSION=16.14.0
+NODE_VERSION=18.12.1
 TF_VERSION=latest
 
 if [[ $(uname) == 'Darwin' ]]; then
