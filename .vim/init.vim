@@ -239,7 +239,7 @@ local on_attach = function(_, bufnr)
   vim.keymap.set('n', '<leader>lf', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
-local servers = { 'solargraph', 'hls' }
+local servers = { 'solargraph', 'hls', 'pylsp' }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = on_attach,
