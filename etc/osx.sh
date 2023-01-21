@@ -17,6 +17,7 @@ brew install xclip
 brew install gawk
 brew install gnu-sed
 brew install redis
+brew install libyaml
 brew tap sanemat/font
 brew install ricty
 cp -f /usr/local/opt/ricty/share/fonts/Ricty*.ttf ~/Library/Fonts/

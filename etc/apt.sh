@@ -26,6 +26,7 @@ sudo apt -y install curl\
                     libpq-dev\
                     clang\
                     lld\
+                    libyaml-dev\
                     xclip
 
 
