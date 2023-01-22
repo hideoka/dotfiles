@@ -22,7 +22,6 @@ endif
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -58,6 +57,7 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
+Plug 'nvim-telescope/telescope-file-browser.nvim'
 
 call plug#end()
 
@@ -76,10 +76,6 @@ lua <<EOF
     space_char_blankline = " ",
   }
 EOF
-
-" nerdtree
-let NERDTreeShowHidden=1
-nnoremap <silent> <leader>e :<C-u>NERDTreeToggle<CR>
 
 " fzf
 nnoremap <silent> <leader>t; :<C-u>Buffers<CR>
@@ -105,6 +101,7 @@ nnoremap <leader>; :<C-u>Telescope buffers<CR>
 nnoremap <leader>tb :<C-u>Telescope current_buffer_fuzzy_find<CR>
 nnoremap <leader>q :<C-u>Telescope quickfix<CR>
 nnoremap <leader>Q :<C-u>Telescope quickfixhistory<CR>
+nnoremap <leader>e :<C-u>Telescope file_browser<CR>
 
 lua << EOF
 local telescope = require("telescope")
@@ -153,10 +150,16 @@ telescope.setup{
       override_generic_sorter = true,
       override_file_sorter = true,
       case_mode = 'smart_case',
-    }
+    },
+    file_browser = {
+      theme = "ivy",
+      hijack_netrw = true,
+      hidden = true
+    },
   }
 }
 telescope.load_extension('fzf')
+telescope.load_extension('file_browser')
 EOF
 
 " vim-fugitive
