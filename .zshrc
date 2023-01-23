@@ -11,7 +11,7 @@ export PATH="$HOME/.nodenv/bin:$PATH"
 export PATH="$HOME/.tfenv/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="/usr/local/go/bin:$PATH"
-export GOPATH=$HOME/projects/go
+export PATH="$HOME/go/bin:$PATH"
 
 source $DOTFILE_PATH/.zsh/setopt.zsh
 source $DOTFILE_PATH/.zsh/fzf.zsh
