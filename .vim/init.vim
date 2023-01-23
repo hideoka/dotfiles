@@ -58,6 +58,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 Plug 'nvim-telescope/telescope-file-browser.nvim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
 
@@ -185,6 +186,7 @@ let g:ale_linters = {
   \ 'javascript': ['eslint'],
   \ 'typescript': ['eslint'],
   \ 'rust': [],
+  \ 'go': [],
   \ 'haskell': [],
   \ }
 let g:ale_fixers = {
@@ -285,6 +287,21 @@ lspconfig['rust_analyzer'].setup {
   }
 }
 
+lspconfig['gopls'].setup {
+  on_attach = on_attach,
+  cmd = {"gopls", "serve"},
+  filetypes = {"go", "gomod"},
+  root_dir = lspconfig.util.root_pattern("go.work", "go.mod", ".git"),
+  settings = {
+    gopls = {
+      analyses = {
+        unusedparams = true,
+      },
+      staticcheck = true,
+    }
+  }
+}
+
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 
@@ -343,6 +360,10 @@ let g:rustfmt_autosave = 1
 " easymotion
 let g:EasyMotion_smartcase = 1
 nmap s <Plug>(easymotion-overwin-f2)
+
+" vim-go
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
 
 "-------------------------------------------------------------------------
 " COLOR SCHEME
