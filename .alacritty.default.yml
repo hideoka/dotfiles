@@ -104,7 +104,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: HackGenConsoleNF
+    family: HackGen Console NF
 
     # The `style` can be specified to pick a specific face.
     #style: Regular
@@ -115,7 +115,7 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: HackGenConsoleNF
+    family: HackGen Console NF
 
     # The `style` can be specified to pick a specific face.
     #style: Bold
@@ -126,7 +126,7 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: HackGenConsoleNF
+    family: HackGen Console NF
 
     # The `style` can be specified to pick a specific face.
     #style: Italic
@@ -137,27 +137,27 @@ font:
     #
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: HackGenConsoleNF
+    family: HackGen Console NF
 
     # The `style` can be specified to pick a specific face.
     #style: Bold Italic
 
   # Point size
-  size: 13.0
+  size: 14.0
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
   # spacing.
   offset:
-    x: 2
-    y: 2
+    x: 1
+    y: 0
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the
   # right, increasing `y` moves the glyph upward.
   glyph_offset:
     x: 1
-    y: 1
+    y: 0
 
   # Thin stroke font rendering (macOS only)
   #
