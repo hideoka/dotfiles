@@ -4,6 +4,7 @@
 - make
 - git
 - alacritty
+- HackGen Console NF font
 
 ## make command
 ```
