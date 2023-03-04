@@ -12,13 +12,6 @@ elif [[ $(uname) == 'Linux' ]]; then
   source "$DOTFILE_PATH"/etc/apt.sh
 fi
 
-# powerline font
-git clone git@github.com:powerline/fonts.git --depth=1 "$HOME"/fonts
-cd "$HOME"/fonts
-./install.sh
-cd ..
-rm -rf fonts
-
 # neovim
 cd "$(dirname "$DOTFILE_PATH")"
 git clone https://github.com/neovim/neovim
