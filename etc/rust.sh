@@ -6,7 +6,7 @@ rustup update
 rustup component add rustfmt clippy
 
 cargo install ripgrep
-cargo install --locked bat
+cargo install bat --locked
 cargo install git-delta
 cargo install exa
 cargo install tokei
