@@ -1,0 +1,5 @@
+\timing
+\x auto
+\pset null '[NULL]'
+set timezone to 'Asia/Tokyo';
+\set COMP_KEYWORD_CASE upper 
