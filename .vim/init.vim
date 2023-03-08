@@ -69,6 +69,7 @@ lua <<EOF
     ensure_installed = "all",
     highlight = {
       enable = true,
+      disable = { "embedded_template" },
     },
   }
 
