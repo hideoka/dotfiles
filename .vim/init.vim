@@ -144,6 +144,16 @@ telescope.setup{
   pickers = {
     find_files = {
       find_command = {'rg', '--files', '--smart-case', '--hidden', '--glob=!.git/'},
+    },
+    buffers = {
+      mappings = {
+        i = {
+          ["<c-d>"] = "delete_buffer",
+        },
+        n = {
+          ["<c-d>"] = "delete_buffer",
+        }
+      }
     }
   },
   extensions = {
