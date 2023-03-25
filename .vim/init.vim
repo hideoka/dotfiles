@@ -181,6 +181,9 @@ lua << EOF
     renderer = {
       group_empty = true,
     },
+    git = {
+      ignore = false
+    }
   })
 EOF
 
