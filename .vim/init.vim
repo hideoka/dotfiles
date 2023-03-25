@@ -57,8 +57,9 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
-Plug 'nvim-telescope/telescope-file-browser.nvim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'nvim-tree/nvim-web-devicons'
+Plug 'nvim-tree/nvim-tree.lua'
 
 call plug#end()
 
@@ -103,7 +104,6 @@ nnoremap <leader>; :<C-u>Telescope buffers<CR>
 nnoremap <leader>tb :<C-u>Telescope current_buffer_fuzzy_find<CR>
 nnoremap <leader>q :<C-u>Telescope quickfix<CR>
 nnoremap <leader>Q :<C-u>Telescope quickfixhistory<CR>
-nnoremap <leader>e :<C-u>Telescope file_browser<CR>
 
 lua << EOF
 local telescope = require("telescope")
@@ -162,16 +162,26 @@ telescope.setup{
       override_generic_sorter = true,
       override_file_sorter = true,
       case_mode = 'smart_case',
-    },
-    file_browser = {
-      theme = "ivy",
-      hijack_netrw = true,
-      hidden = true
-    },
+    }
   }
 }
 telescope.load_extension('fzf')
-telescope.load_extension('file_browser')
+EOF
+
+" nvim-tree.lua
+nnoremap <leader>e :<C-u>NvimTreeToggle<CR>
+lua << EOF
+  vim.g.loaded_netrw = 1
+  vim.g.loaded_netrwPlugin = 1
+
+  vim.opt.termguicolors = true
+
+  require("nvim-tree").setup({
+    sort_by = "case_sensitive",
+    renderer = {
+      group_empty = true,
+    },
+  })
 EOF
 
 " vim-fugitive
