@@ -451,6 +451,9 @@ set title
 set number
 set whichwrap=b,s,h,l,<,>,[,],~
 set mouse=
+set spell
+set spelllang=en_us
+
 
 "----------------------------------------
 " KEYMAP
