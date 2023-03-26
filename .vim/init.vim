@@ -455,7 +455,7 @@ set number
 set whichwrap=b,s,h,l,<,>,[,],~
 set mouse=
 set spell
-set spelllang=en_us
+set spelllang=en_us,cjk
 
 
 "----------------------------------------
