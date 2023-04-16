@@ -469,6 +469,8 @@ nnoremap <silent> Y y$
 inoremap <silent> jj <ESC>
 inoremap <silent> <C-f> <Right>
 inoremap <silent> <C-b> <Left>
+inoremap <silent> <C-n> <Down>
+inoremap <silent> <C-p> <Up>
 inoremap <silent> <C-r>; <C-r>0
 nnoremap <silent> <C-h> <C-w>h
 nnoremap <silent> <C-j> <C-w>j
