@@ -62,6 +62,7 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCM
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'nvim-tree/nvim-tree.lua'
+Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 
 call plug#end()
 
@@ -378,10 +379,24 @@ cmp.setup({
 })
 EOF
 
+" toggleterm.nvim
+lua <<EOF
+require"toggleterm".setup{}
+function _G.set_terminal_keymaps()
+  local opts = {buffer = 0}
+  vim.keymap.set('t', '<esc>', [[<Cmd>wincmd h<CR>]], opts)
+end
+
+vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
+EOF
+nnoremap <silent> <leader>tt :<C-u>ToggleTerm direction=float<CR>
+
 " Comment.nvim
 lua <<EOF
 require('Comment').setup{}
 EOF
+
+
 " lexima.vim
 let g:lexima_no_default_rules = 1
 call lexima#set_default_rules()
