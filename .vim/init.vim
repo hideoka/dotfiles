@@ -22,7 +22,7 @@ endif
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'tomtom/tcomment_vim'
+Plug 'numToStr/Comment.nvim'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-rails'
@@ -378,6 +378,10 @@ cmp.setup({
 })
 EOF
 
+" Comment.nvim
+lua <<EOF
+require('Comment').setup{}
+EOF
 " lexima.vim
 let g:lexima_no_default_rules = 1
 call lexima#set_default_rules()
