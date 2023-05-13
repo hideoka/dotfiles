@@ -64,6 +64,7 @@ Plug 'nvim-tree/nvim-web-devicons'
 Plug 'nvim-tree/nvim-tree.lua'
 Plug 'kevinhwang91/nvim-bqf'
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
+Plug 'ntpeters/vim-better-whitespace'
 
 call plug#end()
 
@@ -113,6 +114,7 @@ lua << EOF
 local telescope = require("telescope")
 local actions = require("telescope.actions")
 local action_layout = require("telescope.actions.layout")
+
 telescope.setup{
   defaults = {
     layout_config = {
@@ -414,6 +416,11 @@ nmap s <Plug>(easymotion-overwin-f2)
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
 
+" vim-better-whitespace
+let g:strip_whitespace_on_save=1
+let g:strip_whitespace_confirm=0
+let g:strip_whitespace_confirm=0
+
 "-------------------------------------------------------------------------
 " COLOR SCHEME
 "-------------------------------------------------------------------------
@@ -529,7 +536,7 @@ cnoremap <C-d> <Delete>
 cnoremap <C-r>; <C-r>0
 
 "----------------------------------------
-" FILE TYPE TRIGGERS
+" FILE TYPE AND MODE TRIGGERS
 "----------------------------------------
 
 " Makefile indent
@@ -542,4 +549,9 @@ augroup END
 augroup RailsCommands
   autocmd!
   autocmd FileType eruby inoremap <silent><C-s> :<C-u><%=  %><Left><Left><Left>
+augroup END
+
+augroup vimrc
+  autocmd!
+  autocmd TermOpen * :DisableWhitespace
 augroup END
