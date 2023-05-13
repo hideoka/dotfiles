@@ -62,6 +62,7 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCM
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'nvim-tree/nvim-tree.lua'
+Plug 'kevinhwang91/nvim-bqf'
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 
 call plug#end()
