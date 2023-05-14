@@ -63,7 +63,6 @@ Plug 'nvim-tree/nvim-web-devicons'
 Plug 'nvim-tree/nvim-tree.lua'
 Plug 'kevinhwang91/nvim-bqf'
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
-Plug 'ntpeters/vim-better-whitespace'
 
 call plug#end()
 
@@ -389,11 +388,6 @@ nmap s <Plug>(easymotion-overwin-f2)
 " vim-go
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
-
-" vim-better-whitespace
-let g:strip_whitespace_on_save=1
-let g:strip_whitespace_confirm=0
-let g:strip_whitespace_confirm=0
 
 "-------------------------------------------------------------------------
 " COLOR SCHEME
