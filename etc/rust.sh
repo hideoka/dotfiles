@@ -16,6 +16,7 @@ cargo install starship --locked
 cargo install sqlx-cli
 catgo install cargo-watch
 cargo install sheldon --locked
+cargo install rtx-cli
 
 cd "$(dirname "$DOTFILE_PATH")"
 git clone https://github.com/rust-analyzer/rust-analyzer.git && cd rust-analyzer

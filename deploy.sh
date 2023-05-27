@@ -4,6 +4,8 @@ DOTFILE_PATH=$(cd "$(dirname "$0")" && pwd)
 
 mkdir -p "$HOME"/.config/alacritty
 mkdir -p "$HOME"/.config/pgcli
+mkdir -p "$HOME"/.config/sheldon
+mkdir -p "$HOME"/.config/rtx
 
 for f in .??*
 do
