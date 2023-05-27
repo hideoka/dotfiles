@@ -21,6 +21,8 @@ do
     ln -snf "$DOTFILE_PATH/$f" ~/.config/pgcli/config
   elif [[ $f == ".starship.toml" ]]; then
     ln -snf "$DOTFILE_PATH/$f" ~/.config/starship.toml
+  elif [[ $f == ".sheldon.toml" ]]; then
+    ln -snf "$DOTFILE_PATH/$f" ~/.config/sheldon/plugins.toml
   else
     ln -snf "$DOTFILE_PATH/$f" ~/"$f"
   fi

@@ -2,6 +2,7 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 DOTFILE_PATH="$(dirname $(readlink $HOME/.zshrc))"
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=240"
 
 export PATH="$HOME/.local/bin:$PATH"
 export PYENV_ROOT="$HOME/.pyenv"
@@ -16,13 +17,11 @@ export PATH="$HOME/go/bin:$PATH"
 source $DOTFILE_PATH/.zsh/setopt.zsh
 source $DOTFILE_PATH/.zsh/fzf.zsh
 source $DOTFILE_PATH/.zsh/alias.zsh
-source $DOTFILE_PATH/.zsh/zplug.zsh
+eval "$(sheldon source)"
 
 if [[ -f $HOME/.local_zshrc.zsh ]];then
   source $HOME/.local_zshrc.zsh
 fi
-
-autoload -U compinit; compinit
 
 eval "$(starship init zsh)"
 
@@ -35,6 +34,8 @@ if command -v pyenv 1>/dev/null 2>&1; then
 fi
 eval "$(pyenv virtualenv-init -)"
 
+[ -f "/home/hideaki/.ghcup/env" ] && source "/home/hideaki/.ghcup/env" # ghcup-env
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-[ -f "/home/hideaki/.ghcup/env" ] && source "/home/hideaki/.ghcup/env" # ghcup-env
+autoload -U compinit; compinit
