@@ -23,6 +23,8 @@ do
     ln -snf "$DOTFILE_PATH/$f" ~/.config/starship.toml
   elif [[ $f == ".sheldon.toml" ]]; then
     ln -snf "$DOTFILE_PATH/$f" ~/.config/sheldon/plugins.toml
+  elif [[ $f == ".rtx.toml" ]]; then
+    ln -snf "$DOTFILE_PATH/$f" ~/.config/rtx/config.toml
   else
     ln -snf "$DOTFILE_PATH/$f" ~/"$f"
   fi
