@@ -1,10 +1,6 @@
 #!/usr/bin/env bash
 set -Ceuo pipefail
 DOTFILE_PATH=$(cd "$(dirname "$0")" && pwd)
-PYTHON_VERSION=3.11.1
-RUBY_VERSION=3.2.0
-NODE_VERSION=18.13.0
-TF_VERSION=latest
 
 if [[ $(uname) == 'Darwin' ]]; then
   source "$DOTFILE_PATH"/etc/osx.sh
