@@ -9,6 +9,8 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="/usr/local/go/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 
+export NODE_OPTIONS=--dns-result-order=ipv4first
+
 source $DOTFILE_PATH/.zsh/setopt.zsh
 source $DOTFILE_PATH/.zsh/fzf.zsh
 source $DOTFILE_PATH/.zsh/alias.zsh
