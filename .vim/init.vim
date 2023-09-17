@@ -52,7 +52,7 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 " Plug 'f3fora/cmp-spell'
-Plug 'j-hui/fidget.nvim'
+Plug 'j-hui/fidget.nvim', { 'tag': 'legacy' }
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'lukas-reineke/indent-blankline.nvim'
