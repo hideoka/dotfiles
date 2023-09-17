@@ -158,7 +158,9 @@ telescope.setup{
         n = {
           ["<c-d>"] = "delete_buffer",
         }
-      }
+      },
+      sort_lastused = true,
+      sort_mru = true
     }
   },
   extensions = {
