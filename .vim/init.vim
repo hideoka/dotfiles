@@ -159,7 +159,6 @@ telescope.setup{
           ["<c-d>"] = "delete_buffer",
         }
       },
-      sort_lastused = true,
       sort_mru = true
     }
   },
