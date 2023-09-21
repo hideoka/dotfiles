@@ -515,6 +515,11 @@ augroup MakefileIndent
   autocmd bufNewFile,BufRead Makefile setlocal tabstop=4 shiftwidth=4 softtabstop=4
 augroup END
 
+augroup RustfileIndent
+  autocmd!
+  autocmd bufNewFile,BufRead Rust setlocal tabstop=4 shiftwidth=4 softtabstop=4
+augroup END
+
 " Rails Command complete
 augroup RailsCommands
   autocmd!
