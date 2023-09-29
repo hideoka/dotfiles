@@ -9,10 +9,12 @@ elif [[ $(uname) == 'Linux' ]]; then
 fi
 
 # neovim
-cd "$(dirname "$DOTFILE_PATH")"
-git clone https://github.com/neovim/neovim
-cd neovim && make CMAKE_BUILD_TYPE=Release
-sudo make install
+if [[ $(uname) == 'Linux' ]]; then
+  cd "$(dirname "$DOTFILE_PATH")"
+  git clone https://github.com/neovim/neovim
+  cd neovim && make CMAKE_BUILD_TYPE=Release
+  sudo make install
+fi
 
 source "$DOTFILE_PATH"/etc/rust.sh "$DOTFILE_PATH"
 rtx install
