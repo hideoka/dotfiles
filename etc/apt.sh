@@ -9,8 +9,6 @@ sudo apt -y install curl\
                     tmux\
                     tig\
                     vim\
-                    redis\
-                    fonts-ricty-diminished\
                     shellcheck\
                     ninja-build\
                     gettext\
