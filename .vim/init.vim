@@ -64,6 +64,9 @@ Plug 'nvim-tree/nvim-web-devicons'
 Plug 'nvim-tree/nvim-tree.lua'
 Plug 'kevinhwang91/nvim-bqf'
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
+Plug 'mfussenegger/nvim-lint'
 
 call plug#end()
 
@@ -79,6 +82,33 @@ lua <<EOF
   }
 
   require("ibl").setup ()
+EOF
+
+" mason
+lua <<EOF
+  require("mason").setup ()
+  require("mason-lspconfig").setup ()
+EOF
+
+" nvim-lint
+lua <<EOF
+  require('lint').linters_by_ft = {
+          sh = { 'shellcheck', 'cspell' },
+          bash = { 'shellcheck', 'cspell' },
+          zsh = { 'shellcheck', 'cspell' },
+          ruby = { 'cspell' },
+          rust = { 'cspell' },
+          javascript = { 'cspell' },
+          javascriptreact = { 'cspell' },
+          typescript = { 'cspell' },
+          typescriptreact = { 'cspell' },
+  }
+
+  vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+    callback = function()
+    require("lint").try_lint()
+  end,
+})
 EOF
 
 " fzf
