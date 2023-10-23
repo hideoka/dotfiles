@@ -104,6 +104,16 @@ lua <<EOF
           typescriptreact = { 'cspell' },
   }
 
+  local cspell = require('lint').linters.cspell
+  cspell.args = {
+    'lint',
+    '--no-color',
+    '--no-progress',
+    '--no-summary',
+    '-c',
+    '~/.config/cspell/cspell.config.yaml'
+  }
+
   vim.api.nvim_create_autocmd({ "BufWritePost" }, {
     callback = function()
     require("lint").try_lint()

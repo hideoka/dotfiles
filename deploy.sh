@@ -5,6 +5,7 @@ DOTFILE_PATH=$(cd "$(dirname "$0")" && pwd)
 mkdir -p "$HOME"/.config/alacritty
 mkdir -p "$HOME"/.config/sheldon
 mkdir -p "$HOME"/.config/rtx
+mkdir -p "$HOME"/.config/cspell
 
 for f in .??*
 do
@@ -24,6 +25,11 @@ do
     ln -snf "$DOTFILE_PATH/$f" ~/.config/sheldon/plugins.toml
   elif [[ $f == ".rtx.toml" ]]; then
     ln -snf "$DOTFILE_PATH/$f" ~/.config/rtx/config.toml
+  elif [[ $f == ".cspell.config.yaml" ]]; then
+    ln -snf "$DOTFILE_PATH/$f" ~/.config/cspell/cspell.config.yaml
+  elif [[ $f == ".cspell.default.txt" ]]; then
+    ln -snf "$DOTFILE_PATH/$f" ~/.config/cspell/cspell.default.txt
+    touch ~/.config/cspell/cspell.local.txt
   else
     ln -snf "$DOTFILE_PATH/$f" ~/"$f"
   fi
