@@ -110,6 +110,7 @@ lua <<EOF
     '--no-color',
     '--no-progress',
     '--no-summary',
+    '--show-suggestions',
     '-c',
     '~/.config/cspell/cspell.config.yaml'
   }
