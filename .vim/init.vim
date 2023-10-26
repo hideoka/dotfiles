@@ -286,7 +286,7 @@ local on_attach = function(_, bufnr)
   vim.keymap.set('n', '<leader>lf', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
-local servers = { 'solargraph', 'hls', 'pylsp' }
+local servers = { 'hls', 'pylsp' }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = on_attach,
@@ -298,6 +298,13 @@ lspconfig['tsserver'].setup {
   on_attach = on_attach,
   capabilities = capabilities,
   root_dir = lspconfig.util.root_pattern("tsconfig.json"),
+}
+
+lspconfig['solargraph'].setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  formatting = true,
+  root_dir = lspconfig.util.root_pattern("Gemfile", ".git"),
 }
 
 lspconfig['denols'].setup {
