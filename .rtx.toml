@@ -3,7 +3,3 @@ node = 'lts'
 ruby = '3.3'
 terraform = '1.4'
 python = "3.11"
-
-[plugins]
-ruby = 'https://github.com/asdf-vm/asdf-ruby'
-terraform = 'https://github.com/asdf-community/asdf-hashicorp'
