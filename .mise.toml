@@ -2,4 +2,4 @@
 node = 'lts'
 ruby = '3.3'
 terraform = '1.4'
-kython = "3.11"
+python = "3.11"
