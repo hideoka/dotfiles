@@ -21,7 +21,7 @@ if [[ -f $HOME/.local_zshrc.zsh ]];then
 fi
 
 eval "$(starship init zsh)"
-eval "$(rtx activate zsh)"
+eval "$(mise activate zsh)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

@@ -17,5 +17,5 @@ if [[ $(uname) == 'Linux' ]]; then
 fi
 
 source "$DOTFILE_PATH"/etc/rust.sh "$DOTFILE_PATH"
-rtx install
+mise install
 npm install -g typescript ts-node typescript-language-server
