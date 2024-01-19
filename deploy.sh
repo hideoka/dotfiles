@@ -15,10 +15,10 @@ do
 
   if [[ $f == ".vim" ]]; then
     ln -snf "$DOTFILE_PATH/$f" ~/.config/nvim
-  elif [[ $f == ".alacritty.yml" ]]; then
-    ln -snf "$DOTFILE_PATH/$f" ~/.config/alacritty/alacritty.yml
-  elif [[ $f == ".alacritty.default.yml" ]]; then
-    ln -snf "$DOTFILE_PATH/$f" ~/.config/alacritty/alacritty.default.yml
+  elif [[ $f == ".alacritty.toml" ]]; then
+    ln -snf "$DOTFILE_PATH/$f" ~/.config/alacritty/alacritty.toml
+  elif [[ $f == ".alacritty.default.toml" ]]; then
+    ln -snf "$DOTFILE_PATH/$f" ~/.config/alacritty/alacritty.default.toml
   elif [[ $f == ".starship.toml" ]]; then
     ln -snf "$DOTFILE_PATH/$f" ~/.config/starship.toml
   elif [[ $f == ".sheldon.toml" ]]; then
