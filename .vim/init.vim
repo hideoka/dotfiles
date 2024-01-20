@@ -45,7 +45,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'liuchengxu/vista.vim'
 Plug 'hashivim/vim-terraform'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'bluz71/vim-nightfly-guicolors'
+Plug 'bluz71/vim-nightfly-colors', { 'as': 'nightfly' }
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
