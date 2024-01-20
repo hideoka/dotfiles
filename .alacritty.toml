@@ -1,4 +1,4 @@
 import = [
-  "/home/hideaki/.config/alacritty/alacritty.default.toml",
-  "/home/hideaki/.config/alacritty/alacritty.local.toml"
+  "~/.config/alacritty/alacritty.default.toml",
+  "~/.config/alacritty/alacritty.local.toml"
 ]
