@@ -73,3 +73,8 @@ text = "#080808"
 
 [selection]
 save_to_clipboard = true
+
+[[keyboard.bindings]]
+key = "T"
+mods = "Command"
+action = "None"
