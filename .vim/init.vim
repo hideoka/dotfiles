@@ -67,6 +67,7 @@ Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'mfussenegger/nvim-lint'
+Plug 'WhoIsSethDaniel/mason-tool-installer.nvim'
 " Plug 'github/copilot.vim'
 
 call plug#end()
@@ -89,6 +90,16 @@ EOF
 lua <<EOF
   require("mason").setup ()
   require("mason-lspconfig").setup ()
+  require('mason-tool-installer').setup {
+    ensure_installed = {
+      'shellcheck',
+      'cspell',
+      'astro-language-server',
+      'lua-language-server',
+      'typescript-language-server',
+      'sqls'
+    },
+  }
 EOF
 
 " nvim-lint
@@ -287,7 +298,7 @@ local on_attach = function(_, bufnr)
   vim.keymap.set('n', '<leader>lf', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
-local servers = { 'hls', 'pylsp', 'astro' }
+local servers = { 'hls', 'pylsp', 'astro', 'sqls' }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = on_attach,
