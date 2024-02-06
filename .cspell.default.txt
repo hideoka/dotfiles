@@ -22,3 +22,5 @@ fcitx
 gettext
 hackgen
 nvim
+zenn
+astro
