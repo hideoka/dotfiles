@@ -24,3 +24,4 @@ hackgen
 nvim
 zenn
 astro
+psql
