@@ -98,7 +98,8 @@ lua <<EOF
       'lua-language-server',
       'typescript-language-server',
       'sqls',
-      'taplo'
+      'taplo',
+      'bash-language-server'
     },
   }
 EOF
@@ -299,7 +300,7 @@ local on_attach = function(_, bufnr)
   vim.keymap.set('n', '<leader>lf', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
-local servers = { 'hls', 'pylsp', 'astro', 'sqls', 'taplo' }
+local servers = { 'hls', 'pylsp', 'astro', 'sqls', 'taplo', 'bashls' }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = on_attach,
