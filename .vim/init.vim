@@ -73,64 +73,61 @@ Plug 'WhoIsSethDaniel/mason-tool-installer.nvim'
 call plug#end()
 
 
-" nvim-treesitter
 lua <<EOF
-  require'nvim-treesitter.configs'.setup {
-    ensure_installed = "all",
-    highlight = {
-      enable = true,
-      disable = { "embedded_template" },
-    },
-  }
+-- nvim-treesitter
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "all",
+  highlight = {
+    enable = true,
+    disable = { "embedded_template" },
+  },
+}
+require("ibl").setup ()
 
-  require("ibl").setup ()
-EOF
 
-" mason
-lua <<EOF
-  require("mason").setup ()
-  require("mason-lspconfig").setup ()
-  require('mason-tool-installer').setup {
-    ensure_installed = {
-      'shellcheck',
-      'cspell',
-      'astro-language-server',
-      'lua-language-server',
-      'typescript-language-server',
-      'sqls',
-      'taplo',
-      'bash-language-server'
-    },
-  }
-EOF
+-- mason
+require("mason").setup ()
+require("mason-lspconfig").setup ()
+require('mason-tool-installer').setup {
+  ensure_installed = {
+    'shellcheck',
+    'cspell',
+    'astro-language-server',
+    'lua-language-server',
+    'typescript-language-server',
+    'sqls',
+    'taplo',
+    'bash-language-server'
+  },
+}
 
-" nvim-lint
-lua <<EOF
-  require('lint').linters_by_ft = {
-          sh = { 'shellcheck', 'cspell' },
-          bash = { 'shellcheck', 'cspell' },
-          zsh = { 'shellcheck', 'cspell' },
-          ruby = { 'cspell' },
-          rust = { 'cspell' },
-          javascript = { 'cspell' },
-          javascriptreact = { 'cspell' },
-          typescript = { 'cspell' },
-          typescriptreact = { 'cspell' },
-  }
 
-  local cspell = require('lint').linters.cspell
-  cspell.args = {
-    'lint',
-    '--no-color',
-    '--no-progress',
-    '--no-summary',
-    '--show-suggestions',
-    '-c',
-    '~/.config/cspell/cspell.config.yaml'
-  }
+-- nvim-lint
+require('lint').linters_by_ft = {
+        sh = { 'shellcheck', 'cspell' },
+        bash = { 'shellcheck', 'cspell' },
+        zsh = { 'shellcheck', 'cspell' },
+        ruby = { 'cspell' },
+        rust = { 'cspell' },
+        javascript = { 'cspell' },
+        javascriptreact = { 'cspell' },
+        typescript = { 'cspell' },
+        typescriptreact = { 'cspell' },
+}
 
-  vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-    callback = function()
+local cspell = require('lint').linters.cspell
+cspell.args = {
+  'lint',
+  '--no-color',
+  '--no-progress',
+  '--no-summary',
+  '--show-suggestions',
+  '-c',
+  '~/.config/cspell/cspell.config.yaml'
+}
+
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+  callback = function()
     require("lint").try_lint()
   end,
 })
@@ -277,8 +274,8 @@ augroup PrevimSettings
   autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
 augroup END
 
-" nvim-lspconfig, nvim-cmp, cmp-nvim-lsp, LuaSnip
 lua <<EOF
+-- nvim-lspconfig, nvim-cmp, cmp-nvim-lsp, LuaSnip, fidget
 local lspconfig = require('lspconfig')
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
@@ -413,10 +410,9 @@ cmp.setup({
     { name = 'buffer' },
   })
 })
-EOF
 
-" toggleterm.nvim
-lua <<EOF
+
+-- toggleterm.nvim
 require"toggleterm".setup{}
 function _G.set_terminal_keymaps()
   local opts = {buffer = 0}
@@ -424,13 +420,13 @@ function _G.set_terminal_keymaps()
 end
 
 vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
-EOF
-nnoremap <silent> <leader>tt :<C-u>ToggleTerm direction=float<CR>
 
-" Comment.nvim
-lua <<EOF
+
+-- Comment.nvim
 require('Comment').setup{}
 EOF
+
+nnoremap <silent> <leader>tt :<C-u>ToggleTerm direction=float<CR>
 
 
 " lexima.vim
