@@ -590,21 +590,26 @@ vim.keymap.set('c', '<C-r>', '<C-r>0')
 --  FILE TYPE AND MODE TRIGGERS
 -- ----------------------------------------
 
-vim.cmd([[
-" Makefile indent
-augroup MakefileIndent
-  autocmd!
-  autocmd bufNewFile,BufRead Makefile setlocal tabstop=4 shiftwidth=4 softtabstop=4
-augroup END
+-- Makefile indent
+local make_file_indent = vim.api.nvim_create_augroup('MakefileIndent', { clear = true })
+vim.api.nvim_create_autocmd({ 'bufNewFile', 'BufRead' }, {
+  pattern = 'Makefile',
+  command = 'setlocal tabstop=4 shiftwidth=4 softtabstop=4',
+  group = make_file_indent
+})
 
-augroup RustfileIndent
-  autocmd!
-  autocmd bufNewFile,BufRead Rust setlocal tabstop=4 shiftwidth=4 softtabstop=4
-augroup END
+-- Rustfile indent
+local rust_file_indent = vim.api.nvim_create_augroup('RustfileIndent', { clear = true })
+vim.api.nvim_create_autocmd({ 'bufNewFile', 'BufRead' }, {
+  pattern = 'Rust',
+  command = 'setlocal tabstop=4 shiftwidth=4 softtabstop=4',
+  group = rust_file_indent
+})
 
-" Rails Command complete
-augroup RailsCommands
-  autocmd!
-  autocmd FileType eruby inoremap <silent><C-s> :<C-u><%=  %><Left><Left><Left>
-augroup END
-]])
+-- Rails Command cmplete
+local rails_commands = vim.api.nvim_create_augroup('RailsCommands', { clear = true })
+vim.api.nvim_create_autocmd({ 'FileType' }, {
+  pattern = 'eruby',
+  command = '<silent><C-s> :<C-u><%=  %><Left><Left><Left>',
+  group = rails_commands
+})
