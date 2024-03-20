@@ -420,30 +420,34 @@ function _G.set_terminal_keymaps()
 end
 
 vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
+vim.keymap.set('n', '<leader>tt', ':<C-u>ToggleTerm direction=float<CR>', { silent = true })
 
 
 -- Comment.nvim
 require('Comment').setup{}
+
+ -- lexima.vim
+vim.g.lexima_no_default_rules = 1
+vim.fn['lexima#set_default_rules']()
+vim.fn['lexima#insmode#map_hook']( 'before', '<CR>', '' )
+
+-- rust.vim
+vim.g.rustfmt_autosave = 1
+
+-- easymotion
+vim.g.EasyMotion_smartcase = 1
+vim.keymap.set('n', 's', '<Plug>(easymotion-overwin-f2)', { silent = true, remap = true })
+
+
+-- vim.go
+vim.g.go_def_mode = 'gopls'
+vim.g.go_info_mode = 'gopls'
+
+-- copilot.vim
+-- vim.g.copilot_no_tab_map = 'v:true'
+-- vim.keymap.set('i', '<C-j>', 'copilot#Accept("\\<CR>")', { silent = true, remap = true, expr = true, script = true })
 EOF
 
-nnoremap <silent> <leader>tt :<C-u>ToggleTerm direction=float<CR>
-
-
-" lexima.vim
-let g:lexima_no_default_rules = 1
-call lexima#set_default_rules()
-call lexima#insmode#map_hook('before', '<CR>', '')
-
-" rust.vim
-let g:rustfmt_autosave = 1
-
-" easymotion
-let g:EasyMotion_smartcase = 1
-nmap s <Plug>(easymotion-overwin-f2)
-
-" vim-go
-let g:go_def_mode='gopls'
-let g:go_info_mode='gopls'
 
 "-------------------------------------------------------------------------
 " COLOR SCHEME
@@ -476,10 +480,6 @@ function! FilePath()
     return expand('%:t')
   end
 endfunction
-
-" copilot.vim
-" imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
-" let g:copilot_no_tab_map = v:true
 
 
 lua <<EOF
