@@ -73,7 +73,7 @@ call plug#end()
 )
 
 -- nvim-treesitter
-require'nvim-treesitter.configs'.setup {
+require('nvim-treesitter.configs').setup {
   ensure_installed = "all",
   highlight = {
     enable = true,
@@ -297,26 +297,26 @@ for _, lsp in ipairs(servers) do
   }
 end
 
-lspconfig['tsserver'].setup {
+lspconfig.tsserver.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   root_dir = lspconfig.util.root_pattern("tsconfig.json"),
 }
 
-lspconfig['solargraph'].setup {
+lspconfig.solargraph.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   formatting = true,
   root_dir = lspconfig.util.root_pattern("Gemfile", ".git"),
 }
 
-lspconfig['denols'].setup {
+lspconfig.denols.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   root_dir = lspconfig.util.root_pattern("deno.json"),
 }
 
-lspconfig['rust_analyzer'].setup {
+lspconfig.rust_analyzer.setup {
   on_attach = on_attach,
   settings = {
     ["rust-analyzer"] = {
@@ -339,7 +339,7 @@ lspconfig['rust_analyzer'].setup {
   }
 }
 
-lspconfig['gopls'].setup {
+lspconfig.gopls.setup {
   on_attach = on_attach,
   cmd = {"gopls", "serve"},
   filetypes = {"go", "gomod"},
@@ -354,7 +354,7 @@ lspconfig['gopls'].setup {
   }
 }
 
-lspconfig['lua_ls'].setup {
+lspconfig.lua_ls.setup {
   on_init = function(client)
     local path = client.workspace_folders[1].name
     if vim.loop.fs_stat(path..'/.luarc.json') or vim.loop.fs_stat(path..'/.luarc.jsonc') then
@@ -378,10 +378,10 @@ lspconfig['lua_ls'].setup {
   }
 }
 
-require"fidget".setup{}
+require("fidget").setup{}
 
-local cmp = require 'cmp'
-local luasnip = require 'luasnip'
+local cmp = require('cmp')
+local luasnip = require('luasnip')
 
 cmp.setup({
   snippet = {
@@ -429,7 +429,7 @@ cmp.setup({
 
 
 -- toggleterm.nvim
-require"toggleterm".setup{}
+require("toggleterm").setup{}
 function _G.set_terminal_keymaps()
   local opts = {buffer = 0}
   vim.keymap.set('t', '<esc>', [[<Cmd>wincmd h<CR>]], opts)
