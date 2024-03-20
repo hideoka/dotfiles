@@ -481,46 +481,48 @@ endfunction
 " imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
 " let g:copilot_no_tab_map = v:true
 
-"----------------------------------------
-"  OPTIONS
-"----------------------------------------
-
-set nowritebackup
-set nobackup
-set virtualedit=block
-set backspace=indent,eol,start
-set ambiwidth=single
-set wildmenu
-set clipboard+=unnamedplus
-set completeopt=menuone,noinsert,noselect
-set ignorecase
-set smartcase
-set wrapscan
-set incsearch
-set hlsearch
-set showmatch matchtime=1
-set cmdheight=2
-set laststatus=2
-set showcmd
-set display=lastline
-set list
-set listchars=tab:»-,trail:-,eol:$,extends:»,precedes:«,nbsp:%,space:⋅
-set expandtab
-set shiftwidth=2
-set showmatch
-set smartindent
-set noswapfile
-set title
-set number
-set whichwrap=b,s,h,l,<,>,[,],~
-set mouse=
-
-
-"----------------------------------------
-" KEYMAP
-"----------------------------------------
 
 lua <<EOF
+-- ----------------------------------------
+--   OPTIONS
+-- ----------------------------------------
+
+vim.opt.writebackup = false
+vim.opt.backup = false
+vim.opt.virtualedit = 'block'
+vim.opt.backspace = { 'indent', 'eol', 'start' }
+vim.opt.ambiwidth = 'single'
+vim.opt.wildmenu = true
+vim.opt.clipboard:append('unnamedplus')
+vim.opt.completeopt = { 'menuone', 'noinsert', 'noselect' }
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.wrapscan = true
+vim.opt.incsearch = true
+vim.opt.hlsearch = true
+vim.opt.showmatch = true
+vim.opt.matchtime = 1
+vim.opt.cmdheight = 2
+vim.opt.laststatus = 2
+vim.opt.showcmd = true
+vim.opt.display = 'lastline'
+vim.opt.list = true
+vim.opt.expandtab = true
+vim.opt.listchars = { tab = '»-', trail = '-', eol = '$', extends = '»', precedes = '«', nbsp = '%', space = '⋅' }
+vim.opt.list = true
+vim.opt.shiftwidth = 2
+vim.opt.smartindent = true
+vim.opt.swapfile = false
+vim.opt.title = true
+vim.opt.number = true
+vim.opt.whichwrap:append('b,s,h,l,<,>,[,],~')
+vim.opt.mouse = ''
+
+
+-- ----------------------------------------
+--  KEYMAP
+-- ----------------------------------------
+
 vim.keymap.set('n', '<S-s>', ':w<CR>', { silent = true })
 vim.keymap.set('n', '<leader>p', '"0p', { silent = true })
 vim.keymap.set('v', '<leader>p', '"0p', { silent = true })
@@ -562,6 +564,7 @@ vim.keymap.set('c', '<C-e>', '<End>')
 vim.keymap.set('c', '<C-d>', '<Delete>')
 vim.keymap.set('c', '<C-r>', '<C-r>0')
 EOF
+
 
 "----------------------------------------
 " FILE TYPE AND MODE TRIGGERS
