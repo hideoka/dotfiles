@@ -1,19 +1,17 @@
-let g:mapleader = "\<Space>"
-nnoremap <silent> <leader>R :source $MYVIMRC<CR>
-nnoremap <silent> <leader>r <C-l>
+vim.g.mapleader = ' '
+vim.keymap.set('n', '<leader>R', ':source $MYVIMRC<CR>', { silent = true })
+vim.keymap.set('n', '<leader>r', '<C-l>', { silent = true })
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perljprovider = 0
 
-let g:loaded_python3_provider = 0
-let g:loaded_ruby_provider = 0
-let g:loaded_node_provider = 0
-let g:loaded_perl_provider = 0
+-- -------------------------------------------------------------------------
+--  PLUGIN SETTINGS
+-- -------------------------------------------------------------------------
 
-set ttimeout
-set ttimeoutlen=50
-
-"-------------------------------------------------------------------------
-" PLUGIN SETTINGS
-"-------------------------------------------------------------------------
-
+vim.cmd(
+[[
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -71,9 +69,9 @@ Plug 'WhoIsSethDaniel/mason-tool-installer.nvim'
 " Plug 'github/copilot.vim'
 
 call plug#end()
+]]
+)
 
-
-lua <<EOF
 -- nvim-treesitter
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "all",
@@ -100,7 +98,6 @@ require('mason-tool-installer').setup {
     'bash-language-server'
   },
 }
-
 
 -- nvim-lint
 require('lint').linters_by_ft = {
@@ -131,34 +128,26 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
     require("lint").try_lint()
   end,
 })
-EOF
 
-" fzf
-nnoremap <silent> <leader>t; :<C-u>Buffers<CR>
-nnoremap <silent> <leader>tf :<C-u>Files<CR>
-nnoremap <silent> <leader>tgf :<C-u>GFiles?<CR>
-nnoremap <silent> <leader>b :<C-u>BLines<CR>
-nnoremap <silent> <leader>tm :<C-u>Marks<CR>
-nnoremap          <leader>td :<C-u>Rg!<Space>
-nnoremap          <leader>ts :<C-u>Rg!<Space><C-R><C-W><CR>
-xnoremap          <leader>td y:Rg!<Space><C-R>"<CR>
-let g:fzf_preview_window = ['right:50%', 'ctrl-w']
-
+-- fzf
+vim.keymap.set('n', '<leader>t;', ':<C-u>Buffers<CR>', { silent = true })
+vim.keymap.set('n', '<leader>tf', ':<C-u>Files<CR>', { silent = true })
+vim.keymap.set('n', '<leader>tgf', ':<C-u>GFiles<CR>', { silent = true })
+vim.keymap.set('n', '<leader>b', ':<C-u>BLines<CR>', { silent = true })
+vim.keymap.set('n', '<leader>tm', ':<C-u>marks<CR>', { silent = true })
+vim.keymap.set('n', '<leader>td', ':<C-u>Rg!<Space>')
+vim.keymap.set('x', '<leader>td', 'y:Rg!<Space><C-R>"<CR>', { silent = true })
+vim.g.fzf_preview_window = {'right:50%', 'ctrl-w'}
+vim.cmd(
+[[
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always --smart-case --hidden -- '.shellescape(<q-args>), 1,
   \   fzf#vim#with_preview({'options': ['--layout=default']}), <bang>0)
+]]
+)
 
-" terescope
-nnoremap <leader>f :<C-u>Telescope find_files<CR>
-nnoremap <leader>s :<C-u>Telescope grep_string<CR>
-nnoremap <leader>d :<C-u>Telescope grep_string<Space>search=
-nnoremap <leader>; :<C-u>Telescope buffers<CR>
-nnoremap <leader>tb :<C-u>Telescope current_buffer_fuzzy_find<CR>
-nnoremap <leader>q :<C-u>Telescope quickfix<CR>
-nnoremap <leader>Q :<C-u>Telescope quickfixhistory<CR>
-
-lua << EOF
+-- telescope
 local telescope = require("telescope")
 local actions = require("telescope.actions")
 local action_layout = require("telescope.actions.layout")
@@ -221,60 +210,63 @@ telescope.setup{
   }
 }
 telescope.load_extension('fzf')
-EOF
 
-" nvim-tree.lua
-nnoremap <leader>e :<C-u>NvimTreeToggle<CR>
-lua << EOF
-  vim.g.loaded_netrw = 1
-  vim.g.loaded_netrwPlugin = 1
+vim.keymap.set('n', '<leader>f', ':<C-u>Telescope find_files<CR>', { silent = true })
+vim.keymap.set('n', '<leader>s', ':<C-u>Telescope grep_string<CR>', { silent = true })
+vim.keymap.set('n', '<leader>d', ':<C-u>Telescope grep_string<Space>search=')
+vim.keymap.set('n', '<leader>;', ':<C-u>Telescope buffers<CR>', { silent = true })
+vim.keymap.set('n', '<leader>tb', ':<C-u>Telescope current_buffer_fuzzy_find<CR>', { silent = true })
+vim.keymap.set('n', '<leader>q', ':<C-u>Telescope quickfix<CR>', { silent = true })
+vim.keymap.set('n', '<leader>Q', ':<C-u>Telescope quickfixhistory<CR>', { silent = true })
 
-  vim.opt.termguicolors = true
 
-  require("nvim-tree").setup({
-    sort_by = "case_sensitive",
-    renderer = {
-      group_empty = true,
-    },
-    git = {
-      ignore = false
-    }
-  })
-EOF
+-- nvim-tree.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
-" vim-fugitive
-nnoremap <silent> <Leader>gs :<C-u>Gstatus<CR>
-nnoremap <silent> <Leader>gd :<C-u>Git diff<CR>
-nnoremap <silent> <Leader>gb :<C-u>Git blame<CR>
+vim.opt.termguicolors = true
 
-" vim-sandwich
-nmap s <Nop>
-xmap s <Nop>
+require("nvim-tree").setup({
+  sort_by = "case_sensitive",
+  renderer = {
+    group_empty = true,
+  },
+  git = {
+    ignore = false
+  }
+})
 
-" vista.vim
-let g:vista_default_executive = 'lcn'
-nnoremap <silent> <leader>vv :<C-u>Vista!!<CR>
-nnoremap <silent> <leader>vm :<C-u>Vista toc<CR>
-nnoremap <silent> <leader>vf :<C-u>Vista toc<CR>
+vim.keymap.set('n', '<leader>e', ':<C-u>NvimTreeToggle<CR>', { silent = true })
 
-" vim-markdown
-let g:vim_markdown_folding_level = 6
-let g:vim_markdown_auto_insert_bullets = 0
-let g:vim_markdown_new_list_item_indent = 0
-let g:vim_markdown_folding_disabled = 1
-let g:vim_markdown_new_folding_disabled = 1
-let g:vim_markdown_conceal = 0
-let g:vim_markdown_conceal_code_blocks = 0
+-- vim-fugitive
+vim.keymap.set('n', '<leader>gs', ':<C-u>Gstatus<CR>', { silent = true })
+vim.keymap.set('n', '<leader>gd', ':<C-u>Git diff<CR>', { silent = true })
+vim.keymap.set('n', '<leader>gb', ':<C-u>Git blame<CR>', { silent = true })
 
-" markdown-preview.nvim
-nnoremap <silent> <leader>M :<C-u>MarkdownPreview<CR>
-let g:mkdp_auto_close = 0
-augroup PrevimSettings
-  autocmd!
-  autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
-augroup END
+-- vim-sandwich
+vim.keymap.set('n', 's', '<Nop>', { remap = true })
+vim.keymap.set('x', 's', '<Nop>', { remap = true })
 
-lua <<EOF
+-- vista.vim
+vim.keymap.set('n', '<leader>vv', ':<C-u>Vista!!<CR>', { silent = true })
+vim.keymap.set('n', '<leader>vm', ':<C-u>Vista toc<CR>', { silent = true })
+vim.keymap.set('n', '<leader>vf', ':<C-u>Vista toc<CR>', { silent = true })
+vim.g.vista_default_executive = 'lcn'
+
+-- vim-markdown
+vim.g.vim_markdown_folding_level = 6
+vim.g.vim_markdown_auto_insert_bullets = 0
+vim.g.vim_markdown_new_list_item_indent = 0
+vim.g.vim_markdown_folding_disabled = 1
+vim.g.vim_markdown_new_folding_disabled = 1
+vim.g.vim_markdown_conceal = 0
+vim.g.vim_markdown_conceal_code_blocks = 0
+
+-- markdown-preview.nvim
+vim.keymap.set('n', '<leader>M', ':<C-u>MarkdownPreview<CR>', { silent = true })
+vim.g.mkdp_auto_close = 0
+
+
 -- nvim-lspconfig, nvim-cmp, cmp-nvim-lsp, LuaSnip, fidget
 local lspconfig = require('lspconfig')
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -446,14 +438,15 @@ vim.g.go_info_mode = 'gopls'
 -- copilot.vim
 -- vim.g.copilot_no_tab_map = 'v:true'
 -- vim.keymap.set('i', '<C-j>', 'copilot#Accept("\\<CR>")', { silent = true, remap = true, expr = true, script = true })
-EOF
 
 
-"-------------------------------------------------------------------------
-" COLOR SCHEME
-"-------------------------------------------------------------------------
+-- -------------------------------------------------------------------------
+--  COLOR SCHEME
+-- -------------------------------------------------------------------------
 
-" vim-nightfly-guicolors
+-- vim-nightfly-guicolors
+vim.cmd(
+[[
 if has('termguicolors')
   set termguicolors
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -461,8 +454,12 @@ if has('termguicolors')
 endif
 
 colorscheme nightfly
+]]
+)
 
-" lightline.vim
+-- vim-nightfly-guicolors
+vim.cmd(
+[[
 let g:lightline={
   \ 'colorscheme': 'nightfly',
   \ 'active': {
@@ -480,9 +477,10 @@ function! FilePath()
     return expand('%:t')
   end
 endfunction
+]]
+)
 
 
-lua <<EOF
 -- ----------------------------------------
 --   OPTIONS
 -- ----------------------------------------
@@ -563,13 +561,12 @@ vim.keymap.set('c', '<C-a>', '<Home>')
 vim.keymap.set('c', '<C-e>', '<End>')
 vim.keymap.set('c', '<C-d>', '<Delete>')
 vim.keymap.set('c', '<C-r>', '<C-r>0')
-EOF
 
+-- ----------------------------------------
+--  FILE TYPE AND MODE TRIGGERS
+-- ----------------------------------------
 
-"----------------------------------------
-" FILE TYPE AND MODE TRIGGERS
-"----------------------------------------
-
+vim.cmd([[
 " Makefile indent
 augroup MakefileIndent
   autocmd!
@@ -586,3 +583,4 @@ augroup RailsCommands
   autocmd!
   autocmd FileType eruby inoremap <silent><C-s> :<C-u><%=  %><Left><Left><Left>
 augroup END
+]])
