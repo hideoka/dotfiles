@@ -520,46 +520,48 @@ set mouse=
 " KEYMAP
 "----------------------------------------
 
-nnoremap <silent> <S-s> :w<CR>
-nnoremap <silent> <leader>p "0p
-vnoremap <silent> <leader>p "0p
-nnoremap <silent> Y y$
-inoremap <silent> jj <ESC>
-inoremap <silent> <C-f> <Right>
-inoremap <silent> <C-b> <Left>
-inoremap <silent> <C-n> <Down>
-inoremap <silent> <C-p> <Up>
-inoremap <silent> <C-r>; <C-r>0
-nnoremap <silent> <C-h> <C-w>h
-nnoremap <silent> <C-j> <C-w>j
-nnoremap <silent> <C-k> <C-w>k
-nnoremap <silent> <C-l> <C-w>l
-nnoremap <silent> j gj
-nnoremap <silent> k gk
-nnoremap <silent> H ^
-nnoremap <silent> L $
-nnoremap <silent> <leader>o <C-^>
-nnoremap <silent> <C-n> :cn<CR>
-nnoremap <silent> <C-p> :cp<CR>
-nnoremap <silent> <leader>co :<C-u>botright cwindow<CR>
-nnoremap <silent> <leader>cc :<C-u>cclose<CR>
-nnoremap <silent> n nzz
-nnoremap <silent> N Nzz
-nnoremap <silent> * *Nzz
-nnoremap <silent> # #Nzz
-nnoremap <silent> <C-w>< 10<C-w><
-nnoremap <silent> <C-w>> 10<C-w>>
-nnoremap <silent> <C-w>+ 10<C-w>+
-nnoremap <silent> <C-w>- 10<C-w>-
-nnoremap <Esc><Esc> :nohlsearch<CR><ESC>
-cnoremap <C-b> <Left>
-cnoremap <C-f> <Right>
-cnoremap <C-p> <Up>
-cnoremap <C-n> <Down>
-cnoremap <C-a> <Home>
-cnoremap <C-e> <End>
-cnoremap <C-d> <Delete>
-cnoremap <C-r>; <C-r>0
+lua <<EOF
+vim.keymap.set('n', '<S-s>', ':w<CR>', { silent = true })
+vim.keymap.set('n', '<leader>p', '"0p', { silent = true })
+vim.keymap.set('v', '<leader>p', '"0p', { silent = true })
+vim.keymap.set('n', 'Y', 'y$', { silent = true })
+vim.keymap.set('i', 'jj', '<ESC>', { silent = true })
+vim.keymap.set('i', '<C-f>', '<Right>', { silent = true })
+vim.keymap.set('i', '<C-b>', '<Left>', { silent = true })
+vim.keymap.set('i', '<C-n>', '<Down>', { silent = true })
+vim.keymap.set('i', '<C-p>', '<Up>', { silent = true })
+vim.keymap.set('i', '<C-r>;', '<C-r>0', { silent = true })
+vim.keymap.set('n', '<C-h>', '<C-w>h', { silent = true })
+vim.keymap.set('n', '<C-j>', '<C-w>j', { silent = true })
+vim.keymap.set('n', '<C-k>', '<C-w>k', { silent = true })
+vim.keymap.set('n', '<C-l>', '<C-w>l', { silent = true })
+vim.keymap.set('n', 'j', 'gj', { silent = true })
+vim.keymap.set('n', 'k', 'gk', { silent = true })
+vim.keymap.set('n', 'H', '^', { silent = true })
+vim.keymap.set('n', 'L', '$', { silent = true })
+vim.keymap.set('n', '<leader>o', '<C-^>', { silent = true })
+vim.keymap.set('n', '<C-n>', ':cn<CR>', { silent = true })
+vim.keymap.set('n', '<C-p>', ':cp<CR>', { silent = true })
+vim.keymap.set('n', '<leader>co', ':<C-u>botright cwindow<CR>', { silent = true })
+vim.keymap.set('n', '<leader>cc', ':<C-u>cclose<CR>', { silent = true })
+vim.keymap.set('n', 'n', 'nzz', { silent = true })
+vim.keymap.set('n', 'N', 'Nzz', { silent = true })
+vim.keymap.set('n', '*', '*Nzz', { silent = true })
+vim.keymap.set('n', '#', '#Nzz', { silent = true })
+vim.keymap.set('n', '<C-w><', '10<C-w><', { silent = true })
+vim.keymap.set('n', '<C-w>>', '10<C-w>>', { silent = true })
+vim.keymap.set('n', '<C-w>+', '10<C-w>+', { silent = true })
+vim.keymap.set('n', '<C-w>-', '10<C-w>-', { silent = true })
+vim.keymap.set('n', '<ESC><ESC>', ':nohlsearch<CR><ESC>', { silent = true })
+vim.keymap.set('c', '<C-b>', '<Left>', { silent = true })
+vim.keymap.set('c', '<C-f>', '<Right>', { silent = true })
+vim.keymap.set('c', '<C-p>', '<Up>', { silent = true })
+vim.keymap.set('c', '<C-n>', '<Down>', { silent = true })
+vim.keymap.set('c', '<C-a>', '<Home>', { silent = true })
+vim.keymap.set('c', '<C-e>', '<End>', { silent = true })
+vim.keymap.set('c', '<C-d>', '<Delete>', { silent = true })
+vim.keymap.set('c', '<C-r>', '<C-r>0', { silent = true })
+EOF
 
 "----------------------------------------
 " FILE TYPE AND MODE TRIGGERS
