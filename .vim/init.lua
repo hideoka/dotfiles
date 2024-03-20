@@ -469,31 +469,25 @@ vim.g.go_info_mode = 'gopls'
 -- -------------------------------------------------------------------------
 
 -- vim-nightfly-guicolors
-vim.cmd(
-[[
-if has('termguicolors')
-  set termguicolors
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-endif
-
-colorscheme nightfly
-]]
-)
+if vim.fn.has('termguicolors') == 1 then
+  vim.opt.termguicolors = true
+  vim.g.t_8f = '\x1b[38;2;%lu;%lu;%lum'
+  vim.g.t_8b = '\x1b[48;2;%lu;%lu;%lum'
+end
+vim.cmd([[ colorscheme nightfly ]])
 
 -- vim-nightfly-guicolors
-vim.cmd(
-[[
-let g:lightline={
-  \ 'colorscheme': 'nightfly',
-  \ 'active': {
-  \   'left': [ ['mode', 'paste'],
-  \             ['readonly', 'filepath', 'modified'] ]
-  \ },
-  \ 'component_function': {
-  \   'filepath': 'FilePath',
-  \ },
-  \ }
+vim.g.lightline = {
+  colorscheme = 'nightfly',
+  active = {
+    left = { { 'mode', 'paste' }, { 'readonly', 'filepath', 'modified' } },
+  },
+  component_function = {
+    filepath = 'FilePath'
+  }
+}
+
+vim.cmd([[
 function! FilePath()
   if winwidth(0) > 90
     return expand('%')
@@ -501,8 +495,7 @@ function! FilePath()
     return expand('%:t')
   end
 endfunction
-]]
-)
+]])
 
 
 -- ----------------------------------------
