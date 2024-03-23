@@ -90,15 +90,15 @@ require('mason-tool-installer').setup {
 
 -- nvim-lint
 require('lint').linters_by_ft = {
-        sh = { 'shellcheck', 'cspell' },
-        bash = { 'shellcheck', 'cspell' },
-        zsh = { 'shellcheck', 'cspell' },
-        ruby = { 'cspell' },
-        rust = { 'cspell' },
-        javascript = { 'cspell' },
-        javascriptreact = { 'cspell' },
-        typescript = { 'cspell' },
-        typescriptreact = { 'cspell' },
+  sh = { 'shellcheck', 'cspell' },
+  bash = { 'shellcheck', 'cspell' },
+  zsh = { 'shellcheck', 'cspell' },
+  ruby = { 'cspell' },
+  rust = { 'cspell' },
+  javascript = { 'cspell' },
+  javascriptreact = { 'cspell' },
+  typescript = { 'cspell' },
+  typescriptreact = { 'cspell' },
 }
 
 local cspell = require('lint').linters.cspell
