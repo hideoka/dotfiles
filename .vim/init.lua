@@ -10,67 +10,54 @@ vim.g.loaded_perljprovider = 0
 --  PLUGIN SETTINGS
 -- -------------------------------------------------------------------------
 
-vim.cmd(
-[[
-if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source '~/.config/nvim/init.vim'
-endif
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable",
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
 
-call plug#begin('~/.local/share/nvim/plugged')
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'numToStr/Comment.nvim'
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-rails'
-Plug 'machakann/vim-sandwich'
-Plug 'itchyny/lightline.vim'
-Plug 'mattn/emmet-vim', { 'for': ['html', 'eruby', 'vue', 'javascript', 'typescript.tsx'] }
-Plug 'cespare/vim-toml', { 'for': 'toml' }
-Plug 'ekalinin/Dockerfile.vim', { 'for': 'dockerfile' }
-Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
-Plug 'cohama/lexima.vim'
-Plug 'rust-lang/rust.vim', { 'for': 'rust' }
-Plug 'posva/vim-vue'
-Plug 'ianks/vim-tsx'
-Plug 'leafgarland/typescript-vim'
-Plug 'pangloss/vim-javascript'
-Plug 'maxmellon/vim-jsx-pretty'
-Plug 'easymotion/vim-easymotion'
-Plug 'liuchengxu/vista.vim'
-Plug 'hashivim/vim-terraform'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'bluz71/vim-nightfly-colors', { 'as': 'nightfly' }
-Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-" Plug 'f3fora/cmp-spell'
-Plug 'j-hui/fidget.nvim', { 'tag': 'legacy' }
-Plug 'L3MON4D3/LuaSnip'
-Plug 'saadparwaiz1/cmp_luasnip'
-Plug 'lukas-reineke/indent-blankline.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.3' }
-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'nvim-tree/nvim-web-devicons'
-Plug 'nvim-tree/nvim-tree.lua'
-Plug 'kevinhwang91/nvim-bqf'
-Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
-Plug 'williamboman/mason.nvim'
-Plug 'williamboman/mason-lspconfig.nvim'
-Plug 'mfussenegger/nvim-lint'
-Plug 'WhoIsSethDaniel/mason-tool-installer.nvim'
-" Plug 'github/copilot.vim'
-
-call plug#end()
-]]
-)
+require("lazy").setup({
+  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+  { "bluz71/vim-nightfly-colors", name = "nightfly", lazy = false, priority = 1000 },
+  { "neovim/nvim-lspconfig" },
+  { "hrsh7th/nvim-cmp" },
+  { "hrsh7th/cmp-nvim-lsp" },
+  { "hrsh7th/cmp-buffer" },
+  { "hrsh7th/cmp-path" },
+  { "williamboman/mason.nvim" },
+  { "williamboman/mason-lspconfig.nvim" },
+  { "WhoIsSethDaniel/mason-tool-installer.nvim" },
+  { "mfussenegger/nvim-lint" },
+  { "nvim-tree/nvim-web-devicons" },
+  { "nvim-tree/nvim-tree.lua" },
+  { "akinsho/toggleterm.nvim", version = "*" },
+  { "nvim-telescope/telescope.nvim", tag = '0.1.6', dependencies = { 'nvim-lua/plenary.nvim' } },
+  { "nvim-telescope/telescope-fzf-native.nvim", build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' },
+  { "L3MON4D3/LuaSnip", version = "v2.*", build = "make install_jsregexp" },
+  { "saadparwaiz1/cmp_luasnip" },
+  { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
+  { "j-hui/fidget.nvim" },
+  { 'numToStr/Comment.nvim', lazy = false },
+  { 'tpope/vim-fugitive' },
+  { 'airblade/vim-gitgutter' },
+  { 'itchyny/lightline.vim' },
+  { 'machakann/vim-sandwich' },
+  { 'cohama/lexima.vim' },
+  { 'kevinhwang91/nvim-bqf'},
+  { 'junegunn/fzf', dir = "~/.fzf", build = "./install --all"},
+  { 'junegunn/fzf.vim'},
+  { 'plasticboy/vim-markdown', ft = 'markdown' },
+  { "iamcco/markdown-preview.nvim", cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" }, ft = { "markdown" }, build = function() vim.fn["mkdp#util#install"]() end, },
+  { 'mattn/emmet-vim', ft = { 'html', 'eruby', 'vue', 'javascript', 'typescript.tsx' } },
+  -- { 'github/copilot.vim'}
+})
 
 -- nvim-treesitter
 require('nvim-treesitter.configs').setup {
@@ -80,6 +67,8 @@ require('nvim-treesitter.configs').setup {
     disable = { "embedded_template" },
   },
 }
+
+-- indent-blankline.nvim
 require("ibl").setup ()
 
 
@@ -246,12 +235,6 @@ vim.keymap.set('n', '<leader>gb', ':<C-u>Git blame<CR>', { silent = true })
 -- vim-sandwich
 vim.keymap.set('n', 's', '<Nop>', { remap = true })
 vim.keymap.set('x', 's', '<Nop>', { remap = true })
-
--- vista.vim
-vim.keymap.set('n', '<leader>vv', ':<C-u>Vista!!<CR>', { silent = true })
-vim.keymap.set('n', '<leader>vm', ':<C-u>Vista toc<CR>', { silent = true })
-vim.keymap.set('n', '<leader>vf', ':<C-u>Vista toc<CR>', { silent = true })
-vim.g.vista_default_executive = 'lcn'
 
 -- vim-markdown
 vim.g.vim_markdown_folding_level = 6
@@ -447,18 +430,6 @@ vim.g.lexima_no_default_rules = 1
 vim.fn['lexima#set_default_rules']()
 vim.fn['lexima#insmode#map_hook']( 'before', '<CR>', '' )
 
--- rust.vim
-vim.g.rustfmt_autosave = 1
-
--- easymotion
-vim.g.EasyMotion_smartcase = 1
-vim.keymap.set('n', 's', '<Plug>(easymotion-overwin-f2)', { silent = true, remap = true })
-
-
--- vim.go
-vim.g.go_def_mode = 'gopls'
-vim.g.go_info_mode = 'gopls'
-
 -- copilot.vim
 -- vim.g.copilot_no_tab_map = 'v:true'
 -- vim.keymap.set('i', '<C-j>', 'copilot#Accept("\\<CR>")', { silent = true, remap = true, expr = true, script = true })
@@ -476,7 +447,6 @@ if vim.fn.has('termguicolors') == 1 then
 end
 vim.cmd([[ colorscheme nightfly ]])
 
--- vim-nightfly-guicolors
 vim.g.lightline = {
   colorscheme = 'nightfly',
   active = {
