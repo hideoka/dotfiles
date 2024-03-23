@@ -445,7 +445,6 @@ if vim.fn.has('termguicolors') == 1 then
   vim.g.t_8f = '\x1b[38;2;%lu;%lu;%lum'
   vim.g.t_8b = '\x1b[48;2;%lu;%lu;%lum'
 end
-vim.cmd([[ colorscheme nightfly ]])
 
 vim.g.lightline = {
   colorscheme = 'nightfly',
@@ -467,6 +466,7 @@ function! FilePath()
 endfunction
 ]])
 
+vim.cmd([[ colorscheme nightfly ]])
 
 -- ----------------------------------------
 --   OPTIONS
