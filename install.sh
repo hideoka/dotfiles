@@ -18,4 +18,3 @@ fi
 
 source "$DOTFILE_PATH"/etc/rust.sh "$DOTFILE_PATH"
 mise install
-npm install -g typescript ts-node typescript-language-server
