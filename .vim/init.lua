@@ -66,6 +66,9 @@ require('nvim-treesitter.configs').setup {
     enable = true,
     disable = { "embedded_template" },
   },
+  indent = {
+    enable = true,
+  }
 }
 
 -- indent-blankline.nvim
