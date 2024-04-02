@@ -22,7 +22,6 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
-
 require("lazy").setup({
   { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
   { "bluz71/vim-nightfly-colors", name = "nightfly", lazy = false, priority = 1000 },
@@ -599,4 +598,12 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
   pattern = 'eruby',
   command = '<silent><C-s> :<C-u><%=  %><Left><Left><Left>',
   group = rails_commands
+})
+
+-- Rubyfile indent dot fix
+local rust_file_indent_dot_fix = vim.api.nvim_create_augroup('RubyfileIndentDotFix', { clear = true })
+vim.api.nvim_create_autocmd({ 'FileType' }, {
+  pattern = 'ruby',
+  command = 'setlocal indentkeys-=.',
+  group = rust_file_indent_dot_fix
 })
