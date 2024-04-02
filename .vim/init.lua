@@ -446,10 +446,10 @@ vim.keymap.set('n', '<leader>tt', ':<C-u>ToggleTerm direction=float<CR>', { sile
 -- Comment.nvim
 require('Comment').setup{}
 
- -- lexima.vim
-vim.g.lexima_no_default_rules = 1
-vim.fn['lexima#set_default_rules']()
-vim.fn['lexima#insmode#map_hook']( 'before', '<CR>', '' )
+-- lexima.vim
+vim.g.lexima_enable_basic_rules = 1
+vim.g.lexima_enable_newline_rules = 1
+vim.g.lexima_enable_endwise_rules = 1
 
 -- copilot.vim
 -- vim.g.copilot_no_tab_map = 'v:true'
