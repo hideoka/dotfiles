@@ -201,15 +201,14 @@ telescope.setup{
   }
 }
 telescope.load_extension('fzf')
-
-vim.keymap.set('n', '<leader>f', ':<C-u>Telescope find_files<CR>', { silent = true })
-vim.keymap.set('n', '<leader>s', ':<C-u>Telescope grep_string<CR>', { silent = true })
-vim.keymap.set('n', '<leader>d', ':<C-u>Telescope grep_string<Space>search=')
-vim.keymap.set('n', '<leader>;', ':<C-u>Telescope buffers<CR>', { silent = true })
-vim.keymap.set('n', '<leader>tb', ':<C-u>Telescope current_buffer_fuzzy_find<CR>', { silent = true })
-vim.keymap.set('n', '<leader>q', ':<C-u>Telescope quickfix<CR>', { silent = true })
-vim.keymap.set('n', '<leader>Q', ':<C-u>Telescope quickfixhistory<CR>', { silent = true })
-
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>f', builtin.find_files, { silent = true })
+vim.keymap.set('n', '<leader>s', builtin.grep_string, { silent = true })
+vim.keymap.set('n', '<leader>d', ':Telescope grep_string search=' , {})
+vim.keymap.set('n', '<leader>;', builtin.buffers, { silent = true })
+vim.keymap.set('n', '<leader>t', builtin.current_buffer_fuzzy_find, { silent = true })
+vim.keymap.set('n', '<leader>q', builtin.quickfix, { silent = true })
+vim.keymap.set('n', '<leader>Q', builtin.quickfixhistory, { silent = true })
 
 -- nvim-tree.lua
 vim.g.loaded_netrw = 1
