@@ -157,7 +157,9 @@ telescope.setup{
         ["<esc>"] = actions.close,
         ["<C-s>"] = actions.to_fuzzy_refine,
         ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
-        ["<C-t>"] = action_layout.toggle_preview
+        ["<C-t>"] = action_layout.toggle_preview,
+        ["<C-f>"] = { "<Right>", type = "command" },
+        ["<C-b>"] = { "<Left>", type = "command" }
       },
       n = {
         ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
