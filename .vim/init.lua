@@ -593,14 +593,6 @@ vim.api.nvim_create_autocmd({ 'bufNewFile', 'BufRead' }, {
   group = rust_file_indent
 })
 
--- Rails Command cmplete
-local rails_commands = vim.api.nvim_create_augroup('RailsCommands', { clear = true })
-vim.api.nvim_create_autocmd({ 'FileType' }, {
-  pattern = 'eruby',
-  command = '<silent><C-s> :<C-u><%=  %><Left><Left><Left>',
-  group = rails_commands
-})
-
 -- Rubyfile indent dot fix
 local rust_file_indent_dot_fix = vim.api.nvim_create_augroup('RubyfileIndentDotFix', { clear = true })
 vim.api.nvim_create_autocmd({ 'FileType' }, {
