@@ -3,7 +3,7 @@ DOTFILE_PATH=$1
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 . "$HOME/.cargo/env"
 rustup update
-rustup component add rustfmt clippy
+rustup component add rustfmt clippy rust-analyzer
 
 cargo install ripgrep
 cargo install bat --locked
@@ -17,7 +17,3 @@ cargo install sqlx-cli
 catgo install cargo-watch
 cargo install sheldon --locked
 cargo install mise
-
-cd "$(dirname "$DOTFILE_PATH")"
-git clone https://github.com/rust-analyzer/rust-analyzer.git && cd rust-analyzer
-cargo xtask install --server
