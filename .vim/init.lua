@@ -55,6 +55,8 @@ require("lazy").setup({
   { 'plasticboy/vim-markdown', ft = 'markdown' },
   { "iamcco/markdown-preview.nvim", cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" }, ft = { "markdown" }, build = function() vim.fn["mkdp#util#install"]() end, },
   { 'mattn/emmet-vim', ft = { 'html', 'eruby', 'vue', 'javascript', 'typescript.tsx' } },
+  { 'Wansmer/treesj', dependencies = { 'nvim-treesitter/nvim-treesitter' } },
+  { 'sindrets/diffview.nvim' },
   -- { 'github/copilot.vim'}
 })
 
@@ -450,6 +452,12 @@ require('Comment').setup{}
 vim.g.lexima_enable_basic_rules = 1
 vim.g.lexima_enable_newline_rules = 1
 vim.g.lexima_enable_endwise_rules = 1
+
+-- treesj
+require('treesj').setup{
+  use_default_keymaps = false
+}
+vim.keymap.set('n', '<leader>m', require('treesj').toggle, { silent = true })
 
 -- copilot.vim
 -- vim.g.copilot_no_tab_map = 'v:true'
