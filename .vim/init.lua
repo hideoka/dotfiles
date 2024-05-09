@@ -455,7 +455,9 @@ vim.g.lexima_enable_endwise_rules = 1
 
 -- treesj
 require('treesj').setup{
-  use_default_keymaps = false
+  use_default_keymaps = false,
+  max_join_length = 360
+
 }
 vim.keymap.set('n', '<leader>m', require('treesj').toggle, { silent = true })
 
