@@ -44,8 +44,8 @@ require("lazy").setup({
   { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
   { "j-hui/fidget.nvim" },
   { 'numToStr/Comment.nvim', lazy = false },
-  { 'tpope/vim-fugitive' },
-  { 'airblade/vim-gitgutter' },
+  { 'lewis6991/gitsigns.nvim' },
+  { 'sindrets/diffview.nvim' },
   { 'itchyny/lightline.vim' },
   { 'machakann/vim-sandwich' },
   { 'cohama/lexima.vim' },
@@ -237,10 +237,53 @@ require("nvim-tree").setup({
 
 vim.keymap.set('n', '<leader>e', ':<C-u>NvimTreeToggle<CR>', { silent = true })
 
--- vim-fugitive
-vim.keymap.set('n', '<leader>gs', ':<C-u>Gstatus<CR>', { silent = true })
-vim.keymap.set('n', '<leader>gd', ':<C-u>Git diff<CR>', { silent = true })
-vim.keymap.set('n', '<leader>gb', ':<C-u>Git blame<CR>', { silent = true })
+require('gitsigns').setup {
+  signs = {
+    add = { text = '+' },
+    change = { text = '~' },
+  },
+  on_attach = function(bufnr)
+    local gitsigns = require('gitsigns')
+
+    local function map(mode, l, r, opts)
+      opts = opts or {}
+      opts.buffer = bufnr
+      vim.keymap.set(mode, l, r, opts)
+    end
+
+    -- Navigation
+    map('n', ']c', function()
+      if vim.wo.diff then
+        vim.cmd.normal({']c', bang = true})
+      else
+        gitsigns.nav_hunk('next')
+      end
+    end)
+
+    map('n', '[c', function()
+      if vim.wo.diff then
+        vim.cmd.normal({'[c', bang = true})
+      else
+        gitsigns.nav_hunk('prev')
+      end
+    end)
+
+    map('n', '<leader>gs', gitsigns.stage_hunk)
+    map('n', '<leader>gr', gitsigns.reset_hunk)
+    map('v', '<leader>gs', function() gitsigns.stage_hunk {vim.fn.line('.'), vim.fn.line('v')} end)
+    map('v', '<leader>gr', function() gitsigns.reset_hunk {vim.fn.line('.'), vim.fn.line('v')} end)
+    map('n', '<leader>gS', gitsigns.stage_buffer)
+    map('n', '<leader>gu', gitsigns.undo_stage_hunk)
+    map('n', '<leader>gR', gitsigns.reset_buffer)
+    map('n', '<leader>gp', gitsigns.preview_hunk)
+    map('n', '<leader>gb', gitsigns.toggle_current_line_blame)
+    map({'o', 'x'}, '<leader>gh', ':<C-U>Gitsigns select_hunk<CR>')
+  end
+}
+
+-- diffview.nvim
+vim.keymap.set('n', '<leader>gdo', ':<C-u>DiffviewOpen<CR>', { silent = true })
+vim.keymap.set('n', '<leader>gdc', ':<C-u>DiffviewClose<CR>', { silent = true })
 
 -- vim-sandwich
 vim.keymap.set('n', 's', '<Nop>', { remap = true })
