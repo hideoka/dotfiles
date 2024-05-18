@@ -123,11 +123,11 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 })
 
 -- fzf
-vim.keymap.set('n', '<leader>t;', ':<C-u>Buffers<CR>', { silent = true })
-vim.keymap.set('n', '<leader>tf', ':<C-u>Files<CR>', { silent = true })
-vim.keymap.set('n', '<leader>tgf', ':<C-u>GFiles<CR>', { silent = true })
-vim.keymap.set('n', '<leader>b', ':<C-u>BLines<CR>', { silent = true })
-vim.keymap.set('n', '<leader>tm', ':<C-u>marks<CR>', { silent = true })
+-- vim.keymap.set('n', '<leader>t;', ':<C-u>Buffers<CR>', { silent = true })
+-- vim.keymap.set('n', '<leader>tf', ':<C-u>Files<CR>', { silent = true })
+-- vim.keymap.set('n', '<leader>tgf', ':<C-u>GFiles<CR>', { silent = true })
+-- vim.keymap.set('n', '<leader>b', ':<C-u>BLines<CR>', { silent = true })
+-- vim.keymap.set('n', '<leader>tm', ':<C-u>marks<CR>', { silent = true })
 vim.keymap.set('n', '<leader>td', ':<C-u>Rg!<Space>')
 vim.keymap.set('x', '<leader>td', 'y:Rg!<Space><C-R>"<CR>', { silent = true })
 vim.g.fzf_preview_window = {'right:50%', 'ctrl-w'}
@@ -210,7 +210,7 @@ vim.keymap.set('n', '<leader>f', builtin.find_files, { silent = true })
 vim.keymap.set('n', '<leader>s', builtin.grep_string, { silent = true })
 vim.keymap.set('n', '<leader>d', ':Telescope grep_string search=' , {})
 vim.keymap.set('n', '<leader>;', builtin.buffers, { silent = true })
-vim.keymap.set('n', '<leader>t', builtin.current_buffer_fuzzy_find, { silent = true })
+vim.keymap.set('n', '<leader>b', builtin.current_buffer_fuzzy_find, { silent = true })
 vim.keymap.set('n', '<leader>q', builtin.quickfix, { silent = true })
 vim.keymap.set('n', '<leader>Q', builtin.quickfixhistory, { silent = true })
 
