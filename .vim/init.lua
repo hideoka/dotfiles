@@ -237,6 +237,7 @@ require("nvim-tree").setup({
 
 vim.keymap.set('n', '<leader>e', ':<C-u>NvimTreeToggle<CR>', { silent = true })
 
+-- gitsigns
 require('gitsigns').setup {
   signs = {
     add = { text = '+' },
