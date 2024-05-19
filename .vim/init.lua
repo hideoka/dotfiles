@@ -284,8 +284,7 @@ require('gitsigns').setup {
 }
 
 -- diffview.nvim
-vim.keymap.set('n', '<leader>gdo', ':<C-u>DiffviewOpen<CR>', { silent = true })
-vim.keymap.set('n', '<leader>gdc', ':<C-u>DiffviewClose<CR>', { silent = true })
+vim.keymap.set('n', '<leader>gd', ':<C-u>DiffviewOpen<CR>', { silent = true })
 
 -- vim-sandwich
 vim.keymap.set('n', 's', '<Nop>', { remap = true })
@@ -633,6 +632,7 @@ vim.keymap.set('c', '<C-a>', '<Home>')
 vim.keymap.set('c', '<C-e>', '<End>')
 vim.keymap.set('c', '<C-d>', '<Delete>')
 vim.keymap.set('c', '<C-r>', '<C-r>0')
+vim.keymap.set('n', '<leader>tc', ':<C-u>tabclose<CR>', { silent = true })
 
 -- ----------------------------------------
 --  FILE TYPE AND MODE TRIGGERS
