@@ -57,6 +57,8 @@ require("lazy").setup({
   { 'mattn/emmet-vim', ft = { 'html', 'eruby', 'vue', 'javascript', 'typescript.tsx' } },
   { 'Wansmer/treesj', dependencies = { 'nvim-treesitter/nvim-treesitter' } },
   { 'sindrets/diffview.nvim' },
+  { 'kevinhwang91/nvim-hlslens'},
+  { "folke/which-key.nvim", event = "VeryLazy", init = function() vim.o.timeout = true vim.o.timeoutlen = 500 end },
   -- { 'github/copilot.vim'}
 })
 
@@ -217,7 +219,6 @@ vim.keymap.set('n', '<leader>Q', builtin.quickfixhistory, { silent = true })
 -- nvim-tree.lua
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
-
 vim.opt.termguicolors = true
 
 require("nvim-tree").setup({
@@ -504,6 +505,12 @@ require('treesj').setup{
 
 }
 vim.keymap.set('n', '<leader>m', require('treesj').toggle, { silent = true })
+
+-- nvim-hlslens
+require('hlslens').setup()
+
+-- -- which-key.nvim
+require('which-key').setup()
 
 -- copilot.vim
 -- vim.g.copilot_no_tab_map = 'v:true'
