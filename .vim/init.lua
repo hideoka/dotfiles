@@ -56,7 +56,7 @@ require("lazy").setup({
   { "iamcco/markdown-preview.nvim", cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" }, ft = { "markdown" }, build = function() vim.fn["mkdp#util#install"]() end, },
   { 'mattn/emmet-vim', ft = { 'html', 'eruby', 'vue', 'javascript', 'typescript.tsx' } },
   { 'Wansmer/treesj', dependencies = { 'nvim-treesitter/nvim-treesitter' } },
-  { 'sindrets/diffview.nvim' },
+  { 'tpope/vim-fugitive' },
   { 'kevinhwang91/nvim-hlslens'},
   { "folke/which-key.nvim", event = "VeryLazy", init = function() vim.o.timeout = true vim.o.timeoutlen = 500 end },
   -- { 'github/copilot.vim'}
@@ -244,47 +244,14 @@ require('gitsigns').setup {
     add = { text = '+' },
     change = { text = '~' },
   },
-  on_attach = function(bufnr)
-    local gitsigns = require('gitsigns')
-
-    local function map(mode, l, r, opts)
-      opts = opts or {}
-      opts.buffer = bufnr
-      vim.keymap.set(mode, l, r, opts)
-    end
-
-    -- Navigation
-    map('n', ']c', function()
-      if vim.wo.diff then
-        vim.cmd.normal({']c', bang = true})
-      else
-        gitsigns.nav_hunk('next')
-      end
-    end)
-
-    map('n', '[c', function()
-      if vim.wo.diff then
-        vim.cmd.normal({'[c', bang = true})
-      else
-        gitsigns.nav_hunk('prev')
-      end
-    end)
-
-    map('n', '<leader>gs', gitsigns.stage_hunk)
-    map('n', '<leader>gr', gitsigns.reset_hunk)
-    map('v', '<leader>gs', function() gitsigns.stage_hunk {vim.fn.line('.'), vim.fn.line('v')} end)
-    map('v', '<leader>gr', function() gitsigns.reset_hunk {vim.fn.line('.'), vim.fn.line('v')} end)
-    map('n', '<leader>gS', gitsigns.stage_buffer)
-    map('n', '<leader>gu', gitsigns.undo_stage_hunk)
-    map('n', '<leader>gR', gitsigns.reset_buffer)
-    map('n', '<leader>gp', gitsigns.preview_hunk)
-    map('n', '<leader>gb', gitsigns.toggle_current_line_blame)
-    map({'o', 'x'}, '<leader>gh', ':<C-U>Gitsigns select_hunk<CR>')
-  end
 }
 
+-- vim-fugitive
+vim.keymap.set('n', '<leader>gd', ':<C-u>Gdiffsplit<CR>', { silent = true })
+vim.keymap.set('n', '<leader>gb', ':<C-u>Git blame<CR>', { silent = true })
+
 -- diffview.nvim
-vim.keymap.set('n', '<leader>gd', ':<C-u>DiffviewOpen<CR>', { silent = true })
+vim.keymap.set('n', '<leader>gD', ':<C-u>DiffviewOpen<CR>', { silent = true })
 
 -- vim-sandwich
 vim.keymap.set('n', 's', '<Nop>', { remap = true })
