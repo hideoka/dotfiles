@@ -25,3 +25,4 @@ nvim
 zenn
 astro
 psql
+chrono
