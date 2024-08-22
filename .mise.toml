@@ -3,3 +3,4 @@ node = 'lts'
 ruby = '3.3'
 terraform = '1.4'
 python = "3.11"
+kind = "latest"
