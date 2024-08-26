@@ -92,7 +92,8 @@ require('mason-tool-installer').setup {
     'taplo',
     'bash-language-server',
     'terraformls',
-    'solargraph'
+    'solargraph',
+    'gopls'
   },
 }
 
