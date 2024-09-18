@@ -93,7 +93,8 @@ require('mason-tool-installer').setup {
     'bash-language-server',
     'terraformls',
     'solargraph',
-    'gopls'
+    'gopls',
+    'zls'
   },
 }
 
@@ -296,7 +297,7 @@ local on_attach = function(_, bufnr)
   vim.keymap.set('n', '<leader>lf', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
-local servers = { 'hls', 'pylsp', 'astro', 'sqls', 'taplo', 'bashls', 'terraformls' }
+local servers = { 'hls', 'pylsp', 'astro', 'sqls', 'taplo', 'bashls', 'terraformls', 'zls' }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = on_attach,
