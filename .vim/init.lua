@@ -338,10 +338,14 @@ lspconfig.rust_analyzer.setup {
           buildScripts = {
               enable = true,
           },
+          features = "all",
           autoreload = true
       },
       procMacro = {
           enable = true
+      },
+      check = {
+        command = "clippy",
       },
     }
   }
@@ -617,18 +621,20 @@ vim.api.nvim_create_autocmd({ 'bufNewFile', 'BufRead' }, {
   group = make_file_indent
 })
 
--- Rustfile indent
-local rust_file_indent = vim.api.nvim_create_augroup('RustfileIndent', { clear = true })
-vim.api.nvim_create_autocmd({ 'bufNewFile', 'BufRead' }, {
-  pattern = 'Rust',
-  command = 'setlocal tabstop=4 shiftwidth=4 softtabstop=4',
-  group = rust_file_indent
-})
-
 -- Rubyfile indent dot fix
 local rust_file_indent_dot_fix = vim.api.nvim_create_augroup('RubyfileIndentDotFix', { clear = true })
 vim.api.nvim_create_autocmd({ 'FileType' }, {
   pattern = 'ruby',
   command = 'setlocal indentkeys-=.',
   group = rust_file_indent_dot_fix
+})
+
+-- rustfile rustfmt on save
+local rustfmt_on_save = vim.api.nvim_create_augroup('RustfmtOnSave', { clear = true })
+vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
+  pattern = '*.rs',
+  callback = function()
+    vim.lsp.buf.format()
+  end,
+  group = rustfmt_on_save
 })
