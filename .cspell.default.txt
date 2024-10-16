@@ -26,3 +26,6 @@ zenn
 astro
 psql
 chrono
+wiremock
+automock
+mockall
