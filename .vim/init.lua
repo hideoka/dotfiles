@@ -630,11 +630,35 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
 })
 
 -- rustfile rustfmt on save
-local rustfmt_on_save = vim.api.nvim_create_augroup('RustfmtOnSave', { clear = true })
-vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
+local fmt_on_save = vim.api.nvim_create_augroup('fmtOnSave', { clear = true })
+vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
   pattern = '*.rs',
   callback = function()
     vim.lsp.buf.format()
   end,
-  group = rustfmt_on_save
+  group = fmt_on_save
+})
+
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  pattern = { "*.tf", "*.tfvars" },
+  callback = function()
+    vim.lsp.buf.format()
+  end,
+  group = fmt_on_save
+})
+
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  pattern = '*.lua',
+  callback = function()
+    vim.lsp.buf.format()
+  end,
+  group = fmt_on_save
+})
+
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  pattern = '*.rb',
+  callback = function()
+    vim.lsp.buf.format()
+  end,
+  group = fmt_on_save
 })
