@@ -23,8 +23,8 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
-  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-  { "bluz71/vim-nightfly-colors", name = "nightfly", lazy = false, priority = 1000 },
+  { "nvim-treesitter/nvim-treesitter",          build = ":TSUpdate" },
+  { "bluz71/vim-nightfly-colors",               name = "nightfly",  lazy = false,                              priority = 1000 },
   { "neovim/nvim-lspconfig" },
   { "hrsh7th/nvim-cmp" },
   { "hrsh7th/cmp-nvim-lsp" },
@@ -36,29 +36,47 @@ require("lazy").setup({
   { "mfussenegger/nvim-lint" },
   { "nvim-tree/nvim-web-devicons" },
   { "nvim-tree/nvim-tree.lua" },
-  { "akinsho/toggleterm.nvim", version = "*" },
-  { "nvim-telescope/telescope.nvim", tag = '0.1.6', dependencies = { 'nvim-lua/plenary.nvim' } },
-  { "nvim-telescope/telescope-fzf-native.nvim", build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' },
-  { "L3MON4D3/LuaSnip", version = "v2.*", build = "make install_jsregexp" },
+  { "akinsho/toggleterm.nvim",                  version = "*" },
+  { "nvim-telescope/telescope.nvim",            tag = '0.1.6',      dependencies = { 'nvim-lua/plenary.nvim' } },
+  {
+    "nvim-telescope/telescope-fzf-native.nvim",
+    build =
+    'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+  },
+  { "L3MON4D3/LuaSnip",                    version = "v2.*", build = "make install_jsregexp" },
   { "saadparwaiz1/cmp_luasnip" },
-  { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
+  { "lukas-reineke/indent-blankline.nvim", main = "ibl",     opts = {} },
   { "j-hui/fidget.nvim" },
-  { 'numToStr/Comment.nvim', lazy = false },
+  { 'numToStr/Comment.nvim',               lazy = false },
   { 'lewis6991/gitsigns.nvim' },
   { 'sindrets/diffview.nvim' },
   { 'itchyny/lightline.vim' },
   { 'machakann/vim-sandwich' },
   { 'cohama/lexima.vim' },
-  { 'kevinhwang91/nvim-bqf'},
-  { 'junegunn/fzf', dir = "~/.fzf", build = "./install --all"},
-  { 'junegunn/fzf.vim'},
-  { 'plasticboy/vim-markdown', ft = 'markdown' },
-  { "iamcco/markdown-preview.nvim", cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" }, ft = { "markdown" }, build = function() vim.fn["mkdp#util#install"]() end, },
-  { 'mattn/emmet-vim', ft = { 'html', 'eruby', 'vue', 'javascript', 'typescript.tsx' } },
-  { 'Wansmer/treesj', dependencies = { 'nvim-treesitter/nvim-treesitter' } },
+  { 'kevinhwang91/nvim-bqf' },
+  { 'junegunn/fzf',                        dir = "~/.fzf",   build = "./install --all" },
+  { 'junegunn/fzf.vim' },
+  { 'plasticboy/vim-markdown',             ft = 'markdown' },
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function()
+      vim.fn["mkdp#util#install"]()
+    end,
+  },
+  { 'mattn/emmet-vim',          ft = { 'html', 'eruby', 'vue', 'javascript', 'typescript.tsx' } },
+  { 'Wansmer/treesj',           dependencies = { 'nvim-treesitter/nvim-treesitter' } },
   { 'tpope/vim-fugitive' },
-  { 'kevinhwang91/nvim-hlslens'},
-  { "folke/which-key.nvim", event = "VeryLazy", init = function() vim.o.timeout = true vim.o.timeoutlen = 500 end },
+  { 'kevinhwang91/nvim-hlslens' },
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    init = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 500
+    end
+  },
   -- { 'github/copilot.vim'}
 })
 
@@ -75,12 +93,12 @@ require('nvim-treesitter.configs').setup {
 }
 
 -- indent-blankline.nvim
-require("ibl").setup ()
+require("ibl").setup()
 
 
 -- mason
-require("mason").setup ()
-require("mason-lspconfig").setup ()
+require("mason").setup()
+require("mason-lspconfig").setup()
 require('mason-tool-installer').setup {
   ensure_installed = {
     'shellcheck',
@@ -136,9 +154,9 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 -- vim.keymap.set('n', '<leader>tm', ':<C-u>marks<CR>', { silent = true })
 vim.keymap.set('n', '<leader>td', ':<C-u>Rg!<Space>')
 vim.keymap.set('x', '<leader>td', 'y:Rg!<Space><C-R>"<CR>', { silent = true })
-vim.g.fzf_preview_window = {'right:50%', 'ctrl-w'}
+vim.g.fzf_preview_window = { 'right:50%', 'ctrl-w' }
 vim.cmd(
-[[
+  [[
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always --smart-case --hidden -- '.shellescape(<q-args>), 1,
@@ -151,11 +169,11 @@ local telescope = require("telescope")
 local actions = require("telescope.actions")
 local action_layout = require("telescope.actions.layout")
 
-telescope.setup{
+telescope.setup {
   defaults = {
     layout_config = {
       horizontal = {
-         preview_width = 0.5,
+        preview_width = 0.5,
       },
       width = 0.99,
       height = 0.99,
@@ -187,7 +205,7 @@ telescope.setup{
   },
   pickers = {
     find_files = {
-      find_command = {'rg', '--files', '--smart-case', '--hidden', '--glob=!.git/'},
+      find_command = { 'rg', '--files', '--smart-case', '--hidden', '--glob=!.git/' },
     },
     buffers = {
       mappings = {
@@ -214,7 +232,7 @@ telescope.load_extension('fzf')
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>f', builtin.find_files, { silent = true })
 vim.keymap.set('n', '<leader>s', builtin.grep_string, { silent = true })
-vim.keymap.set('n', '<leader>d', ':Telescope grep_string search=' , {})
+vim.keymap.set('n', '<leader>d', ':Telescope grep_string search=', {})
 vim.keymap.set('n', '<leader>;', builtin.buffers, { silent = true })
 vim.keymap.set('n', '<leader>b', builtin.current_buffer_fuzzy_find, { silent = true })
 vim.keymap.set('n', '<leader>q', builtin.quickfix, { silent = true })
@@ -280,11 +298,11 @@ local lspconfig = require('lspconfig')
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-vim.api.nvim_set_keymap('n', '<leader>le', '<cmd>lua vim.diagnostic.open_float()<CR>', { noremap=true, silent=true } )
+vim.api.nvim_set_keymap('n', '<leader>le', '<cmd>lua vim.diagnostic.open_float()<CR>', { noremap = true, silent = true })
 
 local on_attach = function(_, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-  local bufopts = { noremap=true, silent=true, buffer=bufnr }
+  local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
@@ -329,20 +347,20 @@ lspconfig.rust_analyzer.setup {
   settings = {
     ["rust-analyzer"] = {
       imports = {
-          granularity = {
-              group = "module",
-          },
-          prefix = "self",
+        granularity = {
+          group = "module",
+        },
+        prefix = "self",
       },
       cargo = {
-          buildScripts = {
-              enable = true,
-          },
-          features = "all",
-          autoreload = true
+        buildScripts = {
+          enable = true,
+        },
+        features = "all",
+        autoreload = true
       },
       procMacro = {
-          enable = true
+        enable = true
       },
       check = {
         command = "clippy",
@@ -353,8 +371,8 @@ lspconfig.rust_analyzer.setup {
 
 lspconfig.gopls.setup {
   on_attach = on_attach,
-  cmd = {"gopls", "serve"},
-  filetypes = {"go", "gomod"},
+  cmd = { "gopls", "serve" },
+  filetypes = { "go", "gomod" },
   root_dir = lspconfig.util.root_pattern("go.work", "go.mod", ".git"),
   settings = {
     gopls = {
@@ -369,7 +387,7 @@ lspconfig.gopls.setup {
 lspconfig.lua_ls.setup {
   on_init = function(client)
     local path = client.workspace_folders[1].name
-    if vim.loop.fs_stat(path..'/.luarc.json') or vim.loop.fs_stat(path..'/.luarc.jsonc') then
+    if vim.loop.fs_stat(path .. '/.luarc.json') or vim.loop.fs_stat(path .. '/.luarc.jsonc') then
       return
     end
 
@@ -390,7 +408,7 @@ lspconfig.lua_ls.setup {
   }
 }
 
-require("fidget").setup{}
+require("fidget").setup {}
 
 local cmp = require('cmp')
 local luasnip = require('luasnip')
@@ -444,7 +462,7 @@ cmp.setup({
     {
       name = 'path',
       option = {
-        get_cwd = function ()
+        get_cwd = function()
           return vim.fn.getcwd()
         end
       },
@@ -454,9 +472,9 @@ cmp.setup({
 })
 
 -- toggleterm.nvim
-require("toggleterm").setup{}
+require("toggleterm").setup {}
 function _G.set_terminal_keymaps()
-  local opts = {buffer = 0}
+  local opts = { buffer = 0 }
   vim.keymap.set('t', '<esc>', [[<Cmd>wincmd h<CR>]], opts)
 end
 
@@ -465,7 +483,7 @@ vim.keymap.set('n', '<leader>tt', ':<C-u>ToggleTerm direction=float<CR>', { sile
 
 
 -- Comment.nvim
-require('Comment').setup{}
+require('Comment').setup {}
 
 -- lexima.vim
 vim.g.lexima_enable_basic_rules = 1
@@ -473,7 +491,7 @@ vim.g.lexima_enable_newline_rules = 1
 vim.g.lexima_enable_endwise_rules = 1
 
 -- treesj
-require('treesj').setup{
+require('treesj').setup {
   use_default_keymaps = false,
   max_join_length = 360
 
