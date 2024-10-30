@@ -1,8 +1,9 @@
 [tools]
 node = 'lts'
-ruby = '3.3'
+ruby = 'latest'
 terraform = '1.4'
 python = "3.11"
 kind = "latest"
 zig = "latest"
 go = "latest"
+bun = "latest"
