@@ -680,3 +680,11 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   end,
   group = fmt_on_save
 })
+
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  pattern = '*.ts',
+  callback = function()
+    vim.lsp.buf.format()
+  end,
+  group = fmt_on_save
+})
