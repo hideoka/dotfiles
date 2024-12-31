@@ -1,4 +1,4 @@
-alias ls="ls -al"
+alias ll="ls -al"
 alias mkcd="mkdir_and_cd"
 
 alias gd="git diff"
