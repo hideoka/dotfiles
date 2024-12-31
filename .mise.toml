@@ -1,5 +1,5 @@
 [tools]
-node = 'lts'
+node = "latest"
 ruby = 'latest'
 terraform = '1.4'
 python = "3.11"
