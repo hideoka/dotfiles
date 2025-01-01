@@ -1,7 +1,5 @@
-DOTFILE_PATH=$1
-
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-. "$HOME/.cargo/env"
+source "$HOME/.cargo/env"
 rustup update
 rustup component add rustfmt clippy rust-analyzer
 
