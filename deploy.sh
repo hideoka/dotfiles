@@ -12,6 +12,7 @@ do
   [[ $f == ".git" ]] && continue
   [[ $f == ".DS_Store" ]] && continue
   [[ $f == ".zsh" ]] && continue
+  [[ $f == ".gitignore" ]] && continue
 
   if [[ $f == ".vim" ]]; then
     ln -snf "$DOTFILE_PATH/$f" ~/.config/nvim
