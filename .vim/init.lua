@@ -77,7 +77,7 @@ require("lazy").setup({
       vim.o.timeoutlen = 500
     end
   },
-  -- { 'github/copilot.vim'}
+  { 'github/copilot.vim' }
 })
 
 -- nvim-treesitter
@@ -505,8 +505,12 @@ require('hlslens').setup()
 require('which-key').setup()
 
 -- copilot.vim
--- vim.g.copilot_no_tab_map = 'v:true'
--- vim.keymap.set('i', '<C-j>', 'copilot#Accept("\\<CR>")', { silent = true, remap = true, expr = true, script = true })
+vim.keymap.set('i', '<C-J>', 'copilot#Accept("\\<CR>")', {
+  expr = true,
+  replace_keycodes = false
+})
+vim.g.copilot_no_tab_map = true
+vim.g.copilot_enabled = false
 
 
 -- -------------------------------------------------------------------------
