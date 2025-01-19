@@ -335,6 +335,19 @@ lspconfig.solargraph.setup {
   formatting = true,
   root_dir = lspconfig.util.root_pattern("Gemfile", ".git"),
 }
+-- lspconfig.ruby_lsp.setup({
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   init_options = {
+--     formatter = 'standard',
+--     linters = { 'standard' },
+--   },
+-- })
+-- lspconfig.sorbet.setup({
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   cmd = { "bundle", "exec", "srb", "tc", "--lsp", "--disable-watchman" },
+-- })
 
 lspconfig.denols.setup {
   on_attach = on_attach,
