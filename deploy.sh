@@ -6,6 +6,7 @@ mkdir -p "$HOME"/.config/alacritty
 mkdir -p "$HOME"/.config/sheldon
 mkdir -p "$HOME"/.config/mise
 mkdir -p "$HOME"/.config/cspell
+mkdir -p "$HOME"/.config/git
 
 for f in .??*
 do
@@ -31,6 +32,8 @@ do
   elif [[ $f == ".cspell.default.txt" ]]; then
     ln -snf "$DOTFILE_PATH/$f" ~/.config/cspell/cspell.default.txt
     touch ~/.config/cspell/cspell.local.txt
+  elif [[ $f == ".git_ignore" ]]; then
+    ln -snf "$DOTFILE_PATH/$f" ~/.config/git/ignore
   else
     ln -snf "$DOTFILE_PATH/$f" ~/"$f"
   fi
