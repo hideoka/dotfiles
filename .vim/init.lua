@@ -525,6 +525,8 @@ vim.keymap.set('i', '<C-J>', 'copilot#Accept("\\<CR>")', {
 })
 vim.g.copilot_no_tab_map = true
 vim.g.copilot_enabled = false
+vim.keymap.set('n', '<leader>ce', ':<C-u>Copilot enable<CR>', { silent = true })
+vim.keymap.set('n', '<leader>cd', ':<C-u>Copilot disable<CR>', { silent = true })
 
 
 -- -------------------------------------------------------------------------
