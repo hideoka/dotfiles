@@ -1,7 +1,7 @@
 [tools]
 node = "latest"
 ruby = 'latest'
-terraform = '1.4'
+terraform = 'latest'
 python = "3.11"
 zig = "latest"
 go = "latest"
