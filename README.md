@@ -3,8 +3,12 @@
 ## install requirement
 - make
 - git
-- alacritty
 - HackGen Console NF font
+- alacritty
+- neovim
+- fzf
+- rust
+- Homebrew(macOS)
 
 ## make command
 ```
