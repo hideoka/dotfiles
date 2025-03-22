@@ -25,4 +25,4 @@ eval "$(mise activate zsh)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-autoload -U compinit; compinit
+autoload -Uz compinit; compinit
