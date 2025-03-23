@@ -43,9 +43,9 @@ require("lazy").setup({
     build =
     'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
   },
-  { "L3MON4D3/LuaSnip",                    version = "v2.*", build = "make install_jsregexp" },
+  { "L3MON4D3/LuaSnip",                    version = "v2.*",                                    build = "make install_jsregexp" },
   { "saadparwaiz1/cmp_luasnip" },
-  { "lukas-reineke/indent-blankline.nvim", main = "ibl",     opts = {} },
+  { "lukas-reineke/indent-blankline.nvim", main = "ibl",                                        opts = {} },
   { "j-hui/fidget.nvim" },
   { 'numToStr/Comment.nvim',               lazy = false },
   { 'lewis6991/gitsigns.nvim' },
@@ -54,19 +54,9 @@ require("lazy").setup({
   { 'machakann/vim-sandwich' },
   { 'cohama/lexima.vim' },
   { 'kevinhwang91/nvim-bqf' },
-  { 'junegunn/fzf',                        dir = "~/.fzf",   build = "./install --all" },
+  { 'junegunn/fzf',                        dir = "~/.fzf",                                      build = "./install --all" },
   { 'junegunn/fzf.vim' },
-  { 'plasticboy/vim-markdown',             ft = 'markdown' },
-  {
-    "iamcco/markdown-preview.nvim",
-    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-    ft = { "markdown" },
-    build = function()
-      vim.fn["mkdp#util#install"]()
-    end,
-  },
-  { 'mattn/emmet-vim',          ft = { 'html', 'eruby', 'vue', 'javascript', 'typescript.tsx' } },
-  { 'Wansmer/treesj',           dependencies = { 'nvim-treesitter/nvim-treesitter' } },
+  { 'Wansmer/treesj',                      dependencies = { 'nvim-treesitter/nvim-treesitter' } },
   { 'tpope/vim-fugitive' },
   { 'kevinhwang91/nvim-hlslens' },
   {
