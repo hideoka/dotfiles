@@ -1,7 +1,7 @@
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-DOTFILE_PATH="$(dirname $(readlink $HOME/.zshrc))"
+DOTFILE_PATH="$(dirname "$(readlink "$HOME/.zshrc")")"
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=240"
 
 export PATH="$HOME/.local/bin:$PATH"
