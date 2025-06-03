@@ -5,5 +5,5 @@ sudo apt -y install\
   tmux\
   libssl-dev\
   libyaml-dev\
-  llibffi-dev\
+  libffi-dev\
   vim
