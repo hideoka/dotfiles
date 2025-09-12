@@ -650,11 +650,17 @@ vim.keymap.set('n', '<leader>tc', ':<C-u>tabclose<CR>', { silent = true })
 -- ----------------------------------------
 
 -- Makefile indent
-local make_file_indent = vim.api.nvim_create_augroup('MakefileIndent', { clear = true })
-vim.api.nvim_create_autocmd({ 'bufNewFile', 'BufRead' }, {
+local file_indent = vim.api.nvim_create_augroup('MakefileIndent', { clear = true })
+vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
   pattern = 'Makefile',
   command = 'setlocal tabstop=4 shiftwidth=4 softtabstop=4',
-  group = make_file_indent
+  group = file_indent
+})
+
+vim.api.nvim_create_autocmd({ 'bufNewFile', 'BufRead' }, {
+  pattern = '*.go',
+  command = 'setlocal tabstop=4 shiftwidth=4 softtabstop=4',
+  group = file_indent
 })
 
 -- Rubyfile indent dot fix
@@ -701,6 +707,14 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   pattern = '*.ts',
+  callback = function()
+    vim.lsp.buf.format()
+  end,
+  group = fmt_on_save
+})
+
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  pattern = '*.go',
   callback = function()
     vim.lsp.buf.format()
   end,
