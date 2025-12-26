@@ -37,7 +37,7 @@ require("lazy").setup({
   { "nvim-tree/nvim-web-devicons" },
   { "nvim-tree/nvim-tree.lua" },
   { "akinsho/toggleterm.nvim",                  version = "*" },
-  { "nvim-telescope/telescope.nvim",            tag = '0.1.6',      dependencies = { 'nvim-lua/plenary.nvim' } },
+  { "nvim-telescope/telescope.nvim",            tag = 'v0.2.0',     dependencies = { 'nvim-lua/plenary.nvim' } },
   {
     "nvim-telescope/telescope-fzf-native.nvim",
     build =
@@ -85,14 +85,13 @@ require('nvim-treesitter.configs').setup {
 -- indent-blankline.nvim
 require("ibl").setup()
 
-
 -- mason
 require("mason").setup()
 require("mason-lspconfig").setup()
 require('mason-tool-installer').setup {
   ensure_installed = {
     'shellcheck',
-    'cspell',
+    'typos-lsp',
     'astro-language-server',
     'lua-language-server',
     'typescript-language-server',
@@ -110,26 +109,9 @@ require('mason-tool-installer').setup {
 
 -- nvim-lint
 require('lint').linters_by_ft = {
-  sh = { 'shellcheck', 'cspell' },
-  bash = { 'shellcheck', 'cspell' },
-  zsh = { 'shellcheck', 'cspell' },
-  ruby = { 'cspell' },
-  rust = { 'cspell' },
-  javascript = { 'cspell' },
-  javascriptreact = { 'cspell' },
-  typescript = { 'cspell' },
-  typescriptreact = { 'cspell' },
-}
-
-local cspell = require('lint').linters.cspell
-cspell.args = {
-  'lint',
-  '--no-color',
-  '--no-progress',
-  '--no-summary',
-  '--show-suggestions',
-  '-c',
-  '~/.config/cspell/cspell.config.yaml'
+  sh = { 'shellcheck' },
+  bash = { 'shellcheck' },
+  zsh = { 'shellcheck' },
 }
 
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
@@ -285,77 +267,20 @@ vim.keymap.set('n', '<leader>M', ':<C-u>MarkdownPreview<CR>', { silent = true })
 vim.g.mkdp_auto_close = 0
 
 
+
+vim.api.nvim_set_keymap('n', '<leader>le', '<cmd>lua vim.diagnostic.open_float()<CR>', { noremap = true, silent = true })
+vim.diagnostic.config({ virtual_text = true })
+
 -- nvim-lspconfig, nvim-cmp, cmp-nvim-lsp, LuaSnip, fidget
 local lspconfig = require('lspconfig')
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-vim.api.nvim_set_keymap('n', '<leader>le', '<cmd>lua vim.diagnostic.open_float()<CR>', { noremap = true, silent = true })
+vim.lsp.config("*", {
+  capabilities = capabilities
+})
 
-local on_attach = function(_, bufnr)
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-  local bufopts = { noremap = true, silent = true, buffer = bufnr }
-
-  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-  vim.keymap.set('n', '<leader>ld', vim.lsp.buf.type_definition, bufopts)
-  vim.keymap.set('n', '<leader>ln', vim.lsp.buf.rename, bufopts)
-  vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action, bufopts)
-  vim.keymap.set('n', '<leader>lf', function() vim.lsp.buf.format { async = true } end, bufopts)
-end
-
-local servers = { 'hls', 'pylsp', 'astro', 'sqls', 'taplo', 'bashls', 'terraformls', 'zls', 'clangd' }
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-  }
-end
-
-lspconfig.ts_ls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  root_dir = lspconfig.util.root_pattern("tsconfig.json"),
-}
-
-lspconfig.biome.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  root_dir = lspconfig.util.root_pattern("biome.json"),
-}
-
-lspconfig.solargraph.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  formatting = true,
-  root_dir = lspconfig.util.root_pattern("Gemfile", ".git"),
-}
--- lspconfig.ruby_lsp.setup({
---   on_attach = on_attach,
---   capabilities = capabilities,
---   init_options = {
---     formatter = 'standard',
---     linters = { 'standard' },
---   },
--- })
--- lspconfig.sorbet.setup({
---   on_attach = on_attach,
---   capabilities = capabilities,
---   cmd = { "bundle", "exec", "srb", "tc", "--lsp", "--disable-watchman" },
--- })
-
-lspconfig.denols.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  root_dir = lspconfig.util.root_pattern("deno.json"),
-}
-
-lspconfig.rust_analyzer.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
+vim.lsp.config("rust_analyzer", {
   settings = {
     ["rust-analyzer"] = {
       imports = {
@@ -379,46 +304,53 @@ lspconfig.rust_analyzer.setup {
       },
     }
   }
-}
+})
 
-lspconfig.gopls.setup {
-  on_attach = on_attach,
-  cmd = { "gopls", "serve" },
-  filetypes = { "go", "gomod" },
-  root_dir = lspconfig.util.root_pattern("go.work", "go.mod", ".git"),
+vim.lsp.config("zls", {
   settings = {
-    gopls = {
-      analyses = {
-        unusedparams = true,
-      },
-      staticcheck = true,
+    zls = {
+      enable_build_on_save = true,
     }
   }
-}
+})
 
-lspconfig.lua_ls.setup {
-  on_init = function(client)
-    local path = client.workspace_folders[1].name
-    if vim.loop.fs_stat(path .. '/.luarc.json') or vim.loop.fs_stat(path .. '/.luarc.jsonc') then
-      return
+vim.lsp.enable({ 'sqls', 'taplo', 'bashls', 'terraformls', 'ts_ls', 'zls', 'clangd', 'solargraph',
+  'rust_analyzer', 'typos-lsp' })
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(args)
+    local bufnr = args.buf
+    local bufopts = { buffer = bufnr }
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+    vim.keymap.set('n', '<leader>ld', vim.lsp.buf.type_definition, bufopts)
+    vim.keymap.set('n', '<leader>ln', vim.lsp.buf.rename, bufopts)
+    vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action, bufopts)
+    vim.keymap.set('n', '<leader>lf', function() vim.lsp.buf.format { async = true } end, bufopts)
+
+    local should_format_on_save = not client:supports_method('textDocument/willSaveWaitUntil') and
+        client:supports_method('textDocument/formatting')
+    if should_format_on_save or client.name == 'zls' then
+      vim.api.nvim_create_autocmd('BufWritePre', {
+        group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
+        callback = function()
+          vim.lsp.buf.format({ bufnr = bufnr, id = client.id, timeout_ms = 1000 })
+        end,
+      })
     end
 
-    client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
-      runtime = {
-        version = 'LuaJIT'
-      },
-      workspace = {
-        checkThirdParty = false,
-        library = {
-          vim.env.VIMRUNTIME
-        }
-      }
-    })
+    if client:supports_method("textDocument/inlayHint") then
+      vim.keymap.set('n', '<leader>lh', function()
+        local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr })
+        vim.lsp.inlay_hint.enable(not enabled, { bufnr = bufnr })
+      end, bufopts)
+    end
   end,
-  settings = {
-    Lua = {}
-  }
-}
+})
 
 require("fidget").setup {}
 
