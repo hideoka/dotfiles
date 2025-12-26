@@ -3,7 +3,7 @@ node = "latest"
 ruby = 'latest'
 terraform = 'latest'
 python = "3.11"
-zig = "0.15.1"
+zig = "latest"
 go = "latest"
 bun = "latest"
 kubectl = "latest"
@@ -13,3 +13,6 @@ argo-rollouts = "latest"
 helm = "latest"
 kubeseal = "latest"
 tekton-cli = "latest"
+
+[settings]
+idiomatic_version_file_enable_tools = ["ruby"]
