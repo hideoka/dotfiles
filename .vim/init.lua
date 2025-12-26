@@ -121,11 +121,6 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 })
 
 -- fzf
--- vim.keymap.set('n', '<leader>t;', ':<C-u>Buffers<CR>', { silent = true })
--- vim.keymap.set('n', '<leader>tf', ':<C-u>Files<CR>', { silent = true })
--- vim.keymap.set('n', '<leader>tgf', ':<C-u>GFiles<CR>', { silent = true })
--- vim.keymap.set('n', '<leader>b', ':<C-u>BLines<CR>', { silent = true })
--- vim.keymap.set('n', '<leader>tm', ':<C-u>marks<CR>', { silent = true })
 vim.keymap.set('n', '<leader>td', ':<C-u>Rg!<Space>')
 vim.keymap.set('x', '<leader>td', 'y:Rg!<Space><C-R>"<CR>', { silent = true })
 vim.g.fzf_preview_window = { 'right:50%', 'ctrl-w' }
