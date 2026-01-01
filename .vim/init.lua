@@ -91,7 +91,7 @@ require("mason-lspconfig").setup()
 require('mason-tool-installer').setup {
   ensure_installed = {
     'shellcheck',
-    'typos-lsp',
+    'typos',
     'astro-language-server',
     'lua-language-server',
     'typescript-language-server',
@@ -109,9 +109,13 @@ require('mason-tool-installer').setup {
 
 -- nvim-lint
 require('lint').linters_by_ft = {
-  sh = { 'shellcheck' },
-  bash = { 'shellcheck' },
-  zsh = { 'shellcheck' },
+  sh = { 'shellcheck', 'typos' },
+  bash = { 'shellcheck', 'typos' },
+  zsh = { 'shellcheck', 'typos' },
+  zig = { 'typos' },
+  ruby = { 'typos' },
+  typescript = { 'typos' },
+  javascript = { 'typos' },
 }
 
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
@@ -310,7 +314,7 @@ vim.lsp.config("zls", {
 })
 
 vim.lsp.enable({ 'sqls', 'taplo', 'bashls', 'terraformls', 'ts_ls', 'zls', 'clangd', 'solargraph',
-  'rust_analyzer', 'typos-lsp' })
+  'rust_analyzer' })
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(args)
     local bufnr = args.buf
