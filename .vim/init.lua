@@ -313,13 +313,14 @@ vim.lsp.config("zls", {
   }
 })
 
-vim.lsp.enable({ 'sqls', 'taplo', 'bashls', 'terraformls', 'ts_ls', 'zls', 'clangd', 'solargraph',
+vim.lsp.enable({ 'sqls', 'taplo', 'bashls', 'terraformls', 'ts_ls', 'zls', 'clangd',
   'rust_analyzer' })
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(args)
     local bufnr = args.buf
     local bufopts = { buffer = bufnr }
     local client = vim.lsp.get_client_by_id(args.data.client_id)
+    local fmt_group = vim.api.nvim_create_augroup('lsp_fmt', { clear = false })
 
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
@@ -335,9 +336,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
         client:supports_method('textDocument/formatting')
     if should_format_on_save or client.name == 'zls' then
       vim.api.nvim_create_autocmd('BufWritePre', {
-        group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
+        group = fmt_group,
+        buffer = bufnr,
         callback = function()
-          vim.lsp.buf.format({ bufnr = bufnr, id = client.id, timeout_ms = 1000 })
+          vim.lsp.buf.format({ async = false, bufnr = bufnr, id = client.id, timeout_ms = 1000 })
         end,
       })
     end
@@ -600,54 +602,4 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
   pattern = 'ruby',
   command = 'setlocal indentkeys-=.',
   group = rust_file_indent_dot_fix
-})
-
--- rustfile rustfmt on save
-local fmt_on_save = vim.api.nvim_create_augroup('fmtOnSave', { clear = true })
-vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
-  pattern = '*.rs',
-  callback = function()
-    vim.lsp.buf.format()
-  end,
-  group = fmt_on_save
-})
-
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-  pattern = { "*.tf", "*.tfvars" },
-  callback = function()
-    vim.lsp.buf.format()
-  end,
-  group = fmt_on_save
-})
-
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-  pattern = '*.lua',
-  callback = function()
-    vim.lsp.buf.format()
-  end,
-  group = fmt_on_save
-})
-
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-  pattern = '*.rb',
-  callback = function()
-    vim.lsp.buf.format()
-  end,
-  group = fmt_on_save
-})
-
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-  pattern = '*.ts',
-  callback = function()
-    vim.lsp.buf.format()
-  end,
-  group = fmt_on_save
-})
-
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-  pattern = '*.go',
-  callback = function()
-    vim.lsp.buf.format()
-  end,
-  group = fmt_on_save
 })
