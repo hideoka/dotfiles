@@ -14,3 +14,4 @@ cargo install hexyl
 cargo install mise
 cargo install rust-script
 cargo install typos-cli --locked
+cargo install tree-sitter-cli --locked

@@ -23,8 +23,8 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
-  { "nvim-treesitter/nvim-treesitter",          build = ":TSUpdate" },
-  { "bluz71/vim-nightfly-colors",               name = "nightfly",  lazy = false,                              priority = 1000 },
+  { 'nvim-treesitter/nvim-treesitter',          branch = 'main',   lazy = false,                              build = ':TSUpdate', },
+  { "bluz71/vim-nightfly-colors",               name = "nightfly", lazy = false,                              priority = 1000 },
   { "neovim/nvim-lspconfig" },
   { "hrsh7th/nvim-cmp" },
   { "hrsh7th/cmp-nvim-lsp" },
@@ -37,7 +37,7 @@ require("lazy").setup({
   { "nvim-tree/nvim-web-devicons" },
   { "nvim-tree/nvim-tree.lua" },
   { "akinsho/toggleterm.nvim",                  version = "*" },
-  { "nvim-telescope/telescope.nvim",            tag = 'v0.2.0',     dependencies = { 'nvim-lua/plenary.nvim' } },
+  { "nvim-telescope/telescope.nvim",            tag = 'v0.2.0',    dependencies = { 'nvim-lua/plenary.nvim' } },
   {
     "nvim-telescope/telescope-fzf-native.nvim",
     build =
@@ -71,16 +71,16 @@ require("lazy").setup({
 })
 
 -- nvim-treesitter
-require('nvim-treesitter.configs').setup {
-  ensure_installed = "all",
-  highlight = {
-    enable = true,
-    disable = { "embedded_template" },
-  },
-  indent = {
-    enable = true,
-  }
-}
+require('nvim-treesitter').setup({
+  install_dir = vim.fn.stdpath('data') .. '/site',
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  group = vim.api.nvim_create_augroup("vim-treesitter-start", { clear = true }),
+  callback = function(ctx)
+    pcall(vim.treesitter.start)
+  end,
+})
 
 -- indent-blankline.nvim
 require("ibl").setup()
