@@ -9,4 +9,6 @@ elif [[ $(uname) == 'Linux' ]]; then
 fi
 
 source "$DOTFILE_PATH"/etc/rust.sh "$DOTFILE_PATH"
+
+curl https://mise.run | sh
 mise install

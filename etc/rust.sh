@@ -11,7 +11,6 @@ cargo install sqlx-cli
 cargo install sheldon
 cargo install eza
 cargo install hexyl
-cargo install mise
 cargo install rust-script
 cargo install typos-cli --locked
 cargo install tree-sitter-cli --locked
