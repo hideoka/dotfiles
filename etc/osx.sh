@@ -1,4 +1,3 @@
-brew install zsh
 brew install tmux
 brew install tig
 brew install gawk
