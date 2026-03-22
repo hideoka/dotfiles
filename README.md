@@ -11,7 +11,7 @@ Personal development environment configuration files for consistent setup across
 - make
 - git
 - HackGen Console NF font
-- alacritty
+- alacritty or ghostty
 - neovim
 - fzf
 - rust

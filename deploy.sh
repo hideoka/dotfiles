@@ -34,6 +34,8 @@ do
     touch ~/.config/cspell/cspell.local.txt
   elif [[ $f == ".git_ignore" ]]; then
     ln -snf "$DOTFILE_PATH/$f" ~/.config/git/ignore
+  elif [[ $f == ".config.ghostty" ]]; then
+    ln -snf "$DOTFILE_PATH/$f" ~/.config/ghostty/config.ghostty
   else
     ln -snf "$DOTFILE_PATH/$f" ~/"$f"
   fi
