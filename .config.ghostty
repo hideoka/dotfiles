@@ -27,7 +27,11 @@ font-family = "HackGen Console NF"
 font-family-bold = "HackGen Console NF"
 font-family-italic = "HackGen Console NF"
 font-family-bold-italic = "HackGen Console NF"
-font-size = 16
+font-size = 15
+
+window-decoration = auto
+gtk-titlebar = true
+gtk-titlebar-style = native
 
 window-padding-x = 1
 window-padding-y = 1
