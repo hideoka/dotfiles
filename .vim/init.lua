@@ -596,6 +596,12 @@ vim.api.nvim_create_autocmd({ 'bufNewFile', 'BufRead' }, {
   group = file_indent
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "c",
+  command = 'setlocal tabstop=8 shiftwidth=8 softtabstop=8',
+  group = file_indent
+})
+
 -- Rubyfile indent dot fix
 local rust_file_indent_dot_fix = vim.api.nvim_create_augroup('RubyfileIndentDotFix', { clear = true })
 vim.api.nvim_create_autocmd({ 'FileType' }, {
