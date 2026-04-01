@@ -7,6 +7,7 @@ mkdir -p "$HOME"/.config/sheldon
 mkdir -p "$HOME"/.config/mise
 mkdir -p "$HOME"/.config/cspell
 mkdir -p "$HOME"/.config/git
+mkdir -p "$HOME"/.config/ghostty
 
 for f in .??*
 do
