@@ -49,3 +49,4 @@ keybind = ctrl+==unbind
 keybind = ctrl+-=unbind
 
 config-file = ?~/.config/ghostty/local.config.ghostty
+confirm-close-surface = false
