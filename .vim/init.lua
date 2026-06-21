@@ -372,6 +372,18 @@ vim.lsp.config("zls", {
     }
   }
 })
+vim.lsp.config('clangd', {
+  cmd = {
+    'clangd',
+    '--background-index',
+  },
+  filetypes = { 'c', 'cpp', 'objc', 'objcpp' },
+  root_markers = {
+    'compile_commands.json',
+    'platformio.ini',
+    '.git',
+  },
+})
 
 vim.lsp.enable({ 'taplo', 'bashls', 'terraformls', 'ts_ls', 'zls', 'clangd',
   'rust_analyzer' })
