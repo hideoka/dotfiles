@@ -10,6 +10,10 @@ export PATH="/usr/local/go/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 export PATH="$HOME/.bun/bin:$PATH"
 
+export EDITOR=vim
+export VISUAL=vim
+bindkey -e
+
 export NODE_OPTIONS=--dns-result-order=ipv4first
 
 source $DOTFILE_PATH/.zsh/setopt.zsh
