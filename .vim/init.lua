@@ -230,6 +230,67 @@ require("nvim-tree").setup({
   }
 })
 
+local function folders_by_name_files_by_mtime(nodes)
+  local mtimes = {}
+
+  local function mtime(node)
+    local path = node.absolute_path
+
+    if mtimes[path] ~= nil then
+      return mtimes[path]
+    end
+
+    local stat = vim.uv.fs_stat(path)
+    local value = 0
+
+    if stat and stat.mtime then
+      value = stat.mtime.sec + (stat.mtime.nsec or 0) / 1e9
+    end
+
+    mtimes[path] = value
+    return value
+  end
+
+  table.sort(nodes, function(a, b)
+    local a_is_dir = a.type == "directory"
+    local b_is_dir = b.type == "directory"
+
+    if a_is_dir ~= b_is_dir then
+      return a_is_dir
+    end
+
+    if a_is_dir then
+      return a.name:lower() < b.name:lower()
+    end
+
+    local a_mtime = mtime(a)
+    local b_mtime = mtime(b)
+
+    if a_mtime == b_mtime then
+      return a.name:lower() < b.name:lower()
+    end
+
+    return a_mtime > b_mtime
+  end)
+end
+
+vim.api.nvim_create_user_command("NvimTreeSortToggle", function()
+  local api = require("nvim-tree.api")
+  local config = require("nvim-tree.config")
+  local sort_mode = "case_sensitive"
+
+  sort_mode = sort_mode == "case_sensitive"
+      and "modification_time"
+      or "case_sensitive"
+
+  config.g.sort.sorter = sort_mode == "modification_time"
+      and folders_by_name_files_by_mtime
+      or "case_sensitive"
+
+  api.tree.reload()
+  vim.notify("nvim-tree sort: " .. sort_mode)
+end, {})
+
 vim.keymap.set('n', '<leader>e', ':<C-u>NvimTreeToggle<CR>', { silent = true })
 
 -- gitsigns
