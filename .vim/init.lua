@@ -11,20 +11,34 @@ vim.g.loaded_perljprovider = 0
 -- -------------------------------------------------------------------------
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable",
-    lazypath,
-  })
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out,                            "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
 end
+
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
-  { 'nvim-treesitter/nvim-treesitter',          branch = 'main',   lazy = false,                              build = ':TSUpdate', },
-  { "bluz71/vim-nightfly-colors",               name = "nightfly", lazy = false,                              priority = 1000 },
+  {
+    'nvim-treesitter/nvim-treesitter',
+    branch = 'main',
+    lazy = false,
+    build = ':TSUpdate',
+  },
+  {
+    "bluz71/vim-nightfly-colors",
+    name = "nightfly",
+    lazy = false,
+    priority = 1000
+  },
   { "neovim/nvim-lspconfig" },
   { "hrsh7th/nvim-cmp" },
   { "hrsh7th/cmp-nvim-lsp" },
@@ -37,11 +51,14 @@ require("lazy").setup({
   { "nvim-tree/nvim-web-devicons" },
   { "nvim-tree/nvim-tree.lua" },
   { "akinsho/toggleterm.nvim",                  version = "*" },
-  { "nvim-telescope/telescope.nvim",            tag = 'v0.2.0',    dependencies = { 'nvim-lua/plenary.nvim' } },
   {
-    "nvim-telescope/telescope-fzf-native.nvim",
-    build =
-    'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+    "nvim-telescope/telescope.nvim",
+    tag = 'v0.2.0',
+    dependencies = { 'nvim-lua/plenary.nvim' }
+  },
+  {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release --target install'
   },
   { "L3MON4D3/LuaSnip",                    version = "v2.*",                                    build = "make install_jsregexp" },
   { "saadparwaiz1/cmp_luasnip" },
@@ -384,6 +401,7 @@ vim.lsp.config('clangd', {
   cmd = {
     'clangd',
     '--background-index',
+    '--query-driver=/home/hideaki/.platformio/packages/toolchain-xtensa-esp-elf/bin/xtensa-esp32-elf-*',
   },
   filetypes = { 'c', 'cpp', 'objc', 'objcpp' },
   root_markers = {
