@@ -678,3 +678,13 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
   command = 'setlocal indentkeys-=.',
   group = rust_file_indent_dot_fix
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+  group = vim.api.nvim_create_augroup("vim-treesitter-start", { clear = true }),
+  callback = function(ctx)
+    if vim.bo[ctx.buf].filetype == "sql" then
+      return
+    end
+    pcall(vim.treesitter.start, ctx.buf)
+  end,
+})
