@@ -67,7 +67,6 @@ require("lazy").setup({
       vim.o.timeoutlen = 500
     end
   },
-  { 'github/copilot.vim' }
   {
     "MeanderingProgrammer/render-markdown.nvim",
     ft = { "markdown" },
@@ -525,17 +524,6 @@ require('hlslens').setup()
 
 -- -- which-key.nvim
 require('which-key').setup()
-
--- copilot.vim
-vim.keymap.set('i', '<C-J>', 'copilot#Accept("\\<CR>")', {
-  expr = true,
-  replace_keycodes = false
-})
-vim.g.copilot_no_tab_map = true
-vim.g.copilot_enabled = false
-vim.keymap.set('n', '<leader>ce', ':<C-u>Copilot enable<CR>', { silent = true })
-vim.keymap.set('n', '<leader>cd', ':<C-u>Copilot disable<CR>', { silent = true })
-
 
 -- -------------------------------------------------------------------------
 --  COLOR SCHEME
