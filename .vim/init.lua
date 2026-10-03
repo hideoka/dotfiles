@@ -68,6 +68,23 @@ require("lazy").setup({
     end
   },
   { 'github/copilot.vim' }
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    ft = { "markdown" },
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons",
+    },
+    opts = {
+      heading = {
+        enabled = true,
+      },
+      table = {
+        enabled = true,
+        style = "full",
+      },
+    },
+  },
 })
 
 -- nvim-treesitter
@@ -312,20 +329,8 @@ vim.keymap.set('n', '<leader>gD', ':<C-u>DiffviewOpen<CR>', { silent = true })
 vim.keymap.set('n', 's', '<Nop>', { remap = true })
 vim.keymap.set('x', 's', '<Nop>', { remap = true })
 
--- vim-markdown
-vim.g.vim_markdown_folding_level = 6
-vim.g.vim_markdown_auto_insert_bullets = 0
-vim.g.vim_markdown_new_list_item_indent = 0
-vim.g.vim_markdown_folding_disabled = 1
-vim.g.vim_markdown_new_folding_disabled = 1
-vim.g.vim_markdown_conceal = 0
-vim.g.vim_markdown_conceal_code_blocks = 0
-
--- markdown-preview.nvim
-vim.keymap.set('n', '<leader>M', ':<C-u>MarkdownPreview<CR>', { silent = true })
-vim.g.mkdp_auto_close = 0
-
-
+-- render-markdown.nvim
+vim.keymap.set("n", "<leader>M", require("render-markdown").toggle, { silent = true })
 
 vim.api.nvim_set_keymap('n', '<leader>le', '<cmd>lua vim.diagnostic.open_float()<CR>', { noremap = true, silent = true })
 vim.diagnostic.config({ virtual_text = true })
