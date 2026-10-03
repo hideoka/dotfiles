@@ -231,21 +231,7 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
 
-require("nvim-tree").setup({
-  sort = {
-    sorter = "case_sensitive"
-  },
-  view = {
-    width = 30
-  },
-  renderer = {
-    group_empty = true,
-  },
-  git = {
-    ignore = false
-  }
-})
-
+local sort_mode = "case_sensitive"
 local function folders_by_name_files_by_mtime(nodes)
   local mtimes = {}
 
@@ -260,7 +246,7 @@ local function folders_by_name_files_by_mtime(nodes)
     local value = 0
 
     if stat and stat.mtime then
-      value = stat.mtime.sec + (stat.mtime.nsec or 0) / 1e9
+      value = stat.mtime.sec
     end
 
     mtimes[path] = value
@@ -290,24 +276,42 @@ local function folders_by_name_files_by_mtime(nodes)
   end)
 end
 
-vim.api.nvim_create_user_command("NvimTreeSortToggle", function()
-  local api = require("nvim-tree.api")
-  local config = require("nvim-tree.config")
-  local sort_mode = "case_sensitive"
+local function dynamic_sorter(nodes)
+  if sort_mode == "modification_time" then
+    folders_by_name_files_by_mtime(nodes)
+    return
+  end
 
+  return "case_sensitive"
+end
+
+require("nvim-tree").setup({
+  sort = {
+    sorter = dynamic_sorter,
+  },
+  view = {
+    width = 30
+  },
+  renderer = {
+    group_empty = true,
+  },
+  git = {
+    ignore = false
+  }
+})
+
+vim.api.nvim_create_user_command("NvimTreeSortToggle", function()
   sort_mode = sort_mode == "case_sensitive"
       and "modification_time"
       or "case_sensitive"
 
-  config.g.sort.sorter = sort_mode == "modification_time"
-      and folders_by_name_files_by_mtime
-      or "case_sensitive"
+  require("nvim-tree.api").tree.reload()
 
-  api.tree.reload()
   vim.notify("nvim-tree sort: " .. sort_mode)
 end, {})
 
 vim.keymap.set('n', '<leader>e', ':<C-u>NvimTreeToggle<CR>', { silent = true })
+vim.keymap.set('n', '<leader>E', ':<C-u>NvimTreeSortToggle<CR>', { silent = true })
 
 -- gitsigns
 require('gitsigns').setup {
