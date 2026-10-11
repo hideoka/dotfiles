@@ -10,5 +10,7 @@ fi
 
 source "$DOTFILE_PATH"/etc/rust.sh "$DOTFILE_PATH"
 
+curl -sS https://starship.rs/install.sh | sh
+
 curl https://mise.run | sh
 mise install
