@@ -131,7 +131,7 @@ require('mason-tool-installer').setup {
     'taplo',
     'bash-language-server',
     'terraformls',
-    -- 'solargraph',
+    'ruby-lsp',
     'gopls',
     'zls',
     'clangd',
@@ -412,7 +412,7 @@ vim.lsp.config('clangd', {
 })
 
 vim.lsp.enable({ 'taplo', 'bashls', 'terraformls', 'ts_ls', 'zls', 'clangd',
-  'rust_analyzer' })
+  'rust_analyzer', 'ruby-lsp' })
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(args)
     local bufnr = args.buf
