@@ -108,11 +108,9 @@ require('nvim-treesitter').setup({
   install_dir = vim.fn.stdpath('data') .. '/site',
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-  group = vim.api.nvim_create_augroup("vim-treesitter-start", { clear = true }),
-  callback = function(ctx)
-    pcall(vim.treesitter.start)
-  end,
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { '<filetype>' },
+  callback = function() vim.treesitter.start() end,
 })
 
 -- indent-blankline.nvim
