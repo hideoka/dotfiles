@@ -28,6 +28,6 @@ fi
 eval "$(starship init zsh)"
 eval "$(mise activate zsh)"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source <(fzf --zsh)
 
 autoload -Uz compinit; compinit
